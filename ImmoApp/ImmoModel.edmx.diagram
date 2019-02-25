@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14a893c45187426b85eb43f316079b10" Name="Diagram1">
+        <EntityTypeShape EntityType="immoModel.anrede" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.bank" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.bankverbindung" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.dokument" Width="1.5" PointX="9.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.dokumentenkategorie" Width="1.5" PointX="7.5" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.einnahme" Width="1.5" PointX="8.25" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.email" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.eMailNummernKat" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.erstattung" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.forderung" Width="1.5" PointX="10.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.kategorie" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.kontakt" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.leerstand" Width="1.5" PointX="9.75" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.miete" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.mieteinheit" Width="1.5" PointX="7.5" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.mietvertrag" Width="1.5" PointX="12.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.notiz" Width="1.5" PointX="15" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.nummern" Width="1.5" PointX="5.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.objekt" Width="1.5" PointX="5.25" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.wohneinheitMiete" Width="1.5" PointX="9.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.zahlungskategorie" Width="1.5" PointX="6" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwEinheitDokumente" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwEinheitNotiz" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwEinnahman" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwKontakte" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwMieteinheiten" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwObjektDokumente" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwObjekte" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwObjektNotiz" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwPersonBankverbindung" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwPersonenErstattungen" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwPersonenForderungen" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwVertragDokumente" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwVerträge" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwVerträgeUndLeerstände" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwVertragNotiz" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="immoModel.vwVertragsforderung" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="immoModel.FK_anrede" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_bankverbindung_bank" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_bankverbindung_kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_dok_einheit" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_dok_kat" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_dok_objekt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_dok_person" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_dok_vertrag" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_einnahme_kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_forderung_einnahme" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_email_kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_email_kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_nummer_kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_erstattung_kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_erstattung_vertrag" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_forderung_kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_kontakt_kategorie" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_eigentümer" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_notiz_person" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_nummer_kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_vertrag_mieter" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_leerstand_einheit" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_miete" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_einheit" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_mieteinheit_objekt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_notiz_einheit" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_vertrag_einheit" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_notiz_vertrag" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.FK_notiz_objekt" ManuallyRouted="false" />
+        <AssociationConnector Association="immoModel.vertragsforderungen" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

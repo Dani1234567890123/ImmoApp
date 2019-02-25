@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51D18B34-3274-4CCD-84CF-1D61E7AF943C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImmoApp</RootNamespace>
+    <AssemblyName>ImmoApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="anrede.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="bank.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bankverbindung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dokument.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dokumentenkategorie.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="einnahme.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="email.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="eMailNummernKat.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="erstattung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="forderung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImmoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kategorie.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kontakt.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="leerstand.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="miete.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mieteinheit.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mietvertrag.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="notiz.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="nummern.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="objekt.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\MieteinheitListeView.xaml.cs">
+      <DependentUpon>MieteinheitListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MieteinheitUpdateView.xaml.cs">
+      <DependentUpon>MieteinheitUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ObjektInsertView.xaml.cs">
+      <DependentUpon>ObjektInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ObjektListeView.xaml.cs">
+      <DependentUpon>ObjektListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ObjektUpdateView.xaml.cs">
+      <DependentUpon>ObjektUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StartView.xaml.cs">
+      <DependentUpon>StartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vwEinheitDokumente.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwEinheitNotiz.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwEinnahman.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwKontakte.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwMieteinheiten.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwObjektDokumente.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwObjekte.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwObjektNotiz.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwPersonBankverbindung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwPersonenErstattungen.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwPersonenForderungen.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVertragDokumente.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVertragNotiz.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVertragsforderung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVerträge.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVerträgeUndLeerstände.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wohneinheitMiete.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="zahlungskategorie.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImmoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImmoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImmoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImmoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="ImmoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ImmoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ImmoModel.edmx.diagram">
+      <DependentUpon>ImmoModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ImmoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImmoModel.edmx</DependentUpon>
+      <LastGenOutput>ImmoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ImmoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ImmoModel.edmx</DependentUpon>
+      <LastGenOutput>ImmoModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="View\icon\2932350 - clipboard copy notes paper report survey.png" />
+    <Resource Include="View\icon\einstelungenBlau.png" />
+    <Resource Include="View\icon\2932347 - building estate home house.png" />
+    <Resource Include="View\icon\2932353 - group hr humans people team users.png" />
+    <Resource Include="View\icon\2993664 - brand brands logo logos word.png" />
+    <Resource Include="View\icon\2993665 - brand brands explorer logo logos windows.png" />
+    <Resource Include="View\icon\2993669 - brand brands commander logo logos total.png" />
+    <Resource Include="View\icon\728898 - add plus.png" />
+    <Resource Include="View\icon\728918 - cancel error exit fault.png" />
+    <Resource Include="View\icon\728966 - edit pen pencil writing.png" />
+    <Resource Include="View\icon\728980 - home.png" />
+    <Resource Include="View\icon\1622837 - analytics docs documents gra.png" />
+    <Resource Include="View\icon\226560 - cross square.png" />
+    <Resource Include="View\icon\226561 - check square.png" />
+    <Resource Include="View\icon\226562 - add square.png" />
+    <Resource Include="View\icon\226565 - printer.png" />
+    <Resource Include="View\icon\226568 - paper.png" />
+    <Resource Include="View\icon\226571 - glass magnifying.png" />
+    <Resource Include="View\icon\226602 - reply.png" />
+    <Resource Include="View\icon\227551 - trash.png" />
+    <Resource Include="View\icon\227567 - power.png" />
+    <Resource Include="View\icon\227584 - image.png" />
+    <Resource Include="View\icon\227585 - head.png" />
+    <Resource Include="View\icon\227587 - file.png" />
+    <Resource Include="View\icon\227600 - arrow up.png" />
+    <Resource Include="View\icon\227601 - arrow right.png" />
+    <Resource Include="View\icon\227602 - arrow left.png" />
+    <Resource Include="View\icon\4115235 - exit logout sign out.png" />
+    <Resource Include="View\icon\4115238 - delete trash.png" />
+    <Resource Include="View\icon\2932348 - agree deal handshake meeting.png" />
+    <Resource Include="View\icon\contact.png" />
+    <Resource Include="View\icon\delete.png" />
+    <Resource Include="View\icon\Haus2.png" />
+    <Resource Include="View\icon\haus3.png" />
+    <Resource Include="View\icon\Haus6.png" />
+    <Resource Include="View\icon\Home-icon.png" />
+    <Resource Include="View\icon\person_group.png" />
+    <Resource Include="View\icon\person_group_add.png" />
+    <Resource Include="View\icon\person_group_x.png" />
+    <Resource Include="View\icon\printer.png" />
+    <Resource Include="View\icon\trashcan2.png" />
+    <Resource Include="View\icon\App-clean-icon.png" />
+    <Resource Include="View\icon\coins.png" />
+    <Resource Include="View\icon\conatcts.png" />
+    <Resource Include="View\icon\down64.png" />
+    <Resource Include="View\icon\edit5454.png" />
+    <Resource Include="View\icon\einstellungen.png" />
+    <Resource Include="View\icon\error.png" />
+    <Resource Include="View\icon\error2.png" />
+    <Resource Include="View\icon\file_edit.png" />
+    <Resource Include="View\icon\forward654.png" />
+    <Resource Include="View\icon\loan-149873_960_720.png" />
+    <Resource Include="View\icon\notiz2.png" />
+    <Resource Include="View\icon\ok654.png" />
+    <Resource Include="View\icon\phone.png" />
+    <Resource Include="View\icon\plus645.png" />
+    <Resource Include="View\icon\recycle.png" />
+    <Resource Include="View\icon\save657.png" />
+    <Resource Include="View\icon\searc45h.png" />
+    <Resource Include="View\icon\top654.png" />
+    <Resource Include="View\icon\undo5454.png" />
+    <Resource Include="View\icon\undo6456.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\MieteinheitListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MieteinheitUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ObjektInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ObjektListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ObjektUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

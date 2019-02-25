@@ -1,0 +1,2821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="immoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="anrede">
+          <Key>
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="text" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bank">
+          <Key>
+            <PropertyRef Name="bankID" />
+          </Key>
+          <Property Name="bankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bic" Type="nvarchar" MaxLength="11" />
+          <Property Name="straße" Type="nvarchar" MaxLength="50" />
+          <Property Name="hausnr" Type="nvarchar" MaxLength="5" />
+          <Property Name="plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="land" Type="nvarchar" MaxLength="5" />
+          <Property Name="ansprechpartner" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="bankverbindung">
+          <Key>
+            <PropertyRef Name="iban" />
+          </Key>
+          <Property Name="iban" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="bank" Type="int" />
+          <Property Name="kontakt" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dokument">
+          <Key>
+            <PropertyRef Name="dokID" />
+          </Key>
+          <Property Name="dokID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="int" />
+          <Property Name="titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="datei" Type="binary" MaxLength="1" Nullable="false" />
+          <Property Name="datum" Type="date" />
+          <Property Name="zuPerson" Type="int" />
+          <Property Name="zuObjekt" Type="int" />
+          <Property Name="zuEinheit" Type="int" />
+          <Property Name="zuVertrag" Type="int" />
+        </EntityType>
+        <EntityType Name="dokumentenkategorie">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="einnahme">
+          <Key>
+            <PropertyRef Name="einnahmeID" />
+          </Key>
+          <Property Name="einnahmeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="int" />
+          <Property Name="bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="betrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="eingang" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="email">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="kontakt" Type="int" Nullable="false" />
+          <Property Name="kategorie" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="eMailNummernKat">
+          <Key>
+            <PropertyRef Name="kürzel" />
+          </Key>
+          <Property Name="kürzel" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="bezeichnung" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="erstattung">
+          <Key>
+            <PropertyRef Name="erstattungsID" />
+          </Key>
+          <Property Name="erstattungsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zuMietvertrag" Type="int" />
+          <Property Name="anPerson" Type="int" />
+          <Property Name="betrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="grund" Type="nvarchar" MaxLength="50" />
+          <Property Name="fälligkeit" Type="date" />
+          <Property Name="erstattet" Type="bit" />
+          <Property Name="zahlungsdatum" Type="date" />
+        </EntityType>
+        <EntityType Name="forderung">
+          <Key>
+            <PropertyRef Name="ford_nr" />
+          </Key>
+          <Property Name="ford_nr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="int" />
+          <Property Name="fälligkeit" Type="date" />
+          <Property Name="einnahme" Type="int" />
+          <Property Name="ausgeglichen" Type="bit" />
+          <Property Name="betrag" Type="decimal" Precision="17" Scale="3" />
+        </EntityType>
+        <EntityType Name="kategorie">
+          <Key>
+            <PropertyRef Name="kürzel" />
+          </Key>
+          <Property Name="kürzel" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="bezeichnung" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kontakt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="nvarchar" MaxLength="5" />
+          <Property Name="anrede" Type="nvarchar" MaxLength="15" />
+          <Property Name="titel" Type="nvarchar" MaxLength="15" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="straße" Type="nvarchar" MaxLength="50" />
+          <Property Name="hausnr" Type="nvarchar" MaxLength="5" />
+          <Property Name="plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="gebDatum" Type="date" />
+          <Property Name="firma" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="leerstand">
+          <Key>
+            <PropertyRef Name="leerstandsID" />
+          </Key>
+          <Property Name="leerstandsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mieteinheit" Type="int" Nullable="false" />
+          <Property Name="beginn" Type="date" Nullable="false" />
+          <Property Name="ende" Type="date" />
+        </EntityType>
+        <EntityType Name="miete">
+          <Key>
+            <PropertyRef Name="mietID" />
+          </Key>
+          <Property Name="mietID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kaltmiete" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="gültigAb" Type="date" Nullable="false" />
+          <Property Name="NkAbschlag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="garage" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="stellplatz" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="sonstMietbestandteile" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="aktiv" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mieteinheit">
+          <Key>
+            <PropertyRef Name="mieteinheitID" />
+          </Key>
+          <Property Name="mieteinheitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inObjekt" Type="int" Nullable="false" />
+          <Property Name="bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="etage" Type="nvarchar" MaxLength="10" />
+          <Property Name="lage" Type="nvarchar" MaxLength="10" />
+          <Property Name="fläche" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="heizfläche" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="stromzählernummer" Type="nvarchar" MaxLength="40" />
+          <Property Name="AnzWohnräume" Type="int" />
+          <Property Name="AnzBäder" Type="int" />
+          <Property Name="AnzKüchen" Type="int" />
+          <Property Name="AnzKeller" Type="int" />
+          <Property Name="AnzAbstellräume" Type="int" />
+          <Property Name="AnzBalkone" Type="int" />
+          <Property Name="AnzTerrassen" Type="int" />
+          <Property Name="AnzGaragen" Type="int" />
+          <Property Name="AnzStellplätze" Type="int" />
+          <Property Name="Garten" Type="bit" />
+          <Property Name="Gartenfläche" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="weitereAusstattung" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="mietvertrag">
+          <Key>
+            <PropertyRef Name="vertragsnr" />
+          </Key>
+          <Property Name="vertragsnr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zuEinheit" Type="int" Nullable="false" />
+          <Property Name="mieter" Type="int" Nullable="false" />
+          <Property Name="vertragsdatum" Type="date" />
+          <Property Name="vertragsbeginn" Type="date" Nullable="false" />
+          <Property Name="vertragsende" Type="date" />
+          <Property Name="kaution" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="kautionsraten" Type="int" />
+          <Property Name="kautionBezahlt" Type="bit" />
+          <Property Name="kündigungsfrist" Type="nvarchar" MaxLength="20" />
+          <Property Name="mietverhältnisAktiv" Type="bit" />
+        </EntityType>
+        <EntityType Name="notiz">
+          <Key>
+            <PropertyRef Name="notizID" />
+          </Key>
+          <Property Name="notizID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notizText" Type="nvarchar" MaxLength="400" />
+          <Property Name="datum" Type="date" />
+          <Property Name="zuPerson" Type="int" />
+          <Property Name="zuObjekt" Type="int" />
+          <Property Name="zuEinheit" Type="int" />
+          <Property Name="zuVertrag" Type="int" />
+        </EntityType>
+        <EntityType Name="nummern">
+          <Key>
+            <PropertyRef Name="nummer" />
+          </Key>
+          <Property Name="nummer" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="kontakt" Type="int" Nullable="false" />
+          <Property Name="kategorie" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="objekt">
+          <Key>
+            <PropertyRef Name="objektID" />
+          </Key>
+          <Property Name="objektID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="straße" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hausnr" Type="nvarchar" MaxLength="5" />
+          <Property Name="plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="eigentümer" Type="int" Nullable="false" />
+          <Property Name="allgemeinstromzähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="wasserzähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="gaszähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="baujahr" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="vertragsforderungen">
+          <Key>
+            <PropertyRef Name="forderung" />
+            <PropertyRef Name="zuMietvertrag" />
+          </Key>
+          <Property Name="forderung" Type="int" Nullable="false" />
+          <Property Name="zuMietvertrag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wohneinheitMiete">
+          <Key>
+            <PropertyRef Name="mietID" />
+            <PropertyRef Name="einheit" />
+          </Key>
+          <Property Name="mietID" Type="int" Nullable="false" />
+          <Property Name="einheit" Type="int" Nullable="false" />
+          <Property Name="aktiv" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zahlungskategorie">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwDokumente' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+        <EntityType Name="vwDokumente">
+          <Property Name="Datum" Type="date" />
+          <Property Name="Art" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="zu Vertagsnr" Type="int" />
+          <Property Name="zu Person" Type="nvarchar" MaxLength="101" />
+          <Property Name="zu Objekt" Type="nvarchar" MaxLength="50" />
+          <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwEinheitDokumente">
+          <Key>
+            <PropertyRef Name="MieteinheitNr" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Art" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="MieteinheitNr" Type="int" Nullable="false" />
+          <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwEinheitNotiz">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Notiz" Type="nvarchar" MaxLength="400" />
+          <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nr" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinnahmen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwEinnahmen">
+          <Key>
+            <PropertyRef Name="Nr" />
+            <PropertyRef Name="Kategorie" />
+            <PropertyRef Name="Einnahmebetrag" />
+            <PropertyRef Name="Eingangsdatum" />
+          </Key>
+          <Property Name="Nr" Type="int" Nullable="false" />
+          <Property Name="Kategorie" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="Einnahmebetrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="Eingangsdatum" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwKontaktDokumente' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+        <EntityType Name="vwKontaktDokumente">
+          <Property Name="Datum" Type="date" />
+          <Property Name="Art" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="zu Person" Type="nvarchar" MaxLength="101" />
+        </EntityType>-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontakte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwKontakte">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+          </Key>
+          <Property Name="KontaktID" Type="int" Nullable="false" />
+          <Property Name="Kategorie" Type="nvarchar" MaxLength="20" />
+          <Property Name="Anrede" Type="nvarchar" MaxLength="15" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="15" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Straße" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="Geburtsdatum" Type="date" />
+          <Property Name="Firma" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="42" />
+          <Property Name="Email" Type="nvarchar" MaxLength="62" />
+          <Property Name="IBAN" Type="nvarchar" MaxLength="30" />
+          <Property Name="BIC" Type="nvarchar" MaxLength="11" />
+          <Property Name="Kreditinstitut" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwKontaktNotiz' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+        <EntityType Name="vwKontaktNotiz">
+          <Property Name="Datum" Type="date" />
+          <Property Name="Notiz" Type="nvarchar" MaxLength="400" />
+          <Property Name="Person" Type="nvarchar" MaxLength="101" />
+          <Property Name="Firma" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwMieteinheiten' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwMieteinheiten">
+          <Key>
+            <PropertyRef Name="NR" />
+            <PropertyRef Name="ObjektNr" />
+          </Key>
+          <Property Name="NR" Type="int" Nullable="false" />
+          <Property Name="Bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lage" Type="nvarchar" MaxLength="21" />
+          <Property Name="ObjektNr" Type="int" Nullable="false" />
+          <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vertragsnr" Type="int" />
+          <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
+          <Property Name="Nettomiete" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="NK-Abschlag" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="sonst. Mietanteile" Type="decimal" Precision="19" Scale="3" />
+          <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
+          <Property Name="Aktiv" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwObjektDokumente">
+          <Key>
+            <PropertyRef Name="Objektnr" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Art" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Objektnr" Type="int" Nullable="false" />
+          <Property Name="Objektbezeichnung" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjekte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwObjekte">
+          <Key>
+            <PropertyRef Name="Objektnummer" />
+            <PropertyRef Name="Straße" />
+          </Key>
+          <Property Name="Objektnummer" Type="int" Nullable="false" />
+          <Property Name="Bezeichnung" Type="nvarchar" MaxLength="50" />
+          <Property Name="Straße" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vermieter" Type="nvarchar" MaxLength="101" />
+          <Property Name="Stromzähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="Wasserzähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="Gaszähler" Type="nvarchar" MaxLength="40" />
+          <Property Name="Baujahr" Type="int" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwObjektEinheiten' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+        <EntityType Name="vwObjektEinheiten">
+          <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lage" Type="nvarchar" MaxLength="21" />
+          <Property Name="akt. Mieter" Type="nvarchar" MaxLength="101" />
+          <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
+        </EntityType>-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwObjektNotiz">
+          <Key>
+            <PropertyRef Name="ObjektNr" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Notiz" Type="nvarchar" MaxLength="400" />
+          <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
+          <Property Name="ObjektNr" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonBankverbindung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwPersonBankverbindung">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+          </Key>
+          <Property Name="KontaktID" Type="int" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IBAN" Type="nvarchar" MaxLength="30" />
+          <Property Name="BIC" Type="nvarchar" MaxLength="11" />
+          <Property Name="Kreditinstitut" Type="nvarchar" MaxLength="50" />
+          <Property Name="Straße" Type="nvarchar" MaxLength="50" />
+          <Property Name="nr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="Land" Type="nvarchar" MaxLength="5" />
+          <Property Name="Ansprechpartner" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenErstattungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwPersonenErstattungen">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+            <PropertyRef Name="ErstattungsNr" />
+            <PropertyRef Name="Betrag" />
+          </Key>
+          <Property Name="KontaktID" Type="int" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErstattungsNr" Type="int" Nullable="false" />
+          <Property Name="Erstattungsgrund" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fällig am" Type="date" />
+          <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="Erstattet am" Type="date" />
+          <Property Name="erledigt" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenForderungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwPersonenForderungen">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="KontaktID" Type="int" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Forderungsnr" Type="int" Nullable="false" />
+          <Property Name="Fällig am" Type="date" />
+          <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="Beglichen am" Type="date" />
+          <Property Name="offen" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVertragDokumente">
+          <Key>
+            <PropertyRef Name="zu Vertagsnr" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Art" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="zu Vertagsnr" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträge' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVerträge">
+          <Key>
+            <PropertyRef Name="Vertragsnr" />
+            <PropertyRef Name="Beginn" />
+          </Key>
+          <Property Name="Vertragsnr" Type="int" Nullable="false" />
+          <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
+          <Property Name="Vermieter" Type="nvarchar" MaxLength="101" />
+          <Property Name="Beginn" Type="date" Nullable="false" />
+          <Property Name="Ende" Type="date" />
+          <Property Name="Aktiv" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträgeUndLeerstände' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVerträgeUndLeerstände">
+          <Key>
+            <PropertyRef Name="MiteinheitNr" />
+          </Key>
+          <Property Name="MiteinheitNr" Type="int" Nullable="false" />
+          <Property Name="Beginn Leerstand" Type="date" />
+          <Property Name="Ende Leerstand" Type="date" />
+          <Property Name="Vertragsbeginn" Type="date" />
+          <Property Name="Vertragsende" Type="date" />
+          <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVertragNotiz">
+          <Key>
+            <PropertyRef Name="zuMietvertrag" />
+          </Key>
+          <Property Name="Datum" Type="date" />
+          <Property Name="Notiz" Type="nvarchar" MaxLength="400" />
+          <Property Name="zuMietvertrag" Type="int" Nullable="false" />
+          <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVertragsforderung">
+          <Key>
+            <PropertyRef Name="Vertragsnr" />
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="Vertragsnr" Type="int" Nullable="false" />
+          <Property Name="Forderungsnr" Type="int" Nullable="false" />
+          <Property Name="Fällig am" Type="date" />
+          <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="Beglichen am" Type="date" />
+          <Property Name="offen" Type="bit" />
+        </EntityType>
+        <Association Name="FK_anrede">
+          <End Role="anrede" Type="Self.anrede" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anrede">
+              <PropertyRef Name="text" />
+            </Principal>
+            <Dependent Role="kontakt">
+              <PropertyRef Name="anrede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bankverbindung_bank">
+          <End Role="bank" Type="Self.bank" Multiplicity="0..1" />
+          <End Role="bankverbindung" Type="Self.bankverbindung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bank">
+              <PropertyRef Name="bankID" />
+            </Principal>
+            <Dependent Role="bankverbindung">
+              <PropertyRef Name="bank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bankverbindung_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="bankverbindung" Type="Self.bankverbindung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bankverbindung">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_kat">
+          <End Role="dokumentenkategorie" Type="Self.dokumentenkategorie" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dokumentenkategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_person">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuVertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eigentümer">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1" />
+          <End Role="objekt" Type="Self.objekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="objekt">
+              <PropertyRef Name="eigentümer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="wohneinheitMiete">
+              <PropertyRef Name="einheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_einnahme_kategorie">
+          <End Role="zahlungskategorie" Type="Self.zahlungskategorie" Multiplicity="0..1" />
+          <End Role="einnahme" Type="Self.einnahme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zahlungskategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="einnahme">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_kategorie">
+          <End Role="eMailNummernKat" Type="Self.eMailNummernKat" Multiplicity="0..1" />
+          <End Role="email" Type="Self.email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMailNummernKat">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="email">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email" Type="Self.email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_erstattung_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="erstattung" Type="Self.erstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erstattung">
+              <PropertyRef Name="anPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_erstattung_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="erstattung" Type="Self.erstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="erstattung">
+              <PropertyRef Name="zuMietvertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_forderung_einnahme">
+          <End Role="einnahme" Type="Self.einnahme" Multiplicity="0..1" />
+          <End Role="forderung" Type="Self.forderung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="einnahme">
+              <PropertyRef Name="einnahmeID" />
+            </Principal>
+            <Dependent Role="forderung">
+              <PropertyRef Name="einnahme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_forderung_kategorie">
+          <End Role="zahlungskategorie" Type="Self.zahlungskategorie" Multiplicity="0..1" />
+          <End Role="forderung" Type="Self.forderung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zahlungskategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="forderung">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kontakt_kategorie">
+          <End Role="kategorie" Type="Self.kategorie" Multiplicity="0..1" />
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorie">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="kontakt">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_leerstand_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="leerstand" Type="Self.leerstand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="leerstand">
+              <PropertyRef Name="mieteinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_miete">
+          <End Role="miete" Type="Self.miete" Multiplicity="1" />
+          <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="miete">
+              <PropertyRef Name="mietID" />
+            </Principal>
+            <Dependent Role="wohneinheitMiete">
+              <PropertyRef Name="mietID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mieteinheit_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="mieteinheit">
+              <PropertyRef Name="inObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_person">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuVertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nummer_kategorie">
+          <End Role="eMailNummernKat" Type="Self.eMailNummernKat" Multiplicity="0..1" />
+          <End Role="nummern" Type="Self.nummern" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMailNummernKat">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="nummern">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nummer_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nummern" Type="Self.nummern" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nummern">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertrag_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="mietvertrag">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertrag_mieter">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1" />
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mietvertrag">
+              <PropertyRef Name="mieter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertragsforderungen_forderung">
+          <End Role="forderung" Type="Self.forderung" Multiplicity="1" />
+          <End Role="vertragsforderungen" Type="Self.vertragsforderungen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="forderung">
+              <PropertyRef Name="ford_nr" />
+            </Principal>
+            <Dependent Role="vertragsforderungen">
+              <PropertyRef Name="forderung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertragsforderungen_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="1" />
+          <End Role="vertragsforderungen" Type="Self.vertragsforderungen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="vertragsforderungen">
+              <PropertyRef Name="zuMietvertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="immoModelStoreContainer">
+          <EntitySet Name="anrede" EntityType="Self.anrede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bank" EntityType="Self.bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bankverbindung" EntityType="Self.bankverbindung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dokument" EntityType="Self.dokument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dokumentenkategorie" EntityType="Self.dokumentenkategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="einnahme" EntityType="Self.einnahme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="email" EntityType="Self.email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eMailNummernKat" EntityType="Self.eMailNummernKat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="erstattung" EntityType="Self.erstattung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="forderung" EntityType="Self.forderung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategorie" EntityType="Self.kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kontakt" EntityType="Self.kontakt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="leerstand" EntityType="Self.leerstand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="miete" EntityType="Self.miete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mieteinheit" EntityType="Self.mieteinheit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mietvertrag" EntityType="Self.mietvertrag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notiz" EntityType="Self.notiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nummern" EntityType="Self.nummern" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="objekt" EntityType="Self.objekt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vertragsforderungen" EntityType="Self.vertragsforderungen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wohneinheitMiete" EntityType="Self.wohneinheitMiete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zahlungskategorie" EntityType="Self.zahlungskategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwEinheitDokumente" EntityType="Self.vwEinheitDokumente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEinheitDokumente].[Datum] AS [Datum], 
+    [vwEinheitDokumente].[Art] AS [Art], 
+    [vwEinheitDokumente].[Titel] AS [Titel], 
+    [vwEinheitDokumente].[MieteinheitNr] AS [MieteinheitNr], 
+    [vwEinheitDokumente].[zu Mieteinheit] AS [zu Mieteinheit]
+    FROM [dbo].[vwEinheitDokumente] AS [vwEinheitDokumente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEinheitNotiz" EntityType="Self.vwEinheitNotiz" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEinheitNotiz].[Datum] AS [Datum], 
+    [vwEinheitNotiz].[Notiz] AS [Notiz], 
+    [vwEinheitNotiz].[Mieteinheit] AS [Mieteinheit], 
+    [vwEinheitNotiz].[Nr] AS [Nr]
+    FROM [dbo].[vwEinheitNotiz] AS [vwEinheitNotiz]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEinnahmen" EntityType="Self.vwEinnahmen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEinnahmen].[Nr] AS [Nr], 
+    [vwEinnahmen].[Kategorie] AS [Kategorie], 
+    [vwEinnahmen].[Bezeichnung] AS [Bezeichnung], 
+    [vwEinnahmen].[Einnahmebetrag] AS [Einnahmebetrag], 
+    [vwEinnahmen].[Eingangsdatum] AS [Eingangsdatum]
+    FROM [dbo].[vwEinnahmen] AS [vwEinnahmen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwKontakte" EntityType="Self.vwKontakte" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwKontakte].[KontaktID] AS [KontaktID], 
+    [vwKontakte].[Kategorie] AS [Kategorie], 
+    [vwKontakte].[Anrede] AS [Anrede], 
+    [vwKontakte].[Titel] AS [Titel], 
+    [vwKontakte].[Vorname] AS [Vorname], 
+    [vwKontakte].[Name] AS [Name], 
+    [vwKontakte].[Straße] AS [Straße], 
+    [vwKontakte].[Nr] AS [Nr], 
+    [vwKontakte].[Plz] AS [Plz], 
+    [vwKontakte].[Ort] AS [Ort], 
+    [vwKontakte].[Geburtsdatum] AS [Geburtsdatum], 
+    [vwKontakte].[Firma] AS [Firma], 
+    [vwKontakte].[Telefon] AS [Telefon], 
+    [vwKontakte].[Email] AS [Email], 
+    [vwKontakte].[IBAN] AS [IBAN], 
+    [vwKontakte].[BIC] AS [BIC], 
+    [vwKontakte].[Kreditinstitut] AS [Kreditinstitut]
+    FROM [dbo].[vwKontakte] AS [vwKontakte]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwMieteinheiten" EntityType="Self.vwMieteinheiten" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwMieteinheiten].[NR] AS [NR], 
+    [vwMieteinheiten].[Bezeichnung] AS [Bezeichnung], 
+    [vwMieteinheiten].[Lage] AS [Lage], 
+    [vwMieteinheiten].[ObjektNr] AS [ObjektNr], 
+    [vwMieteinheiten].[Objekt] AS [Objekt], 
+    [vwMieteinheiten].[Vertragsnr] AS [Vertragsnr], 
+    [vwMieteinheiten].[Mieter] AS [Mieter], 
+    [vwMieteinheiten].[Nettomiete] AS [Nettomiete], 
+    [vwMieteinheiten].[NK-Abschlag] AS [NK-Abschlag], 
+    [vwMieteinheiten].[sonst. Mietanteile] AS [sonst. Mietanteile], 
+    [vwMieteinheiten].[Bruttomiete] AS [Bruttomiete], 
+    [vwMieteinheiten].[Aktiv] AS [Aktiv]
+    FROM [dbo].[vwMieteinheiten] AS [vwMieteinheiten]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwObjektDokumente" EntityType="Self.vwObjektDokumente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwObjektDokumente].[Datum] AS [Datum], 
+    [vwObjektDokumente].[Art] AS [Art], 
+    [vwObjektDokumente].[Titel] AS [Titel], 
+    [vwObjektDokumente].[Objektnr] AS [Objektnr], 
+    [vwObjektDokumente].[Objektbezeichnung] AS [Objektbezeichnung]
+    FROM [dbo].[vwObjektDokumente] AS [vwObjektDokumente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwObjekte" EntityType="Self.vwObjekte" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwObjekte].[Objektnummer] AS [Objektnummer], 
+    [vwObjekte].[Bezeichnung] AS [Bezeichnung], 
+    [vwObjekte].[Straße] AS [Straße], 
+    [vwObjekte].[Nr] AS [Nr], 
+    [vwObjekte].[Plz] AS [Plz], 
+    [vwObjekte].[Ort] AS [Ort], 
+    [vwObjekte].[Vermieter] AS [Vermieter], 
+    [vwObjekte].[Stromzähler] AS [Stromzähler], 
+    [vwObjekte].[Wasserzähler] AS [Wasserzähler], 
+    [vwObjekte].[Gaszähler] AS [Gaszähler], 
+    [vwObjekte].[Baujahr] AS [Baujahr]
+    FROM [dbo].[vwObjekte] AS [vwObjekte]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwObjektNotiz" EntityType="Self.vwObjektNotiz" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwObjektNotiz].[Datum] AS [Datum], 
+    [vwObjektNotiz].[Notiz] AS [Notiz], 
+    [vwObjektNotiz].[Objekt] AS [Objekt], 
+    [vwObjektNotiz].[ObjektNr] AS [ObjektNr]
+    FROM [dbo].[vwObjektNotiz] AS [vwObjektNotiz]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPersonBankverbindung" EntityType="Self.vwPersonBankverbindung" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPersonBankverbindung].[KontaktID] AS [KontaktID], 
+    [vwPersonBankverbindung].[Vorname] AS [Vorname], 
+    [vwPersonBankverbindung].[Name] AS [Name], 
+    [vwPersonBankverbindung].[IBAN] AS [IBAN], 
+    [vwPersonBankverbindung].[BIC] AS [BIC], 
+    [vwPersonBankverbindung].[Kreditinstitut] AS [Kreditinstitut], 
+    [vwPersonBankverbindung].[Straße] AS [Straße], 
+    [vwPersonBankverbindung].[nr] AS [nr], 
+    [vwPersonBankverbindung].[Plz] AS [Plz], 
+    [vwPersonBankverbindung].[Ort] AS [Ort], 
+    [vwPersonBankverbindung].[Land] AS [Land], 
+    [vwPersonBankverbindung].[Ansprechpartner] AS [Ansprechpartner]
+    FROM [dbo].[vwPersonBankverbindung] AS [vwPersonBankverbindung]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPersonenErstattungen" EntityType="Self.vwPersonenErstattungen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPersonenErstattungen].[KontaktID] AS [KontaktID], 
+    [vwPersonenErstattungen].[Vorname] AS [Vorname], 
+    [vwPersonenErstattungen].[Name] AS [Name], 
+    [vwPersonenErstattungen].[ErstattungsNr] AS [ErstattungsNr], 
+    [vwPersonenErstattungen].[Erstattungsgrund] AS [Erstattungsgrund], 
+    [vwPersonenErstattungen].[Fällig am] AS [Fällig am], 
+    [vwPersonenErstattungen].[Betrag] AS [Betrag], 
+    [vwPersonenErstattungen].[Erstattet am] AS [Erstattet am], 
+    [vwPersonenErstattungen].[erledigt] AS [erledigt]
+    FROM [dbo].[vwPersonenErstattungen] AS [vwPersonenErstattungen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPersonenForderungen" EntityType="Self.vwPersonenForderungen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPersonenForderungen].[KontaktID] AS [KontaktID], 
+    [vwPersonenForderungen].[Vorname] AS [Vorname], 
+    [vwPersonenForderungen].[Name] AS [Name], 
+    [vwPersonenForderungen].[Forderungsnr] AS [Forderungsnr], 
+    [vwPersonenForderungen].[Fällig am] AS [Fällig am], 
+    [vwPersonenForderungen].[Betrag] AS [Betrag], 
+    [vwPersonenForderungen].[Beglichen am] AS [Beglichen am], 
+    [vwPersonenForderungen].[offen] AS [offen]
+    FROM [dbo].[vwPersonenForderungen] AS [vwPersonenForderungen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVertragDokumente" EntityType="Self.vwVertragDokumente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVertragDokumente].[Datum] AS [Datum], 
+    [vwVertragDokumente].[Art] AS [Art], 
+    [vwVertragDokumente].[Titel] AS [Titel], 
+    [vwVertragDokumente].[zu Vertagsnr] AS [zu Vertagsnr]
+    FROM [dbo].[vwVertragDokumente] AS [vwVertragDokumente]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVerträge" EntityType="Self.vwVerträge" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVerträge].[Vertragsnr] AS [Vertragsnr], 
+    [vwVerträge].[Objekt] AS [Objekt], 
+    [vwVerträge].[Mieteinheit] AS [Mieteinheit], 
+    [vwVerträge].[Mieter] AS [Mieter], 
+    [vwVerträge].[Vermieter] AS [Vermieter], 
+    [vwVerträge].[Beginn] AS [Beginn], 
+    [vwVerträge].[Ende] AS [Ende], 
+    [vwVerträge].[Aktiv] AS [Aktiv]
+    FROM [dbo].[vwVerträge] AS [vwVerträge]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVerträgeUndLeerstände" EntityType="Self.vwVerträgeUndLeerstände" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVerträgeUndLeerstände].[MiteinheitNr] AS [MiteinheitNr], 
+    [vwVerträgeUndLeerstände].[Beginn Leerstand] AS [Beginn Leerstand], 
+    [vwVerträgeUndLeerstände].[Ende Leerstand] AS [Ende Leerstand], 
+    [vwVerträgeUndLeerstände].[Vertragsbeginn] AS [Vertragsbeginn], 
+    [vwVerträgeUndLeerstände].[Vertragsende] AS [Vertragsende], 
+    [vwVerträgeUndLeerstände].[Mieter] AS [Mieter]
+    FROM [dbo].[vwVerträgeUndLeerstände] AS [vwVerträgeUndLeerstände]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVertragNotiz" EntityType="Self.vwVertragNotiz" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVertragNotiz].[Datum] AS [Datum], 
+    [vwVertragNotiz].[Notiz] AS [Notiz], 
+    [vwVertragNotiz].[zuMietvertrag] AS [zuMietvertrag], 
+    [vwVertragNotiz].[Mieter] AS [Mieter]
+    FROM [dbo].[vwVertragNotiz] AS [vwVertragNotiz]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVertragsforderung" EntityType="Self.vwVertragsforderung" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVertragsforderung].[Vertragsnr] AS [Vertragsnr], 
+    [vwVertragsforderung].[Forderungsnr] AS [Forderungsnr], 
+    [vwVertragsforderung].[Fällig am] AS [Fällig am], 
+    [vwVertragsforderung].[Betrag] AS [Betrag], 
+    [vwVertragsforderung].[Beglichen am] AS [Beglichen am], 
+    [vwVertragsforderung].[offen] AS [offen]
+    FROM [dbo].[vwVertragsforderung] AS [vwVertragsforderung]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_anrede" Association="Self.FK_anrede">
+            <End Role="anrede" EntitySet="anrede" />
+            <End Role="kontakt" EntitySet="kontakt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bankverbindung_bank" Association="Self.FK_bankverbindung_bank">
+            <End Role="bank" EntitySet="bank" />
+            <End Role="bankverbindung" EntitySet="bankverbindung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bankverbindung_kontakt" Association="Self.FK_bankverbindung_kontakt">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="bankverbindung" EntitySet="bankverbindung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_einheit" Association="Self.FK_dok_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+            <End Role="dokument" EntitySet="dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_kat" Association="Self.FK_dok_kat">
+            <End Role="dokumentenkategorie" EntitySet="dokumentenkategorie" />
+            <End Role="dokument" EntitySet="dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_objekt" Association="Self.FK_dok_objekt">
+            <End Role="objekt" EntitySet="objekt" />
+            <End Role="dokument" EntitySet="dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_person" Association="Self.FK_dok_person">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="dokument" EntitySet="dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_vertrag" Association="Self.FK_dok_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+            <End Role="dokument" EntitySet="dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eigentümer" Association="Self.FK_eigentümer">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="objekt" EntitySet="objekt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_einheit" Association="Self.FK_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+            <End Role="wohneinheitMiete" EntitySet="wohneinheitMiete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_einnahme_kategorie" Association="Self.FK_einnahme_kategorie">
+            <End Role="zahlungskategorie" EntitySet="zahlungskategorie" />
+            <End Role="einnahme" EntitySet="einnahme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_kategorie" Association="Self.FK_email_kategorie">
+            <End Role="eMailNummernKat" EntitySet="eMailNummernKat" />
+            <End Role="email" EntitySet="email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_kontakt" Association="Self.FK_email_kontakt">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="email" EntitySet="email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_erstattung_kontakt" Association="Self.FK_erstattung_kontakt">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="erstattung" EntitySet="erstattung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_erstattung_vertrag" Association="Self.FK_erstattung_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+            <End Role="erstattung" EntitySet="erstattung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_forderung_einnahme" Association="Self.FK_forderung_einnahme">
+            <End Role="einnahme" EntitySet="einnahme" />
+            <End Role="forderung" EntitySet="forderung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_forderung_kategorie" Association="Self.FK_forderung_kategorie">
+            <End Role="zahlungskategorie" EntitySet="zahlungskategorie" />
+            <End Role="forderung" EntitySet="forderung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kontakt_kategorie" Association="Self.FK_kontakt_kategorie">
+            <End Role="kategorie" EntitySet="kategorie" />
+            <End Role="kontakt" EntitySet="kontakt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_leerstand_einheit" Association="Self.FK_leerstand_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+            <End Role="leerstand" EntitySet="leerstand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_miete" Association="Self.FK_miete">
+            <End Role="miete" EntitySet="miete" />
+            <End Role="wohneinheitMiete" EntitySet="wohneinheitMiete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mieteinheit_objekt" Association="Self.FK_mieteinheit_objekt">
+            <End Role="objekt" EntitySet="objekt" />
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_einheit" Association="Self.FK_notiz_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+            <End Role="notiz" EntitySet="notiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_objekt" Association="Self.FK_notiz_objekt">
+            <End Role="objekt" EntitySet="objekt" />
+            <End Role="notiz" EntitySet="notiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_person" Association="Self.FK_notiz_person">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="notiz" EntitySet="notiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_vertrag" Association="Self.FK_notiz_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+            <End Role="notiz" EntitySet="notiz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nummer_kategorie" Association="Self.FK_nummer_kategorie">
+            <End Role="eMailNummernKat" EntitySet="eMailNummernKat" />
+            <End Role="nummern" EntitySet="nummern" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nummer_kontakt" Association="Self.FK_nummer_kontakt">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="nummern" EntitySet="nummern" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertrag_einheit" Association="Self.FK_vertrag_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheit" />
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertrag_mieter" Association="Self.FK_vertrag_mieter">
+            <End Role="kontakt" EntitySet="kontakt" />
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertragsforderungen_forderung" Association="Self.FK_vertragsforderungen_forderung">
+            <End Role="forderung" EntitySet="forderung" />
+            <End Role="vertragsforderungen" EntitySet="vertragsforderungen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertragsforderungen_vertrag" Association="Self.FK_vertragsforderungen_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrag" />
+            <End Role="vertragsforderungen" EntitySet="vertragsforderungen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="immoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="anrede">
+          <Key>
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="text" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="kontakts" Relationship="Self.FK_anrede" FromRole="anrede" ToRole="kontakt" />
+        </EntityType>
+        <EntityType Name="bank">
+          <Key>
+            <PropertyRef Name="bankID" />
+          </Key>
+          <Property Name="bankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bic" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hausnr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="land" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ansprechpartner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bankverbindungs" Relationship="Self.FK_bankverbindung_bank" FromRole="bank" ToRole="bankverbindung" />
+        </EntityType>
+        <EntityType Name="bankverbindung">
+          <Key>
+            <PropertyRef Name="iban" />
+          </Key>
+          <Property Name="iban" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bank" Type="Int32" />
+          <Property Name="kontakt" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="bank1" Relationship="Self.FK_bankverbindung_bank" FromRole="bankverbindung" ToRole="bank" />
+          <NavigationProperty Name="kontakt1" Relationship="Self.FK_bankverbindung_kontakt" FromRole="bankverbindung" ToRole="kontakt" />
+        </EntityType>
+        <EntityType Name="dokument">
+          <Key>
+            <PropertyRef Name="dokID" />
+          </Key>
+          <Property Name="dokID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="Int32" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datei" Type="Binary" MaxLength="1" FixedLength="true" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Precision="0" />
+          <Property Name="zuPerson" Type="Int32" />
+          <Property Name="zuObjekt" Type="Int32" />
+          <Property Name="zuEinheit" Type="Int32" />
+          <Property Name="zuVertrag" Type="Int32" />
+          <NavigationProperty Name="mieteinheit" Relationship="Self.FK_dok_einheit" FromRole="dokument" ToRole="mieteinheit" />
+          <NavigationProperty Name="dokumentenkategorie" Relationship="Self.FK_dok_kat" FromRole="dokument" ToRole="dokumentenkategorie" />
+          <NavigationProperty Name="objekt" Relationship="Self.FK_dok_objekt" FromRole="dokument" ToRole="objekt" />
+          <NavigationProperty Name="kontakt" Relationship="Self.FK_dok_person" FromRole="dokument" ToRole="kontakt" />
+          <NavigationProperty Name="mietvertrag" Relationship="Self.FK_dok_vertrag" FromRole="dokument" ToRole="mietvertrag" />
+        </EntityType>
+        <EntityType Name="dokumentenkategorie">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="dokuments" Relationship="Self.FK_dok_kat" FromRole="dokumentenkategorie" ToRole="dokument" />
+        </EntityType>
+        <EntityType Name="einnahme">
+          <Key>
+            <PropertyRef Name="einnahmeID" />
+          </Key>
+          <Property Name="einnahmeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="Int32" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="betrag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="eingang" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="zahlungskategorie" Relationship="Self.FK_einnahme_kategorie" FromRole="einnahme" ToRole="zahlungskategorie" />
+          <NavigationProperty Name="forderungs" Relationship="Self.FK_forderung_einnahme" FromRole="einnahme" ToRole="forderung" />
+        </EntityType>
+        <EntityType Name="email">
+          <Key>
+            <PropertyRef Name="email1" />
+          </Key>
+          <Property Name="email1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kontakt" Type="Int32" Nullable="false" />
+          <Property Name="kategorie" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="eMailNummernKat" Relationship="Self.FK_email_kategorie" FromRole="email" ToRole="eMailNummernKat" />
+          <NavigationProperty Name="kontakt1" Relationship="Self.FK_email_kontakt" FromRole="email" ToRole="kontakt" />
+        </EntityType>
+        <EntityType Name="eMailNummernKat">
+          <Key>
+            <PropertyRef Name="kürzel" />
+          </Key>
+          <Property Name="kürzel" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bezeichnung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="emails" Relationship="Self.FK_email_kategorie" FromRole="eMailNummernKat" ToRole="email" />
+          <NavigationProperty Name="nummerns" Relationship="Self.FK_nummer_kategorie" FromRole="eMailNummernKat" ToRole="nummern" />
+        </EntityType>
+        <EntityType Name="erstattung">
+          <Key>
+            <PropertyRef Name="erstattungsID" />
+          </Key>
+          <Property Name="erstattungsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zuMietvertrag" Type="Int32" />
+          <Property Name="anPerson" Type="Int32" />
+          <Property Name="betrag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="grund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fälligkeit" Type="DateTime" Precision="0" />
+          <Property Name="erstattet" Type="Boolean" />
+          <Property Name="zahlungsdatum" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="kontakt" Relationship="Self.FK_erstattung_kontakt" FromRole="erstattung" ToRole="kontakt" />
+          <NavigationProperty Name="mietvertrag" Relationship="Self.FK_erstattung_vertrag" FromRole="erstattung" ToRole="mietvertrag" />
+        </EntityType>
+        <EntityType Name="forderung">
+          <Key>
+            <PropertyRef Name="ford_nr" />
+          </Key>
+          <Property Name="ford_nr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="Int32" />
+          <Property Name="fälligkeit" Type="DateTime" Precision="0" />
+          <Property Name="einnahme" Type="Int32" />
+          <Property Name="ausgeglichen" Type="Boolean" />
+          <Property Name="betrag" Type="Decimal" Precision="17" Scale="3" />
+          <NavigationProperty Name="einnahme1" Relationship="Self.FK_forderung_einnahme" FromRole="forderung" ToRole="einnahme" />
+          <NavigationProperty Name="zahlungskategorie" Relationship="Self.FK_forderung_kategorie" FromRole="forderung" ToRole="zahlungskategorie" />
+          <NavigationProperty Name="mietvertrags" Relationship="Self.vertragsforderungen" FromRole="forderung" ToRole="mietvertrag" />
+        </EntityType>
+        <EntityType Name="kategorie">
+          <Key>
+            <PropertyRef Name="kürzel" />
+          </Key>
+          <Property Name="kürzel" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bezeichnung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="kontakts" Relationship="Self.FK_kontakt_kategorie" FromRole="kategorie" ToRole="kontakt" />
+        </EntityType>
+        <EntityType Name="kontakt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="anrede" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="titel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hausnr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gebDatum" Type="DateTime" Precision="0" />
+          <Property Name="firma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="anrede1" Relationship="Self.FK_anrede" FromRole="kontakt" ToRole="anrede" />
+          <NavigationProperty Name="bankverbindungs" Relationship="Self.FK_bankverbindung_kontakt" FromRole="kontakt" ToRole="bankverbindung" />
+          <NavigationProperty Name="dokuments" Relationship="Self.FK_dok_person" FromRole="kontakt" ToRole="dokument" />
+          <NavigationProperty Name="emails" Relationship="Self.FK_email_kontakt" FromRole="kontakt" ToRole="email" />
+          <NavigationProperty Name="erstattungs" Relationship="Self.FK_erstattung_kontakt" FromRole="kontakt" ToRole="erstattung" />
+          <NavigationProperty Name="kategorie1" Relationship="Self.FK_kontakt_kategorie" FromRole="kontakt" ToRole="kategorie" />
+          <NavigationProperty Name="objekts" Relationship="Self.FK_eigentümer" FromRole="kontakt" ToRole="objekt" />
+          <NavigationProperty Name="notizs" Relationship="Self.FK_notiz_person" FromRole="kontakt" ToRole="notiz" />
+          <NavigationProperty Name="nummerns" Relationship="Self.FK_nummer_kontakt" FromRole="kontakt" ToRole="nummern" />
+          <NavigationProperty Name="mietvertrags" Relationship="Self.FK_vertrag_mieter" FromRole="kontakt" ToRole="mietvertrag" />
+        </EntityType>
+        <EntityType Name="leerstand">
+          <Key>
+            <PropertyRef Name="leerstandsID" />
+          </Key>
+          <Property Name="leerstandsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mieteinheit" Type="Int32" Nullable="false" />
+          <Property Name="beginn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ende" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="mieteinheit1" Relationship="Self.FK_leerstand_einheit" FromRole="leerstand" ToRole="mieteinheit" />
+        </EntityType>
+        <EntityType Name="miete">
+          <Key>
+            <PropertyRef Name="mietID" />
+          </Key>
+          <Property Name="mietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kaltmiete" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="gültigAb" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NkAbschlag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="garage" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="stellplatz" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="sonstMietbestandteile" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="aktiv" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="wohneinheitMietes" Relationship="Self.FK_miete" FromRole="miete" ToRole="wohneinheitMiete" />
+        </EntityType>
+        <EntityType Name="mieteinheit">
+          <Key>
+            <PropertyRef Name="mieteinheitID" />
+          </Key>
+          <Property Name="mieteinheitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inObjekt" Type="Int32" Nullable="false" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="etage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="lage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fläche" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="heizfläche" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="stromzählernummer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="AnzWohnräume" Type="Int32" />
+          <Property Name="AnzBäder" Type="Int32" />
+          <Property Name="AnzKüchen" Type="Int32" />
+          <Property Name="AnzKeller" Type="Int32" />
+          <Property Name="AnzAbstellräume" Type="Int32" />
+          <Property Name="AnzBalkone" Type="Int32" />
+          <Property Name="AnzTerrassen" Type="Int32" />
+          <Property Name="AnzGaragen" Type="Int32" />
+          <Property Name="AnzStellplätze" Type="Int32" />
+          <Property Name="Garten" Type="Boolean" />
+          <Property Name="Gartenfläche" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="weitereAusstattung" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dokuments" Relationship="Self.FK_dok_einheit" FromRole="mieteinheit" ToRole="dokument" />
+          <NavigationProperty Name="leerstands" Relationship="Self.FK_leerstand_einheit" FromRole="mieteinheit" ToRole="leerstand" />
+          <NavigationProperty Name="wohneinheitMietes" Relationship="Self.FK_einheit" FromRole="mieteinheit" ToRole="wohneinheitMiete" />
+          <NavigationProperty Name="objekt" Relationship="Self.FK_mieteinheit_objekt" FromRole="mieteinheit" ToRole="objekt" />
+          <NavigationProperty Name="notizs" Relationship="Self.FK_notiz_einheit" FromRole="mieteinheit" ToRole="notiz" />
+          <NavigationProperty Name="mietvertrags" Relationship="Self.FK_vertrag_einheit" FromRole="mieteinheit" ToRole="mietvertrag" />
+        </EntityType>
+        <EntityType Name="mietvertrag">
+          <Key>
+            <PropertyRef Name="vertragsnr" />
+          </Key>
+          <Property Name="vertragsnr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zuEinheit" Type="Int32" Nullable="false" />
+          <Property Name="mieter" Type="Int32" Nullable="false" />
+          <Property Name="vertragsdatum" Type="DateTime" Precision="0" />
+          <Property Name="vertragsbeginn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="vertragsende" Type="DateTime" Precision="0" />
+          <Property Name="kaution" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="kautionsraten" Type="Int32" />
+          <Property Name="kautionBezahlt" Type="Boolean" />
+          <Property Name="kündigungsfrist" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mietverhältnisAktiv" Type="Boolean" />
+          <NavigationProperty Name="dokuments" Relationship="Self.FK_dok_vertrag" FromRole="mietvertrag" ToRole="dokument" />
+          <NavigationProperty Name="erstattungs" Relationship="Self.FK_erstattung_vertrag" FromRole="mietvertrag" ToRole="erstattung" />
+          <NavigationProperty Name="kontakt" Relationship="Self.FK_vertrag_mieter" FromRole="mietvertrag" ToRole="kontakt" />
+          <NavigationProperty Name="mieteinheit" Relationship="Self.FK_vertrag_einheit" FromRole="mietvertrag" ToRole="mieteinheit" />
+          <NavigationProperty Name="notizs" Relationship="Self.FK_notiz_vertrag" FromRole="mietvertrag" ToRole="notiz" />
+          <NavigationProperty Name="forderungs" Relationship="Self.vertragsforderungen" FromRole="mietvertrag" ToRole="forderung" />
+        </EntityType>
+        <EntityType Name="notiz">
+          <Key>
+            <PropertyRef Name="notizID" />
+          </Key>
+          <Property Name="notizID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notizText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="datum" Type="DateTime" Precision="0" />
+          <Property Name="zuPerson" Type="Int32" />
+          <Property Name="zuObjekt" Type="Int32" />
+          <Property Name="zuEinheit" Type="Int32" />
+          <Property Name="zuVertrag" Type="Int32" />
+          <NavigationProperty Name="kontakt" Relationship="Self.FK_notiz_person" FromRole="notiz" ToRole="kontakt" />
+          <NavigationProperty Name="mieteinheit" Relationship="Self.FK_notiz_einheit" FromRole="notiz" ToRole="mieteinheit" />
+          <NavigationProperty Name="mietvertrag" Relationship="Self.FK_notiz_vertrag" FromRole="notiz" ToRole="mietvertrag" />
+          <NavigationProperty Name="objekt" Relationship="Self.FK_notiz_objekt" FromRole="notiz" ToRole="objekt" />
+        </EntityType>
+        <EntityType Name="nummern">
+          <Key>
+            <PropertyRef Name="nummer" />
+          </Key>
+          <Property Name="nummer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kontakt" Type="Int32" Nullable="false" />
+          <Property Name="kategorie" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="eMailNummernKat" Relationship="Self.FK_nummer_kategorie" FromRole="nummern" ToRole="eMailNummernKat" />
+          <NavigationProperty Name="kontakt1" Relationship="Self.FK_nummer_kontakt" FromRole="nummern" ToRole="kontakt" />
+        </EntityType>
+        <EntityType Name="objekt">
+          <Key>
+            <PropertyRef Name="objektID" />
+          </Key>
+          <Property Name="objektID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hausnr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eigentümer" Type="Int32" Nullable="false" />
+          <Property Name="allgemeinstromzähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="wasserzähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="gaszähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="baujahr" Type="Int32" />
+          <NavigationProperty Name="dokuments" Relationship="Self.FK_dok_objekt" FromRole="objekt" ToRole="dokument" />
+          <NavigationProperty Name="kontakt" Relationship="Self.FK_eigentümer" FromRole="objekt" ToRole="kontakt" />
+          <NavigationProperty Name="mieteinheits" Relationship="Self.FK_mieteinheit_objekt" FromRole="objekt" ToRole="mieteinheit" />
+          <NavigationProperty Name="notizs" Relationship="Self.FK_notiz_objekt" FromRole="objekt" ToRole="notiz" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="wohneinheitMiete">
+          <Key>
+            <PropertyRef Name="mietID" />
+            <PropertyRef Name="einheit" />
+          </Key>
+          <Property Name="mietID" Type="Int32" Nullable="false" />
+          <Property Name="einheit" Type="Int32" Nullable="false" />
+          <Property Name="aktiv" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="miete" Relationship="Self.FK_miete" FromRole="wohneinheitMiete" ToRole="miete" />
+          <NavigationProperty Name="mieteinheit" Relationship="Self.FK_einheit" FromRole="wohneinheitMiete" ToRole="mieteinheit" />
+        </EntityType>
+        <EntityType Name="zahlungskategorie">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="einnahmes" Relationship="Self.FK_einnahme_kategorie" FromRole="zahlungskategorie" ToRole="einnahme" />
+          <NavigationProperty Name="forderungs" Relationship="Self.FK_forderung_kategorie" FromRole="zahlungskategorie" ToRole="forderung" />
+        </EntityType>
+        <EntityType Name="vwEinheitDokumente">
+          <Key>
+            <PropertyRef Name="MieteinheitNr" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Art" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MieteinheitNr" Type="Int32" Nullable="false" />
+          <Property Name="zu_Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwEinheitNotiz">
+          <Key>
+            <PropertyRef Name="Nr" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Notiz" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwEinnahman">
+          <Key>
+            <PropertyRef Name="Nr" />
+            <PropertyRef Name="Kategorie" />
+            <PropertyRef Name="Einnahmebetrag" />
+            <PropertyRef Name="Eingangsdatum" />
+          </Key>
+          <Property Name="Nr" Type="Int32" Nullable="false" />
+          <Property Name="Kategorie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Einnahmebetrag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="Eingangsdatum" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="vwKontakte">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+          </Key>
+          <Property Name="KontaktID" Type="Int32" Nullable="false" />
+          <Property Name="Kategorie" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Anrede" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Titel" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Geburtsdatum" Type="DateTime" Precision="0" />
+          <Property Name="Firma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="42" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="62" FixedLength="false" Unicode="true" />
+          <Property Name="IBAN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BIC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Kreditinstitut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwMieteinheiten">
+          <Key>
+            <PropertyRef Name="NR" />
+            <PropertyRef Name="ObjektNr" />
+          </Key>
+          <Property Name="NR" Type="Int32" Nullable="false" />
+          <Property Name="Bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lage" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="ObjektNr" Type="Int32" Nullable="false" />
+          <Property Name="Objekt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vertragsnr" Type="Int32" />
+          <Property Name="Mieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Nettomiete" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="NK_Abschlag" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="sonst__Mietanteile" Type="Decimal" Precision="19" Scale="3" />
+          <Property Name="Bruttomiete" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="Aktiv" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwObjektDokumente">
+          <Key>
+            <PropertyRef Name="Objektnr" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Art" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Objektnr" Type="Int32" Nullable="false" />
+          <Property Name="Objektbezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwObjekte">
+          <Key>
+            <PropertyRef Name="Objektnummer" />
+            <PropertyRef Name="Straße" />
+          </Key>
+          <Property Name="Objektnummer" Type="Int32" Nullable="false" />
+          <Property Name="Bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vermieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Stromzähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Wasserzähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Gaszähler" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Baujahr" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwObjektNotiz">
+          <Key>
+            <PropertyRef Name="ObjektNr" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Notiz" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Objekt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ObjektNr" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwPersonBankverbindung">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+          </Key>
+          <Property Name="KontaktID" Type="Int32" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IBAN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="BIC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Kreditinstitut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Land" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Ansprechpartner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwPersonenErstattungen">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+            <PropertyRef Name="ErstattungsNr" />
+            <PropertyRef Name="Betrag" />
+          </Key>
+          <Property Name="KontaktID" Type="Int32" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ErstattungsNr" Type="Int32" Nullable="false" />
+          <Property Name="Erstattungsgrund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fällig_am" Type="DateTime" Precision="0" />
+          <Property Name="Betrag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="Erstattet_am" Type="DateTime" Precision="0" />
+          <Property Name="erledigt" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwPersonenForderungen">
+          <Key>
+            <PropertyRef Name="KontaktID" />
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="KontaktID" Type="Int32" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Forderungsnr" Type="Int32" Nullable="false" />
+          <Property Name="Fällig_am" Type="DateTime" Precision="0" />
+          <Property Name="Betrag" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="Beglichen_am" Type="DateTime" Precision="0" />
+          <Property Name="offen" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwVertragDokumente">
+          <Key>
+            <PropertyRef Name="zu_Vertagsnr" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Art" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zu_Vertagsnr" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwVerträge">
+          <Key>
+            <PropertyRef Name="Vertragsnr" />
+            <PropertyRef Name="Beginn" />
+          </Key>
+          <Property Name="Vertragsnr" Type="Int32" Nullable="false" />
+          <Property Name="Objekt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Vermieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Beginn" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ende" Type="DateTime" Precision="0" />
+          <Property Name="Aktiv" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwVerträgeUndLeerstände">
+          <Key>
+            <PropertyRef Name="MiteinheitNr" />
+          </Key>
+          <Property Name="MiteinheitNr" Type="Int32" Nullable="false" />
+          <Property Name="Beginn_Leerstand" Type="DateTime" Precision="0" />
+          <Property Name="Ende_Leerstand" Type="DateTime" Precision="0" />
+          <Property Name="Vertragsbeginn" Type="DateTime" Precision="0" />
+          <Property Name="Vertragsende" Type="DateTime" Precision="0" />
+          <Property Name="Mieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwVertragNotiz">
+          <Key>
+            <PropertyRef Name="zuMietvertrag" />
+          </Key>
+          <Property Name="Datum" Type="DateTime" Precision="0" />
+          <Property Name="Notiz" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="zuMietvertrag" Type="Int32" Nullable="false" />
+          <Property Name="Mieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwVertragsforderung">
+          <Key>
+            <PropertyRef Name="Vertragsnr" />
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="Vertragsnr" Type="Int32" Nullable="false" />
+          <Property Name="Forderungsnr" Type="Int32" Nullable="false" />
+          <Property Name="Fällig_am" Type="DateTime" Precision="0" />
+          <Property Name="Betrag" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="Beglichen_am" Type="DateTime" Precision="0" />
+          <Property Name="offen" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_anrede">
+          <End Role="anrede" Type="Self.anrede" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anrede">
+              <PropertyRef Name="text" />
+            </Principal>
+            <Dependent Role="kontakt">
+              <PropertyRef Name="anrede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bankverbindung_bank">
+          <End Role="bank" Type="Self.bank" Multiplicity="0..1" />
+          <End Role="bankverbindung" Type="Self.bankverbindung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bank">
+              <PropertyRef Name="bankID" />
+            </Principal>
+            <Dependent Role="bankverbindung">
+              <PropertyRef Name="bank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bankverbindung_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="bankverbindung" Type="Self.bankverbindung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bankverbindung">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_kat">
+          <End Role="dokumentenkategorie" Type="Self.dokumentenkategorie" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dokumentenkategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_person">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dok_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="dokument" Type="Self.dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="dokument">
+              <PropertyRef Name="zuVertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_einnahme_kategorie">
+          <End Role="zahlungskategorie" Type="Self.zahlungskategorie" Multiplicity="0..1" />
+          <End Role="einnahme" Type="Self.einnahme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zahlungskategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="einnahme">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_forderung_einnahme">
+          <End Role="einnahme" Type="Self.einnahme" Multiplicity="0..1" />
+          <End Role="forderung" Type="Self.forderung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="einnahme">
+              <PropertyRef Name="einnahmeID" />
+            </Principal>
+            <Dependent Role="forderung">
+              <PropertyRef Name="einnahme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_kategorie">
+          <End Role="eMailNummernKat" Type="Self.eMailNummernKat" Multiplicity="0..1" />
+          <End Role="email" Type="Self.email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMailNummernKat">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="email">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email" Type="Self.email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nummer_kategorie">
+          <End Role="eMailNummernKat" Type="Self.eMailNummernKat" Multiplicity="0..1" />
+          <End Role="nummern" Type="Self.nummern" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eMailNummernKat">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="nummern">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_erstattung_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="erstattung" Type="Self.erstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="erstattung">
+              <PropertyRef Name="anPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_erstattung_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="erstattung" Type="Self.erstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="erstattung">
+              <PropertyRef Name="zuMietvertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_forderung_kategorie">
+          <End Role="zahlungskategorie" Type="Self.zahlungskategorie" Multiplicity="0..1" />
+          <End Role="forderung" Type="Self.forderung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="zahlungskategorie">
+              <PropertyRef Name="katID" />
+            </Principal>
+            <Dependent Role="forderung">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kontakt_kategorie">
+          <End Role="kategorie" Type="Self.kategorie" Multiplicity="0..1" />
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorie">
+              <PropertyRef Name="kürzel" />
+            </Principal>
+            <Dependent Role="kontakt">
+              <PropertyRef Name="kategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_eigentümer">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1" />
+          <End Role="objekt" Type="Self.objekt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="objekt">
+              <PropertyRef Name="eigentümer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_person">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuPerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nummer_kontakt">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="nummern" Type="Self.nummern" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="nummern">
+              <PropertyRef Name="kontakt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertrag_mieter">
+          <End Role="kontakt" Type="Self.kontakt" Multiplicity="1" />
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mietvertrag">
+              <PropertyRef Name="mieter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_leerstand_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="leerstand" Type="Self.leerstand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="leerstand">
+              <PropertyRef Name="mieteinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_miete">
+          <End Role="miete" Type="Self.miete" Multiplicity="1" />
+          <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="miete">
+              <PropertyRef Name="mietID" />
+            </Principal>
+            <Dependent Role="wohneinheitMiete">
+              <PropertyRef Name="mietID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="wohneinheitMiete">
+              <PropertyRef Name="einheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mieteinheit_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="mieteinheit">
+              <PropertyRef Name="inObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vertrag_einheit">
+          <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mieteinheit">
+              <PropertyRef Name="mieteinheitID" />
+            </Principal>
+            <Dependent Role="mietvertrag">
+              <PropertyRef Name="zuEinheit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_vertrag">
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mietvertrag">
+              <PropertyRef Name="vertragsnr" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuVertrag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_notiz_objekt">
+          <End Role="objekt" Type="Self.objekt" Multiplicity="0..1" />
+          <End Role="notiz" Type="Self.notiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="objekt">
+              <PropertyRef Name="objektID" />
+            </Principal>
+            <Dependent Role="notiz">
+              <PropertyRef Name="zuObjekt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vertragsforderungen">
+          <End Role="forderung" Type="Self.forderung" Multiplicity="*" />
+          <End Role="mietvertrag" Type="Self.mietvertrag" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="immoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="anredes" EntityType="Self.anrede" />
+          <EntitySet Name="banks" EntityType="Self.bank" />
+          <EntitySet Name="bankverbindungs" EntityType="Self.bankverbindung" />
+          <EntitySet Name="dokuments" EntityType="Self.dokument" />
+          <EntitySet Name="dokumentenkategories" EntityType="Self.dokumentenkategorie" />
+          <EntitySet Name="einnahmes" EntityType="Self.einnahme" />
+          <EntitySet Name="emails" EntityType="Self.email" />
+          <EntitySet Name="eMailNummernKats" EntityType="Self.eMailNummernKat" />
+          <EntitySet Name="erstattungs" EntityType="Self.erstattung" />
+          <EntitySet Name="forderungs" EntityType="Self.forderung" />
+          <EntitySet Name="kategories" EntityType="Self.kategorie" />
+          <EntitySet Name="kontakts" EntityType="Self.kontakt" />
+          <EntitySet Name="leerstands" EntityType="Self.leerstand" />
+          <EntitySet Name="mietes" EntityType="Self.miete" />
+          <EntitySet Name="mieteinheits" EntityType="Self.mieteinheit" />
+          <EntitySet Name="mietvertrags" EntityType="Self.mietvertrag" />
+          <EntitySet Name="notizs" EntityType="Self.notiz" />
+          <EntitySet Name="nummerns" EntityType="Self.nummern" />
+          <EntitySet Name="objekts" EntityType="Self.objekt" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="wohneinheitMietes" EntityType="Self.wohneinheitMiete" />
+          <EntitySet Name="zahlungskategories" EntityType="Self.zahlungskategorie" />
+          <EntitySet Name="vwEinheitDokumentes" EntityType="Self.vwEinheitDokumente" />
+          <EntitySet Name="vwEinheitNotizs" EntityType="Self.vwEinheitNotiz" />
+          <EntitySet Name="vwEinnahmen" EntityType="Self.vwEinnahman" />
+          <EntitySet Name="vwKontaktes" EntityType="Self.vwKontakte" />
+          <EntitySet Name="vwMieteinheitens" EntityType="Self.vwMieteinheiten" />
+          <EntitySet Name="vwObjektDokumentes" EntityType="Self.vwObjektDokumente" />
+          <EntitySet Name="vwObjektes" EntityType="Self.vwObjekte" />
+          <EntitySet Name="vwObjektNotizs" EntityType="Self.vwObjektNotiz" />
+          <EntitySet Name="vwPersonBankverbindungs" EntityType="Self.vwPersonBankverbindung" />
+          <EntitySet Name="vwPersonenErstattungens" EntityType="Self.vwPersonenErstattungen" />
+          <EntitySet Name="vwPersonenForderungens" EntityType="Self.vwPersonenForderungen" />
+          <EntitySet Name="vwVertragDokumentes" EntityType="Self.vwVertragDokumente" />
+          <EntitySet Name="vwVerträge" EntityType="Self.vwVerträge" />
+          <EntitySet Name="vwVerträgeUndLeerstände" EntityType="Self.vwVerträgeUndLeerstände" />
+          <EntitySet Name="vwVertragNotizs" EntityType="Self.vwVertragNotiz" />
+          <EntitySet Name="vwVertragsforderungs" EntityType="Self.vwVertragsforderung" />
+          <AssociationSet Name="FK_anrede" Association="Self.FK_anrede">
+            <End Role="anrede" EntitySet="anredes" />
+            <End Role="kontakt" EntitySet="kontakts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bankverbindung_bank" Association="Self.FK_bankverbindung_bank">
+            <End Role="bank" EntitySet="banks" />
+            <End Role="bankverbindung" EntitySet="bankverbindungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bankverbindung_kontakt" Association="Self.FK_bankverbindung_kontakt">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="bankverbindung" EntitySet="bankverbindungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_einheit" Association="Self.FK_dok_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+            <End Role="dokument" EntitySet="dokuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_kat" Association="Self.FK_dok_kat">
+            <End Role="dokumentenkategorie" EntitySet="dokumentenkategories" />
+            <End Role="dokument" EntitySet="dokuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_objekt" Association="Self.FK_dok_objekt">
+            <End Role="objekt" EntitySet="objekts" />
+            <End Role="dokument" EntitySet="dokuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_person" Association="Self.FK_dok_person">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="dokument" EntitySet="dokuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dok_vertrag" Association="Self.FK_dok_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+            <End Role="dokument" EntitySet="dokuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_einnahme_kategorie" Association="Self.FK_einnahme_kategorie">
+            <End Role="zahlungskategorie" EntitySet="zahlungskategories" />
+            <End Role="einnahme" EntitySet="einnahmes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_forderung_einnahme" Association="Self.FK_forderung_einnahme">
+            <End Role="einnahme" EntitySet="einnahmes" />
+            <End Role="forderung" EntitySet="forderungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_kategorie" Association="Self.FK_email_kategorie">
+            <End Role="eMailNummernKat" EntitySet="eMailNummernKats" />
+            <End Role="email" EntitySet="emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_kontakt" Association="Self.FK_email_kontakt">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="email" EntitySet="emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nummer_kategorie" Association="Self.FK_nummer_kategorie">
+            <End Role="eMailNummernKat" EntitySet="eMailNummernKats" />
+            <End Role="nummern" EntitySet="nummerns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_erstattung_kontakt" Association="Self.FK_erstattung_kontakt">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="erstattung" EntitySet="erstattungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_erstattung_vertrag" Association="Self.FK_erstattung_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+            <End Role="erstattung" EntitySet="erstattungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_forderung_kategorie" Association="Self.FK_forderung_kategorie">
+            <End Role="zahlungskategorie" EntitySet="zahlungskategories" />
+            <End Role="forderung" EntitySet="forderungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kontakt_kategorie" Association="Self.FK_kontakt_kategorie">
+            <End Role="kategorie" EntitySet="kategories" />
+            <End Role="kontakt" EntitySet="kontakts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_eigentümer" Association="Self.FK_eigentümer">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="objekt" EntitySet="objekts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_person" Association="Self.FK_notiz_person">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="notiz" EntitySet="notizs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nummer_kontakt" Association="Self.FK_nummer_kontakt">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="nummern" EntitySet="nummerns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertrag_mieter" Association="Self.FK_vertrag_mieter">
+            <End Role="kontakt" EntitySet="kontakts" />
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_leerstand_einheit" Association="Self.FK_leerstand_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+            <End Role="leerstand" EntitySet="leerstands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_miete" Association="Self.FK_miete">
+            <End Role="miete" EntitySet="mietes" />
+            <End Role="wohneinheitMiete" EntitySet="wohneinheitMietes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_einheit" Association="Self.FK_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+            <End Role="wohneinheitMiete" EntitySet="wohneinheitMietes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mieteinheit_objekt" Association="Self.FK_mieteinheit_objekt">
+            <End Role="objekt" EntitySet="objekts" />
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_einheit" Association="Self.FK_notiz_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+            <End Role="notiz" EntitySet="notizs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vertrag_einheit" Association="Self.FK_vertrag_einheit">
+            <End Role="mieteinheit" EntitySet="mieteinheits" />
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_vertrag" Association="Self.FK_notiz_vertrag">
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+            <End Role="notiz" EntitySet="notizs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_notiz_objekt" Association="Self.FK_notiz_objekt">
+            <End Role="objekt" EntitySet="objekts" />
+            <End Role="notiz" EntitySet="notizs" />
+          </AssociationSet>
+          <AssociationSet Name="vertragsforderungen" Association="Self.vertragsforderungen">
+            <End Role="forderung" EntitySet="forderungs" />
+            <End Role="mietvertrag" EntitySet="mietvertrags" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="immoModelStoreContainer" CdmEntityContainer="immoEntities">
+          <EntitySetMapping Name="anredes">
+            <EntityTypeMapping TypeName="immoModel.anrede">
+              <MappingFragment StoreEntitySet="anrede">
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="banks">
+            <EntityTypeMapping TypeName="immoModel.bank">
+              <MappingFragment StoreEntitySet="bank">
+                <ScalarProperty Name="bankID" ColumnName="bankID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="bic" ColumnName="bic" />
+                <ScalarProperty Name="straße" ColumnName="straße" />
+                <ScalarProperty Name="hausnr" ColumnName="hausnr" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+                <ScalarProperty Name="ort" ColumnName="ort" />
+                <ScalarProperty Name="land" ColumnName="land" />
+                <ScalarProperty Name="ansprechpartner" ColumnName="ansprechpartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bankverbindungs">
+            <EntityTypeMapping TypeName="immoModel.bankverbindung">
+              <MappingFragment StoreEntitySet="bankverbindung">
+                <ScalarProperty Name="iban" ColumnName="iban" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dokuments">
+            <EntityTypeMapping TypeName="immoModel.dokument">
+              <MappingFragment StoreEntitySet="dokument">
+                <ScalarProperty Name="dokID" ColumnName="dokID" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="datei" ColumnName="datei" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="zuPerson" ColumnName="zuPerson" />
+                <ScalarProperty Name="zuObjekt" ColumnName="zuObjekt" />
+                <ScalarProperty Name="zuEinheit" ColumnName="zuEinheit" />
+                <ScalarProperty Name="zuVertrag" ColumnName="zuVertrag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dokumentenkategories">
+            <EntityTypeMapping TypeName="immoModel.dokumentenkategorie">
+              <MappingFragment StoreEntitySet="dokumentenkategorie">
+                <ScalarProperty Name="katID" ColumnName="katID" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="einnahmes">
+            <EntityTypeMapping TypeName="immoModel.einnahme">
+              <MappingFragment StoreEntitySet="einnahme">
+                <ScalarProperty Name="einnahmeID" ColumnName="einnahmeID" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="betrag" ColumnName="betrag" />
+                <ScalarProperty Name="eingang" ColumnName="eingang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emails">
+            <EntityTypeMapping TypeName="immoModel.email">
+              <MappingFragment StoreEntitySet="email">
+                <ScalarProperty Name="email1" ColumnName="email" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eMailNummernKats">
+            <EntityTypeMapping TypeName="immoModel.eMailNummernKat">
+              <MappingFragment StoreEntitySet="eMailNummernKat">
+                <ScalarProperty Name="kürzel" ColumnName="kürzel" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="erstattungs">
+            <EntityTypeMapping TypeName="immoModel.erstattung">
+              <MappingFragment StoreEntitySet="erstattung">
+                <ScalarProperty Name="erstattungsID" ColumnName="erstattungsID" />
+                <ScalarProperty Name="zuMietvertrag" ColumnName="zuMietvertrag" />
+                <ScalarProperty Name="anPerson" ColumnName="anPerson" />
+                <ScalarProperty Name="betrag" ColumnName="betrag" />
+                <ScalarProperty Name="grund" ColumnName="grund" />
+                <ScalarProperty Name="fälligkeit" ColumnName="fälligkeit" />
+                <ScalarProperty Name="erstattet" ColumnName="erstattet" />
+                <ScalarProperty Name="zahlungsdatum" ColumnName="zahlungsdatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="forderungs">
+            <EntityTypeMapping TypeName="immoModel.forderung">
+              <MappingFragment StoreEntitySet="forderung">
+                <ScalarProperty Name="ford_nr" ColumnName="ford_nr" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+                <ScalarProperty Name="fälligkeit" ColumnName="fälligkeit" />
+                <ScalarProperty Name="einnahme" ColumnName="einnahme" />
+                <ScalarProperty Name="ausgeglichen" ColumnName="ausgeglichen" />
+                <ScalarProperty Name="betrag" ColumnName="betrag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategories">
+            <EntityTypeMapping TypeName="immoModel.kategorie">
+              <MappingFragment StoreEntitySet="kategorie">
+                <ScalarProperty Name="kürzel" ColumnName="kürzel" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kontakts">
+            <EntityTypeMapping TypeName="immoModel.kontakt">
+              <MappingFragment StoreEntitySet="kontakt">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+                <ScalarProperty Name="anrede" ColumnName="anrede" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="vorname" ColumnName="vorname" />
+                <ScalarProperty Name="straße" ColumnName="straße" />
+                <ScalarProperty Name="hausnr" ColumnName="hausnr" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+                <ScalarProperty Name="ort" ColumnName="ort" />
+                <ScalarProperty Name="gebDatum" ColumnName="gebDatum" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="leerstands">
+            <EntityTypeMapping TypeName="immoModel.leerstand">
+              <MappingFragment StoreEntitySet="leerstand">
+                <ScalarProperty Name="leerstandsID" ColumnName="leerstandsID" />
+                <ScalarProperty Name="mieteinheit" ColumnName="mieteinheit" />
+                <ScalarProperty Name="beginn" ColumnName="beginn" />
+                <ScalarProperty Name="ende" ColumnName="ende" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mietes">
+            <EntityTypeMapping TypeName="immoModel.miete">
+              <MappingFragment StoreEntitySet="miete">
+                <ScalarProperty Name="mietID" ColumnName="mietID" />
+                <ScalarProperty Name="kaltmiete" ColumnName="kaltmiete" />
+                <ScalarProperty Name="gültigAb" ColumnName="gültigAb" />
+                <ScalarProperty Name="NkAbschlag" ColumnName="NkAbschlag" />
+                <ScalarProperty Name="garage" ColumnName="garage" />
+                <ScalarProperty Name="stellplatz" ColumnName="stellplatz" />
+                <ScalarProperty Name="sonstMietbestandteile" ColumnName="sonstMietbestandteile" />
+                <ScalarProperty Name="aktiv" ColumnName="aktiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mieteinheits">
+            <EntityTypeMapping TypeName="immoModel.mieteinheit">
+              <MappingFragment StoreEntitySet="mieteinheit">
+                <ScalarProperty Name="mieteinheitID" ColumnName="mieteinheitID" />
+                <ScalarProperty Name="inObjekt" ColumnName="inObjekt" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="etage" ColumnName="etage" />
+                <ScalarProperty Name="lage" ColumnName="lage" />
+                <ScalarProperty Name="fläche" ColumnName="fläche" />
+                <ScalarProperty Name="heizfläche" ColumnName="heizfläche" />
+                <ScalarProperty Name="stromzählernummer" ColumnName="stromzählernummer" />
+                <ScalarProperty Name="AnzWohnräume" ColumnName="AnzWohnräume" />
+                <ScalarProperty Name="AnzBäder" ColumnName="AnzBäder" />
+                <ScalarProperty Name="AnzKüchen" ColumnName="AnzKüchen" />
+                <ScalarProperty Name="AnzKeller" ColumnName="AnzKeller" />
+                <ScalarProperty Name="AnzAbstellräume" ColumnName="AnzAbstellräume" />
+                <ScalarProperty Name="AnzBalkone" ColumnName="AnzBalkone" />
+                <ScalarProperty Name="AnzTerrassen" ColumnName="AnzTerrassen" />
+                <ScalarProperty Name="AnzGaragen" ColumnName="AnzGaragen" />
+                <ScalarProperty Name="AnzStellplätze" ColumnName="AnzStellplätze" />
+                <ScalarProperty Name="Garten" ColumnName="Garten" />
+                <ScalarProperty Name="Gartenfläche" ColumnName="Gartenfläche" />
+                <ScalarProperty Name="weitereAusstattung" ColumnName="weitereAusstattung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mietvertrags">
+            <EntityTypeMapping TypeName="immoModel.mietvertrag">
+              <MappingFragment StoreEntitySet="mietvertrag">
+                <ScalarProperty Name="vertragsnr" ColumnName="vertragsnr" />
+                <ScalarProperty Name="zuEinheit" ColumnName="zuEinheit" />
+                <ScalarProperty Name="mieter" ColumnName="mieter" />
+                <ScalarProperty Name="vertragsdatum" ColumnName="vertragsdatum" />
+                <ScalarProperty Name="vertragsbeginn" ColumnName="vertragsbeginn" />
+                <ScalarProperty Name="vertragsende" ColumnName="vertragsende" />
+                <ScalarProperty Name="kaution" ColumnName="kaution" />
+                <ScalarProperty Name="kautionsraten" ColumnName="kautionsraten" />
+                <ScalarProperty Name="kautionBezahlt" ColumnName="kautionBezahlt" />
+                <ScalarProperty Name="kündigungsfrist" ColumnName="kündigungsfrist" />
+                <ScalarProperty Name="mietverhältnisAktiv" ColumnName="mietverhältnisAktiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notizs">
+            <EntityTypeMapping TypeName="immoModel.notiz">
+              <MappingFragment StoreEntitySet="notiz">
+                <ScalarProperty Name="notizID" ColumnName="notizID" />
+                <ScalarProperty Name="notizText" ColumnName="notizText" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="zuPerson" ColumnName="zuPerson" />
+                <ScalarProperty Name="zuObjekt" ColumnName="zuObjekt" />
+                <ScalarProperty Name="zuEinheit" ColumnName="zuEinheit" />
+                <ScalarProperty Name="zuVertrag" ColumnName="zuVertrag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nummerns">
+            <EntityTypeMapping TypeName="immoModel.nummern">
+              <MappingFragment StoreEntitySet="nummern">
+                <ScalarProperty Name="nummer" ColumnName="nummer" />
+                <ScalarProperty Name="kontakt" ColumnName="kontakt" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="objekts">
+            <EntityTypeMapping TypeName="immoModel.objekt">
+              <MappingFragment StoreEntitySet="objekt">
+                <ScalarProperty Name="objektID" ColumnName="objektID" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="straße" ColumnName="straße" />
+                <ScalarProperty Name="hausnr" ColumnName="hausnr" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+                <ScalarProperty Name="ort" ColumnName="ort" />
+                <ScalarProperty Name="eigentümer" ColumnName="eigentümer" />
+                <ScalarProperty Name="allgemeinstromzähler" ColumnName="allgemeinstromzähler" />
+                <ScalarProperty Name="wasserzähler" ColumnName="wasserzähler" />
+                <ScalarProperty Name="gaszähler" ColumnName="gaszähler" />
+                <ScalarProperty Name="baujahr" ColumnName="baujahr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="immoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wohneinheitMietes">
+            <EntityTypeMapping TypeName="immoModel.wohneinheitMiete">
+              <MappingFragment StoreEntitySet="wohneinheitMiete">
+                <ScalarProperty Name="mietID" ColumnName="mietID" />
+                <ScalarProperty Name="einheit" ColumnName="einheit" />
+                <ScalarProperty Name="aktiv" ColumnName="aktiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zahlungskategories">
+            <EntityTypeMapping TypeName="immoModel.zahlungskategorie">
+              <MappingFragment StoreEntitySet="zahlungskategorie">
+                <ScalarProperty Name="katID" ColumnName="katID" />
+                <ScalarProperty Name="kategorie" ColumnName="kategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEinheitDokumentes">
+            <EntityTypeMapping TypeName="immoModel.vwEinheitDokumente">
+              <MappingFragment StoreEntitySet="vwEinheitDokumente">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="MieteinheitNr" ColumnName="MieteinheitNr" />
+                <ScalarProperty Name="zu_Mieteinheit" ColumnName="zu Mieteinheit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEinheitNotizs">
+            <EntityTypeMapping TypeName="immoModel.vwEinheitNotiz">
+              <MappingFragment StoreEntitySet="vwEinheitNotiz">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Notiz" ColumnName="Notiz" />
+                <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEinnahmen">
+            <EntityTypeMapping TypeName="immoModel.vwEinnahman">
+              <MappingFragment StoreEntitySet="vwEinnahmen">
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+                <ScalarProperty Name="Einnahmebetrag" ColumnName="Einnahmebetrag" />
+                <ScalarProperty Name="Eingangsdatum" ColumnName="Eingangsdatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwKontaktes">
+            <EntityTypeMapping TypeName="immoModel.vwKontakte">
+              <MappingFragment StoreEntitySet="vwKontakte">
+                <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Anrede" ColumnName="Anrede" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Straße" ColumnName="Straße" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Plz" ColumnName="Plz" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="Geburtsdatum" ColumnName="Geburtsdatum" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="BIC" ColumnName="BIC" />
+                <ScalarProperty Name="Kreditinstitut" ColumnName="Kreditinstitut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwMieteinheitens">
+            <EntityTypeMapping TypeName="immoModel.vwMieteinheiten">
+              <MappingFragment StoreEntitySet="vwMieteinheiten">
+                <ScalarProperty Name="NR" ColumnName="NR" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+                <ScalarProperty Name="Lage" ColumnName="Lage" />
+                <ScalarProperty Name="ObjektNr" ColumnName="ObjektNr" />
+                <ScalarProperty Name="Objekt" ColumnName="Objekt" />
+                <ScalarProperty Name="Vertragsnr" ColumnName="Vertragsnr" />
+                <ScalarProperty Name="Mieter" ColumnName="Mieter" />
+                <ScalarProperty Name="Nettomiete" ColumnName="Nettomiete" />
+                <ScalarProperty Name="NK_Abschlag" ColumnName="NK-Abschlag" />
+                <ScalarProperty Name="sonst__Mietanteile" ColumnName="sonst. Mietanteile" />
+                <ScalarProperty Name="Bruttomiete" ColumnName="Bruttomiete" />
+                <ScalarProperty Name="Aktiv" ColumnName="Aktiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwObjektDokumentes">
+            <EntityTypeMapping TypeName="immoModel.vwObjektDokumente">
+              <MappingFragment StoreEntitySet="vwObjektDokumente">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Objektnr" ColumnName="Objektnr" />
+                <ScalarProperty Name="Objektbezeichnung" ColumnName="Objektbezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwObjektes">
+            <EntityTypeMapping TypeName="immoModel.vwObjekte">
+              <MappingFragment StoreEntitySet="vwObjekte">
+                <ScalarProperty Name="Objektnummer" ColumnName="Objektnummer" />
+                <ScalarProperty Name="Bezeichnung" ColumnName="Bezeichnung" />
+                <ScalarProperty Name="Straße" ColumnName="Straße" />
+                <ScalarProperty Name="Nr" ColumnName="Nr" />
+                <ScalarProperty Name="Plz" ColumnName="Plz" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="Vermieter" ColumnName="Vermieter" />
+                <ScalarProperty Name="Stromzähler" ColumnName="Stromzähler" />
+                <ScalarProperty Name="Wasserzähler" ColumnName="Wasserzähler" />
+                <ScalarProperty Name="Gaszähler" ColumnName="Gaszähler" />
+                <ScalarProperty Name="Baujahr" ColumnName="Baujahr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwObjektNotizs">
+            <EntityTypeMapping TypeName="immoModel.vwObjektNotiz">
+              <MappingFragment StoreEntitySet="vwObjektNotiz">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Notiz" ColumnName="Notiz" />
+                <ScalarProperty Name="Objekt" ColumnName="Objekt" />
+                <ScalarProperty Name="ObjektNr" ColumnName="ObjektNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPersonBankverbindungs">
+            <EntityTypeMapping TypeName="immoModel.vwPersonBankverbindung">
+              <MappingFragment StoreEntitySet="vwPersonBankverbindung">
+                <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="BIC" ColumnName="BIC" />
+                <ScalarProperty Name="Kreditinstitut" ColumnName="Kreditinstitut" />
+                <ScalarProperty Name="Straße" ColumnName="Straße" />
+                <ScalarProperty Name="nr" ColumnName="nr" />
+                <ScalarProperty Name="Plz" ColumnName="Plz" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+                <ScalarProperty Name="Ansprechpartner" ColumnName="Ansprechpartner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPersonenErstattungens">
+            <EntityTypeMapping TypeName="immoModel.vwPersonenErstattungen">
+              <MappingFragment StoreEntitySet="vwPersonenErstattungen">
+                <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ErstattungsNr" ColumnName="ErstattungsNr" />
+                <ScalarProperty Name="Erstattungsgrund" ColumnName="Erstattungsgrund" />
+                <ScalarProperty Name="Fällig_am" ColumnName="Fällig am" />
+                <ScalarProperty Name="Betrag" ColumnName="Betrag" />
+                <ScalarProperty Name="Erstattet_am" ColumnName="Erstattet am" />
+                <ScalarProperty Name="erledigt" ColumnName="erledigt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPersonenForderungens">
+            <EntityTypeMapping TypeName="immoModel.vwPersonenForderungen">
+              <MappingFragment StoreEntitySet="vwPersonenForderungen">
+                <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Forderungsnr" ColumnName="Forderungsnr" />
+                <ScalarProperty Name="Fällig_am" ColumnName="Fällig am" />
+                <ScalarProperty Name="Betrag" ColumnName="Betrag" />
+                <ScalarProperty Name="Beglichen_am" ColumnName="Beglichen am" />
+                <ScalarProperty Name="offen" ColumnName="offen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVertragDokumentes">
+            <EntityTypeMapping TypeName="immoModel.vwVertragDokumente">
+              <MappingFragment StoreEntitySet="vwVertragDokumente">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="zu_Vertagsnr" ColumnName="zu Vertagsnr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVerträge">
+            <EntityTypeMapping TypeName="immoModel.vwVerträge">
+              <MappingFragment StoreEntitySet="vwVerträge">
+                <ScalarProperty Name="Vertragsnr" ColumnName="Vertragsnr" />
+                <ScalarProperty Name="Objekt" ColumnName="Objekt" />
+                <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
+                <ScalarProperty Name="Mieter" ColumnName="Mieter" />
+                <ScalarProperty Name="Vermieter" ColumnName="Vermieter" />
+                <ScalarProperty Name="Beginn" ColumnName="Beginn" />
+                <ScalarProperty Name="Ende" ColumnName="Ende" />
+                <ScalarProperty Name="Aktiv" ColumnName="Aktiv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVerträgeUndLeerstände">
+            <EntityTypeMapping TypeName="immoModel.vwVerträgeUndLeerstände">
+              <MappingFragment StoreEntitySet="vwVerträgeUndLeerstände">
+                <ScalarProperty Name="MiteinheitNr" ColumnName="MiteinheitNr" />
+                <ScalarProperty Name="Beginn_Leerstand" ColumnName="Beginn Leerstand" />
+                <ScalarProperty Name="Ende_Leerstand" ColumnName="Ende Leerstand" />
+                <ScalarProperty Name="Vertragsbeginn" ColumnName="Vertragsbeginn" />
+                <ScalarProperty Name="Vertragsende" ColumnName="Vertragsende" />
+                <ScalarProperty Name="Mieter" ColumnName="Mieter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVertragNotizs">
+            <EntityTypeMapping TypeName="immoModel.vwVertragNotiz">
+              <MappingFragment StoreEntitySet="vwVertragNotiz">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Notiz" ColumnName="Notiz" />
+                <ScalarProperty Name="zuMietvertrag" ColumnName="zuMietvertrag" />
+                <ScalarProperty Name="Mieter" ColumnName="Mieter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVertragsforderungs">
+            <EntityTypeMapping TypeName="immoModel.vwVertragsforderung">
+              <MappingFragment StoreEntitySet="vwVertragsforderung">
+                <ScalarProperty Name="Vertragsnr" ColumnName="Vertragsnr" />
+                <ScalarProperty Name="Forderungsnr" ColumnName="Forderungsnr" />
+                <ScalarProperty Name="Fällig_am" ColumnName="Fällig am" />
+                <ScalarProperty Name="Betrag" ColumnName="Betrag" />
+                <ScalarProperty Name="Beglichen_am" ColumnName="Beglichen am" />
+                <ScalarProperty Name="offen" ColumnName="offen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="vertragsforderungen" TypeName="immoModel.vertragsforderungen" StoreEntitySet="vertragsforderungen">
+            <EndProperty Name="forderung">
+              <ScalarProperty Name="ford_nr" ColumnName="forderung" />
+            </EndProperty>
+            <EndProperty Name="mietvertrag">
+              <ScalarProperty Name="vertragsnr" ColumnName="zuMietvertrag" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
