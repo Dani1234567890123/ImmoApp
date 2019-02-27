@@ -43,7 +43,5 @@
 		<Style x:Key="{x:Type Page}" TargetType="{x:Type Page}">
 			<Setter Property="RibbonWindow.FontFamily" Value="Calibri"/>
 		</Style>
-		
-		
 	</Application.Resources>
 </Application>
