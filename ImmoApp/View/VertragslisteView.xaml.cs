@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für VertragslisteView.xaml
     /// </summary>
-    public partial class VertragslisteView : Page
+    public partial class VertragslisteView : UserControl
     {
         public VertragslisteView()
         {

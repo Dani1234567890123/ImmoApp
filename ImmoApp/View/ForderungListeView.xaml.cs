@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für ForderungListeView.xaml
     /// </summary>
-    public partial class ForderungListeView : Page
+    public partial class ForderungListeView : UserControl
     {
         public ForderungListeView()
         {

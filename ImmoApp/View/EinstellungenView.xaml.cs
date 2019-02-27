@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für EinstellungenView.xaml
     /// </summary>
-    public partial class EinstellungenView : Page
+    public partial class EinstellungenView : UserControl
     {
         public EinstellungenView()
         {

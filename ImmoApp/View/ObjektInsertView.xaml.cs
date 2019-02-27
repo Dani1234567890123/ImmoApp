@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für ObjektInsertView.xaml
     /// </summary>
-    public partial class ObjektInsertView : Page
+    public partial class ObjektInsertView : UserControl
     {
         public ObjektInsertView()
         {

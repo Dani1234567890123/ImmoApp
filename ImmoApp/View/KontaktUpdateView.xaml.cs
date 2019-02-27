@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für KontaktUpdateView.xaml
     /// </summary>
-    public partial class KontaktUpdateView : Page
+    public partial class KontaktUpdateView : UserControl
     {
         public KontaktUpdateView()
         {

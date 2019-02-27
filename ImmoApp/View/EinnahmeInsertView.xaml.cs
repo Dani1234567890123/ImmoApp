@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für EinnahmeInsertView.xaml
     /// </summary>
-    public partial class EinnahmeInsertView : Page
+    public partial class EinnahmeInsertView : UserControl
     {
         public EinnahmeInsertView()
         {

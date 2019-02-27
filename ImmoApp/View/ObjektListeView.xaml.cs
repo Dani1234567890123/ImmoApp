@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für ObjektListeView.xaml
     /// </summary>
-    public partial class ObjektListeView : Page
+    public partial class ObjektListeView : UserControl
     {
         public ObjektListeView()
         {

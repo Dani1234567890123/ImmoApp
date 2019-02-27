@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für ErstattungInsertView.xaml
     /// </summary>
-    public partial class ErstattungInsertView : Page
+    public partial class ErstattungInsertView : UserControl
     {
         public ErstattungInsertView()
         {

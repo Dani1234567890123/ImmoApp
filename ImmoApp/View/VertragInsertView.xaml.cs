@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für VertragInsertView.xaml
     /// </summary>
-    public partial class VertragInsertView : Page
+    public partial class VertragInsertView : UserControl
     {
         public VertragInsertView()
         {

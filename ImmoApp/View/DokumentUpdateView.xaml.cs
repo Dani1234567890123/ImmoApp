@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für DokumentUpdateView.xaml
     /// </summary>
-    public partial class DokumentUpdateView : Page
+    public partial class DokumentUpdateView : UserControl
     {
         public DokumentUpdateView()
         {

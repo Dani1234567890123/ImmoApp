@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für VorlageListeView.xaml
     /// </summary>
-    public partial class VorlageListeView : Page
+    public partial class VorlageListeView : UserControl
     {
         public VorlageListeView()
         {

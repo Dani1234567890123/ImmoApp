@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für ForderungUpdateView.xaml
     /// </summary>
-    public partial class ForderungUpdateView : Page
+    public partial class ForderungUpdateView : UserControl
     {
         public ForderungUpdateView()
         {

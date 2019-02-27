@@ -50,7 +50,7 @@ namespace ImmoApp.View
         VorlageListeView volv = new VorlageListeView();
         EinstellungenView ev = new EinstellungenView();
 
-        List<Page> PageList = new List<Page>();
+        List<UserControl> PageList = new List<UserControl>();
 
         public StartView()
         {

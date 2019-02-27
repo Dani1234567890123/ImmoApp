@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für DokumentenListeView.xaml
     /// </summary>
-    public partial class DokumentenListeView : Page
+    public partial class DokumentenListeView : UserControl
     {
         public DokumentenListeView()
         {

@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für MieteinheitInsertView.xaml
     /// </summary>
-    public partial class MieteinheitInsertView : Page
+    public partial class MieteinheitInsertView : UserControl
     {
         public MieteinheitInsertView()
         {

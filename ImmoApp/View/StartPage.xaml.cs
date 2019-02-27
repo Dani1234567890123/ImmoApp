@@ -18,7 +18,7 @@ namespace ImmoApp.View
     /// <summary>
     /// Interaktionslogik für StartPage.xaml
     /// </summary>
-    public partial class StartPage : Page
+    public partial class StartPage : UserControl
     {
         public StartPage()
         {
