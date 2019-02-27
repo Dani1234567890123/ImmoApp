@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ImmoApp.View"
 		xmlns:ViewModel="clr-namespace:ImmoApp.ViewModel"
         mc:Ignorable="d"
-        Title="StartView" MinHeight="900" MinWidth="1300"  WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" Icon="icon\Home-icon.png">
+        Title="StartView" MinHeight="800" MinWidth="1280" Width="Auto" Height="Auto" WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" Icon="icon\Home-icon.png">
 	<RibbonWindow.Resources>
 		<ViewModel:StartViewModel x:Key="vm"/>
 		<DataTemplate DataType="{x:Type ViewModel:StartPageViewModel}">
@@ -90,10 +90,6 @@
 		<DataTemplate DataType="{x:Type ViewModel:VorlageListeViewModel}">
 			<local:VorlageListeView />
 		</DataTemplate>
-		
-		
-		
-		
 		
 	</RibbonWindow.Resources>
 	<Grid >
@@ -208,71 +204,10 @@
 		</Ribbon>
 		<Grid x:Name="GridTree_Inhalt" Grid.Row="1" >
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="5*"/>
+				<ColumnDefinition Width="10*"/>
 				<ColumnDefinition Width="auto"/>
 				<ColumnDefinition Width="70*"/>
 			</Grid.ColumnDefinitions>
-			<!--<DockPanel x:Name="dpTree" Grid.Column="0" Background="AliceBlue" LastChildFill="True">
-				<TreeView>
-					<TreeViewItem Header="Objekte" FontSize="16" >
-						<TreeViewItem.Items>
-							<DockPanel>
-								<Image Source="icon\loan-149873_960_720.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" >alle Objekte</TextBlock>
-							</DockPanel>
-							<DockPanel>
-								<Image Source="icon\2932347 - building estate home house.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14"  >Mieteinheiten</TextBlock>
-							</DockPanel>
-							<DockPanel>
-								<Image Source="icon\2932348 - agree deal handshake meeting.png" Width="20" Height="20" Stretch="Fill"/>
-								<TextBlock Margin="5" FontSize="14" >Mietverträge</TextBlock>
-							</DockPanel>
-						</TreeViewItem.Items>
-					</TreeViewItem>
-
-					<TreeViewItem Header="Kontakte" FontSize="16" >
-						<TreeViewItem.Items>
-							<DockPanel>
-								<Image Source="icon\2932353 - group hr humans people team users.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" >alle Kontakte</TextBlock>
-							</DockPanel>
-						</TreeViewItem.Items>
-					</TreeViewItem>
-
-					<TreeViewItem Header="Finanzen" FontSize="16" >
-						<TreeViewItem.Items>
-							<DockPanel>
-								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" >Einnahmen</TextBlock>
-							</DockPanel>
-							<DockPanel>
-								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14">Forderungen</TextBlock>
-							</DockPanel>
-							<DockPanel>
-								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Fill"/>
-								<TextBlock Margin="5" FontSize="14">Erstattungen</TextBlock>
-							</DockPanel>
-						</TreeViewItem.Items>
-					</TreeViewItem>
-
-					<TreeViewItem Header="Dokumente" FontSize="16">
-						<TreeViewItem.Items>
-							<DockPanel>
-								<Image Source="icon\1622837 - analytics docs documents gra.png" Width="20" Height="20" Stretch="Uniform" />
-								<TextBlock Margin="5" FontSize="14">alle Dokumente</TextBlock>
-							</DockPanel>
-							<DockPanel>
-								<Image Source="icon\2932350 - clipboard copy notes paper report survey.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14">Vorlagen</TextBlock>
-							</DockPanel>
-						</TreeViewItem.Items>
-					</TreeViewItem>
-
-				</TreeView>
-			</DockPanel>-->
-
 			<Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0" Grid.Column="0" Background="AliceBlue" >
 				<ItemsControl ItemsSource="{Binding PageViewModels}">
 					<ItemsControl.ItemTemplate>
