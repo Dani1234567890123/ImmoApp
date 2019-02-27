@@ -106,6 +106,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="IPageViewModel.cs" />
     <Compile Include="kategorie.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
@@ -136,7 +137,24 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DokumentenListeViewModel.cs" />
+    <Compile Include="ViewModel\DokumentInsertViewModel.cs" />
+    <Compile Include="ViewModel\DokumentUpdateViewModel.cs" />
+    <Compile Include="ViewModel\EinnahmeInsertViewModel.cs" />
+    <Compile Include="ViewModel\EinnahmenListeViewModel.cs" />
+    <Compile Include="ViewModel\EinnahmeUpdateViewModel.cs" />
+    <Compile Include="ViewModel\EinstellungenViewModel.cs" />
+    <Compile Include="ViewModel\ErstattungInsertViewModel.cs" />
+    <Compile Include="ViewModel\ErstattungslisteViewModel.cs" />
+    <Compile Include="ViewModel\ErstattungUpdateViewModel.cs" />
+    <Compile Include="ViewModel\ForderungInsertViewModel.cs" />
+    <Compile Include="ViewModel\ForderungListeViewModel.cs" />
+    <Compile Include="ViewModel\StartPageViewModel.cs" />
     <Compile Include="ViewModel\StartViewModel.cs" />
+    <Compile Include="ViewModel\VertragInsertViewModel.cs" />
+    <Compile Include="ViewModel\VertragslisteViewModel.cs" />
+    <Compile Include="ViewModel\VertragUpdateViewModel.cs" />
+    <Compile Include="ViewModel\VorlageListeViewModel.cs" />
     <Compile Include="View\DokumentenListeView.xaml.cs">
       <DependentUpon>DokumentenListeView.xaml</DependentUpon>
     </Compile>
@@ -176,33 +194,43 @@
     <Compile Include="View\ForderungUpdateView.xaml.cs">
       <DependentUpon>ForderungUpdateView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ForderungUpdateViewModel.cs" />
     <Compile Include="View\KontaktInsertView.xaml.cs">
       <DependentUpon>KontaktInsertView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\KontaktInsertViewModel.cs" />
     <Compile Include="View\KontaktListeView.xaml.cs">
       <DependentUpon>KontaktListeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\KontaktListeViewModel.cs" />
     <Compile Include="View\KontaktUpdateView.xaml.cs">
       <DependentUpon>KontaktUpdateView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\KontaktUpdateViewModel.cs" />
     <Compile Include="View\MieteinheitInsertView.xaml.cs">
       <DependentUpon>MieteinheitInsertView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MieteinheitInsertViewModel.cs" />
     <Compile Include="View\MieteinheitListeView.xaml.cs">
       <DependentUpon>MieteinheitListeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MieteinheitListeViewModel.cs" />
     <Compile Include="View\MieteinheitUpdateView.xaml.cs">
       <DependentUpon>MieteinheitUpdateView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MieteinheitUpdateViewModel.cs" />
     <Compile Include="View\ObjektInsertView.xaml.cs">
       <DependentUpon>ObjektInsertView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ObjektInsertViewModel.cs" />
     <Compile Include="View\ObjektListeView.xaml.cs">
       <DependentUpon>ObjektListeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ObjektListeViewModel.cs" />
     <Compile Include="View\ObjektUpdateView.xaml.cs">
       <DependentUpon>ObjektUpdateView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ObjektUpdateViewModel.cs" />
     <Compile Include="View\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
