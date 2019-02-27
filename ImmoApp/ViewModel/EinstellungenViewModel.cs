@@ -13,7 +13,7 @@ namespace ImmoApp.ViewModel
         {
             get
             {
-                return "evm"; ;
+                return "Einstellungen"; ;
             }
         }
     }

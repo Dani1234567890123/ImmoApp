@@ -9,6 +9,92 @@
         Title="StartView" MinHeight="900" MinWidth="1300"  WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" Icon="icon\Home-icon.png">
 	<RibbonWindow.Resources>
 		<ViewModel:StartViewModel x:Key="vm"/>
+		<DataTemplate DataType="{x:Type ViewModel:StartPageViewModel}">
+			<local:StartPage />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:DokumentenListeViewModel}">
+			<local:DokumentenListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:DokumentInsertViewModel}">
+			<local:DokumentInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:DokumentUpdateViewModel}">
+			<local:DokumentUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:EinnahmenListeViewModel}">
+			<local:EinnahmenListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:EinnahmeInsertViewModel}">
+			<local:EinnahmeInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:EinnahmeUpdateViewModel}">
+			<local:EinnahmeUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:EinstellungenViewModel}">
+			<local:EinstellungenView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ErstattungslisteViewModel}">
+			<local:ErstattungsListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ErstattungInsertViewModel}">
+			<local:ErstattungInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ErstattungUpdateViewModel}">
+			<local:ErstattungUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ForderungListeViewModel}">
+			<local:ForderungListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ForderungInsertViewModel}">
+			<local:ForderungInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ForderungUpdateViewModel}">
+			<local:ForderungUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:KontaktListeViewModel}">
+			<local:KontaktListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:KontaktInsertViewModel}">
+			<local:KontaktInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:KontaktUpdateViewModel}">
+			<local:KontaktUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:MieteinheitListeViewModel}">
+			<local:MieteinheitListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:MieteinheitInsertViewModel}">
+			<local:MieteinheitInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:MieteinheitUpdateViewModel}">
+			<local:MieteinheitUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ObjektListeViewModel}">
+			<local:ObjektListeView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ObjektInsertViewModel}">
+			<local:ObjektInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:ObjektUpdateViewModel}">
+			<local:ObjektUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:VertragslisteViewModel}">
+			<local:VertragslisteView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:VertragInsertViewModel}">
+			<local:VertragInsertView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:VertragUpdateViewModel}">
+			<local:VertragUpdateView />
+		</DataTemplate>
+		<DataTemplate DataType="{x:Type ViewModel:VorlageListeViewModel}">
+			<local:VorlageListeView />
+		</DataTemplate>
+		
+		
+		
+		
+		
 	</RibbonWindow.Resources>
 	<Grid >
 		<Grid.RowDefinitions>
@@ -126,69 +212,81 @@
 				<ColumnDefinition Width="auto"/>
 				<ColumnDefinition Width="70*"/>
 			</Grid.ColumnDefinitions>
-			<DockPanel x:Name="dpTree" Grid.Column="0" Background="AliceBlue" LastChildFill="True">
+			<!--<DockPanel x:Name="dpTree" Grid.Column="0" Background="AliceBlue" LastChildFill="True">
 				<TreeView>
-					<TreeViewItem Header="Objekte" FontSize="16" Selected="ObjektTreeViewItem_Selected">
+					<TreeViewItem Header="Objekte" FontSize="16" >
 						<TreeViewItem.Items>
 							<DockPanel>
 								<Image Source="icon\loan-149873_960_720.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="ObjektTextBlock_MouseUp">alle Objekte</TextBlock>
+								<TextBlock Margin="5" FontSize="14" >alle Objekte</TextBlock>
 							</DockPanel>
 							<DockPanel>
 								<Image Source="icon\2932347 - building estate home house.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="MieteinheitTextBlock_MouseUp" >Mieteinheiten</TextBlock>
+								<TextBlock Margin="5" FontSize="14"  >Mieteinheiten</TextBlock>
 							</DockPanel>
 							<DockPanel>
 								<Image Source="icon\2932348 - agree deal handshake meeting.png" Width="20" Height="20" Stretch="Fill"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="MietvertragTextBlock_MouseUp">Mietverträge</TextBlock>
+								<TextBlock Margin="5" FontSize="14" >Mietverträge</TextBlock>
 							</DockPanel>
 						</TreeViewItem.Items>
 					</TreeViewItem>
 
-					<TreeViewItem Header="Kontakte" FontSize="16" Selected="KontaktTreeViewItem_Selected">
+					<TreeViewItem Header="Kontakte" FontSize="16" >
 						<TreeViewItem.Items>
 							<DockPanel>
 								<Image Source="icon\2932353 - group hr humans people team users.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="KontaktTextBlock_MouseUp">alle Kontakte</TextBlock>
+								<TextBlock Margin="5" FontSize="14" >alle Kontakte</TextBlock>
 							</DockPanel>
 						</TreeViewItem.Items>
 					</TreeViewItem>
 
-					<TreeViewItem Header="Finanzen" FontSize="16" Selected="FinanzenTreeViewItem_Selected">
+					<TreeViewItem Header="Finanzen" FontSize="16" >
 						<TreeViewItem.Items>
 							<DockPanel>
 								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Uniform"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="EinnahmenTextBlock_MouseUp">Einnahmen</TextBlock>
+								<TextBlock Margin="5" FontSize="14" >Einnahmen</TextBlock>
 							</DockPanel>
 							<DockPanel>
 								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="ForderungenTextBlock_MouseUp">Forderungen</TextBlock>
+								<TextBlock Margin="5" FontSize="14">Forderungen</TextBlock>
 							</DockPanel>
 							<DockPanel>
 								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Fill"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="ErstattungenTextBlock_MouseUp">Erstattungen</TextBlock>
+								<TextBlock Margin="5" FontSize="14">Erstattungen</TextBlock>
 							</DockPanel>
 						</TreeViewItem.Items>
 					</TreeViewItem>
 
-					<TreeViewItem Header="Dokumente" FontSize="16" Selected="DokTreeViewItem_Selected">
+					<TreeViewItem Header="Dokumente" FontSize="16">
 						<TreeViewItem.Items>
 							<DockPanel>
 								<Image Source="icon\1622837 - analytics docs documents gra.png" Width="20" Height="20" Stretch="Uniform" />
-								<TextBlock Margin="5" FontSize="14" MouseUp="DokumenteTextBlock_MouseUp">alle Dokumente</TextBlock>
+								<TextBlock Margin="5" FontSize="14">alle Dokumente</TextBlock>
 							</DockPanel>
 							<DockPanel>
 								<Image Source="icon\2932350 - clipboard copy notes paper report survey.png" Width="20" Height="20" Stretch="UniformToFill"/>
-								<TextBlock Margin="5" FontSize="14" MouseUp="VorlagenTextBlock_MouseUp">Vorlagen</TextBlock>
+								<TextBlock Margin="5" FontSize="14">Vorlagen</TextBlock>
 							</DockPanel>
 						</TreeViewItem.Items>
 					</TreeViewItem>
 
 				</TreeView>
-			</DockPanel>
+			</DockPanel>-->
+
+			<Border DockPanel.Dock="Left" BorderBrush="Black" BorderThickness="0,0,1,0" Grid.Column="0" Background="AliceBlue" >
+				<ItemsControl ItemsSource="{Binding PageViewModels}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Button Content="{Binding Name}"
+                                Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding }" Margin="2,5"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</Border>
 			<GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="CornflowerBlue" ShowsPreview="True" Width="5" />
 			<DockPanel x:Name="dpInhalt" Grid.Column="2">
-				<Frame NavigationUIVisibility="Hidden" Name="navFrame" ></Frame>
+				<Frame NavigationUIVisibility="Hidden" Name="navFrame" Content="{Binding CurrentPageViewModel}" ></Frame>
 			</DockPanel>
 		</Grid>
 	</Grid>

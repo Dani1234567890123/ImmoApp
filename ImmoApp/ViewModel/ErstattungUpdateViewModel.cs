@@ -13,7 +13,7 @@ namespace ImmoApp.ViewModel
         {
             get
             {
-                return "eruvm";
+                return "Erstattunge bearbeiten";
             }
         }
     }

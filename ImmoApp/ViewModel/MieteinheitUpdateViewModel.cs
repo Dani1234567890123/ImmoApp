@@ -13,7 +13,7 @@ namespace ImmoApp.ViewModel
         {
             get
             {
-                return "muvm";
+                return "Mieteinheit bearbeiten";
             }
         }
     }

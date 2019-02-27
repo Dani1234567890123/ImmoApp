@@ -14,7 +14,7 @@ namespace ImmoApp.ViewModel
         {
             get
             {
-                return "kivm";
+                return "neuer Kontakt";
             }
         }
     }

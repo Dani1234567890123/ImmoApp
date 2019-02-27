@@ -13,7 +13,7 @@ namespace ImmoApp.ViewModel
         {
             get
             {
-                return "klvm";
+                return "Kontakte";
             }
         }
     }
