@@ -24,7 +24,7 @@
 			<RowDefinition Height="40*"/>
 			<RowDefinition Height="33*"/>
 		</Grid.RowDefinitions>
-		<Label Grid.Row="0" Grid.Column="0" FontSize="28" Content="Daten" VerticalAlignment="Bottom"/>
+		<Label Grid.Row="0" Grid.Column="0" FontSize="20" FontWeight="Bold" Content="Daten" VerticalAlignment="Bottom"/>
 		<Grid x:Name="MEDaten" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFC5DAF0" Margin="5,0,0,5">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="10*"/>
@@ -46,51 +46,52 @@
 				<ColumnDefinition Width="20*"/>
 			</Grid.ColumnDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Content="Objekt"/>
-			<ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="4"/>
+			<ComboBox x:Name="cmbObjekt" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
 			<Label Grid.Row="1" Grid.Column="0" Content="Bezeichnung"/>
-			<TextBox x:Name="tbBezeichnung" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbBezeichnung" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" />
 			<Label Grid.Row="2" Grid.Column="0" Content="Etage"/>
-			<TextBox x:Name="tbEtage" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbEtage" Grid.Row="2" Grid.Column="1"/>
 			<Label Grid.Row="2" Grid.Column="2" Content="Lage"/>
-			<TextBox x:Name="tbLage" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbLage" Grid.Row="2" Grid.Column="3"/>
 
 			<Label Grid.Row="3" Grid.Column="0" Content="Wohnfläche"/>
-			<TextBox x:Name="tbFläche" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbFläche" Grid.Row="3" Grid.Column="1" />
 			<Label Grid.Row="3" Grid.Column="2" Content="Heizfläche"/>
-			<TextBox x:Name="tbHeizfläche" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbHeizfläche" Grid.Row="3" Grid.Column="3"/>
 
 			<Label Grid.Row="4" Grid.Column="0" Content="Stromzähler"/>
-			<TextBox x:Name="tbStronzähler" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbStromzähler" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
 
 			<Label Grid.Row="5" Grid.Column="0" Content="Wohnräume"/>
-			<TextBox x:Name="tbRäume" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbRäume" Grid.Row="5" Grid.Column="1" />
 			<Label Grid.Row="5" Grid.Column="2" Content="Küchen"/>
-			<TextBox x:Name="tbKüchen" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbKüchen" Grid.Row="5" Grid.Column="3" />
 
 			<Label Grid.Row="6" Grid.Column="0" Content="Bäder"/>
-			<TextBox x:Name="tbBäder" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbBäder" Grid.Row="6" Grid.Column="1"/>
 
-			<Label Grid.Row="7" Grid.Column="0" Content="Kelelr"/>
-			<TextBox x:Name="tbKeller" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<Label Grid.Row="7" Grid.Column="0" Content="Keller"/>
+			<TextBox x:Name="tbKeller" Grid.Row="7" Grid.Column="1" />
 			<Label Grid.Row="7" Grid.Column="2" Content="Abtellräume"/>
-			<TextBox x:Name="tbAbstellräume" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbAbstellräume" Grid.Row="7" Grid.Column="3" />
 
 			<Label Grid.Row="8" Grid.Column="0" Content="Balkone"/>
-			<TextBox x:Name="tbBalkone" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbBalkone" Grid.Row="8" Grid.Column="1"/>
 			<Label Grid.Row="8" Grid.Column="2" Content="Terrassen"/>
-			<TextBox x:Name="tbTerrassen" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbTerrassen" Grid.Row="8" Grid.Column="3" />
 
 			<Label Grid.Row="9" Grid.Column="0" Content="Garten"/>
-			<CheckBox x:Name="chkGarten" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Left" Margin="4" Height="20" Width="20" />
+			<CheckBox x:Name="chkGarten" Grid.Row="9" Grid.Column="1" />
 			<Label Grid.Row="9" Grid.Column="2" Content="Gartenfläche"/>
-			<TextBox x:Name="tbGarten" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<TextBox x:Name="tbGarten" Grid.Row="9" Grid.Column="3"/>
 
 			<Label Grid.Row="10" Grid.Column="0" Content="weitere Ausstattung"/>
-			<TextBox x:Name="tbAusstattung" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="Wrap" />
+			<TextBox x:Name="tbAusstattung" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" />
 		</Grid>
 		
 		<Grid x:Name="Miete" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="#FFC5DAF0" Margin="5,5,0,0">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
@@ -103,142 +104,81 @@
 				<ColumnDefinition Width="20*"/>
 				<ColumnDefinition Width="20*"/>
 			</Grid.ColumnDefinitions>
+			<Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" Content="Miete" FontSize="18" />
+			<Label Grid.Row="1" Grid.Column="0" Content="Gültig ab"/>
+			<DatePicker x:Name="dpGültigAb" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" />
+			<Label Grid.Row="1" Grid.Column="2" Content="Kaltmiete" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5"/>
+			<TextBox x:Name="tbKaltmiete" Grid.Row="1" Grid.Column="3" />
 			
-			<Label Grid.Row="0" Grid.Column="0" Content="Gültig ab"/>
-			<DatePicker x:Name="dpGültigAb" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" />
-			<Label Grid.Row="0" Grid.Column="2" Content="Kaltmiete"/>
-			<TextBox x:Name="tbKaltmiete" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			
-			<Label Grid.Row="1" Grid.Column="0" Content="NK-Abschlag"/>
-			<TextBox x:Name="tbNK" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			<Label Grid.Row="1" Grid.Column="2" Content="Garage"/>
-			<TextBox x:Name="tbGarage" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<Label Grid.Row="2" Grid.Column="0" Content="NK-Abschlag"/>
+			<TextBox x:Name="tbNK" Grid.Row="2" Grid.Column="1" />
+			<Label Grid.Row="2" Grid.Column="2" Content="Garage"/>
+			<TextBox x:Name="tbGarage" Grid.Row="2" Grid.Column="3" />
 
 
-			<Label Grid.Row="2" Grid.Column="0" Content="Stellplatz"/>
-			<TextBox x:Name="tbStellplatz" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			<Label Grid.Row="2" Grid.Column="2" Content="sonstige Mietbestandteile"/>
-			<TextBox x:Name="tbSonstMiete" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
+			<Label Grid.Row="3" Grid.Column="0" Content="Stellplatz"/>
+			<TextBox x:Name="tbStellplatz" Grid.Row="3" Grid.Column="1" />
+			<Label Grid.Row="3" Grid.Column="2" Content="sonstige Mietbestandteile"/>
+			<TextBox x:Name="tbSonstMiete" Grid.Row="3" Grid.Column="3" />
 
 			
-			<Label Grid.Row="3" Grid.Column="2" Content="Bruttomiete"/>
-			<TextBox x:Name="tbBruttomiete" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1" IsReadOnly="True"/>
-
+			<Label Grid.Row="4" Grid.Column="2" Content="Bruttomiete"/>
+			<Label x:Name="lblBruttomiete" Grid.Row="4" Grid.Column="3" Content="Berechnung" Background="WhiteSmoke"/>
 </Grid>
-
-
-		<!--<Label Grid.Row="0" Grid.Column="0" FontSize="28" Content="Objekdaten" VerticalAlignment="Bottom"/>
-		<Grid x:Name="ObjektDaten" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Background="#FFC5DAF0" Margin="5,0,0,0">
+		<Grid x:Name="grdListen" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="#FFC5DAF0" Margin="5,0,5,5">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="15*"/>
+				<RowDefinition Height="30*"/>
+				<RowDefinition Height="10*"/>
+				<RowDefinition Height="30*"/>
 				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
+				<RowDefinition Height="30*"/>
 				<RowDefinition Height="10*"/>
 				<RowDefinition Height="10*"/>
+				<RowDefinition Height="30*"/>
 				<RowDefinition Height="10*"/>
-				<RowDefinition Height="10*"/>
-				<RowDefinition Height="10*"/>
-				<RowDefinition Height="20*"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="30*"/>
-				<ColumnDefinition Width="70*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="10*"/>
+				<ColumnDefinition Width="10*"/>
 			</Grid.ColumnDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" Content="Bezeichnung"/>
-			<TextBox x:Name="tbBezeichnung" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			<Label Grid.Row="1" Grid.Column="0" Content="Straße, Nr"/>
-			<Grid x:Name="grdStraße" Grid.Row="1"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="80*"/>
-					<ColumnDefinition Width="20*"/>
-				</Grid.ColumnDefinitions>
-				<TextBox x:Name="tbStraße" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1" />
-				<TextBox x:Name="tbNr" Grid.Column="1"  HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			</Grid>
-			<Label Grid.Row="2" Grid.Column="0" Content="Straße, Nr"/>
-			<Grid x:Name="grdOrt" Grid.Row="2"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="30*"/>
-					<ColumnDefinition Width="70*"/>
-				</Grid.ColumnDefinitions>
-				<TextBox x:Name="tbPlz" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1" />
-				<TextBox x:Name="tbOrt" Grid.Column="1"  HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap"  MaxLines="1"/>
-			</Grid>
-			<Label Grid.Row="3" Grid.Column="0" Content="Allgemeinstromzähler"/>
-			<TextBox x:Name="tbStromzähler" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap"  MaxLines="1"/>
-			<Label Grid.Row="4" Grid.Column="0" Content="Wasserzähler"/>
-			<TextBox x:Name="tbWasserzähler" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			<Label Grid.Row="5" Grid.Column="0" Content="Gaszähler"/>
-			<TextBox x:Name="tbGaszähler" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="NoWrap" MaxLines="1"/>
-			<Label Grid.Row="6" Grid.Column="0" Content="Baujahr"/>
-			<Grid x:Name="grdBaujahr" Grid.Row="6"  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="30*"/>
-					<ColumnDefinition Width="70*"/>
-				</Grid.ColumnDefinitions>
-				<TextBox x:Name="tbBaujahr" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" TextWrapping="NoWrap"  MaxLines="1"  />
-			</Grid>
-			<Grid x:Name="Notiz" Grid.Row="7" Grid.Column="0">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="5*"/>
-					<RowDefinition Height="10*"/>
-				</Grid.RowDefinitions>
-				<Label Grid.Row="0" Content="Notiz"/>
-				<Button x:Name="btnNotiz" Grid.Row="1" Margin="0,10,5,10" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="Zufügen"/>
-			</Grid>
-			<TextBox x:Name="tbNotiz" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" TextWrapping="Wrap" AcceptsReturn="True" />
+
+			<Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" Content="Notizen" FontSize="18" />
+			<TextBox x:Name="tbNotiz" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" TextWrapping="Wrap" AcceptsReturn="True" />
+			<Button x:Name="btnNotiz" Grid.Row="0" Grid.Column="5" Content="Zufügen"/>
+			<DataGrid x:Name="dgNotizen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"  Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+			<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Content="Dokumente" FontSize="18" />
+			<ComboBox x:Name="cmbFilter" Margin="3,5,3,5" Grid.Column="2" Grid.Row="2" MinWidth="100" MaxWidth="250"  HorizontalAlignment="Right"/>
+			<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="3" Grid.Row="2" Content="Filter" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+			<ComboBox x:Name="cmbSort" Margin="3,5,3,5" Grid.Column="4" Grid.Row="2" MinWidth="100"  MaxWidth="200" HorizontalAlignment="Right" />
+			<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="5" Grid.Row="2" Content="Sortierung" FontSize="12" HorizontalAlignment="Left" />
+			<DataGrid x:Name="dgdokument" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+
+			<Button x:Name="btnDokAnzeigen" Grid.Row="4" Content="anzeigen"/>
+			<Button x:Name="btnOfD" Grid.Row="4" Grid.Column="2" Content="durchsuchen"/>
+			<Label x:Name="lblFile" Margin="3,5,3,5" Grid.Column="3" Grid.Row="4" Content="{Binding File}" FontSize="12" HorizontalAlignment="Left" />
+			<ComboBox x:Name="cmbDokKat" Margin="3,5,3,5" Grid.Column="4" Grid.Row="4" MinWidth="100" MaxWidth="250" HorizontalAlignment="Right"/>
+			<Button x:Name="btnDokSave" Grid.Row="4" Grid.Column="5"  Content="Dok speichern"/>
+
+			<Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold"  Content="Aktueller Mietvertrag" FontSize="18"/>
+			<DataGrid x:Name="dgVertrag" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<Button x:Name="btnVertragAnzeigen" Grid.Row="7" Content="anzeigen"/>
+			<Button x:Name="btnVertragNeu" Grid.Row="7" Grid.Column="1" Content="neuer Mietvertrag"/>
+
+			<Label Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Content="Bisherige Mietverträge und Leerstände" FontSize="18" />
+			<DataGrid x:Name="dgVertragLeerstand" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<Button x:Name="btnLeerstandNeu" Grid.Row="10"  Content="Leerstand eingeben"/>
+
 		</Grid>
-		<Grid x:Name="NotizDataGrid" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="5*"/>
-				<RowDefinition Height="20*"/>
-			</Grid.RowDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" FontSize="28" Content="Notizen" VerticalAlignment="Bottom"/>
-			<DataGrid x:Name="dgNotizen" Grid.Row="1" Grid.Column="0"  Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}"
-				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-		</Grid>-->
-
-		<!--<Grid x:Name="grdData" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="3" Margin="5,0,0,5">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="5*"/>
-				<RowDefinition Height="25*"/>
-				<RowDefinition Height="5*"/>
-				<RowDefinition Height="5*"/>
-				<RowDefinition Height="25*"/>
-				<RowDefinition Height="5*"/>
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition	Width="10*"/>
-				<ColumnDefinition Width="10*"/>
-				<ColumnDefinition Width="10*"/>
-				<ColumnDefinition Width="10*"/>
-				<ColumnDefinition Width="10*"/>
-				<ColumnDefinition Width="10*"/>
-			</Grid.ColumnDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="28" Content="Mieteinheiten" VerticalAlignment="Bottom"/>
-			<DataGrid x:Name="dgMieteinheiten" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}"
-				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-			<Button x:Name="btnMEanzeigen" Grid.Row="2" Margin="5" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="anzeigen"/>
-			<Button x:Name="btnMENeu" Grid.Row="2" Grid.Column="1" Margin="5" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="Neue Mieteinheit"/>
-
-			<Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="28" Content="Dokumente" VerticalAlignment="Bottom"/>
-			<ComboBox x:Name="cmbFilter" Margin="3,5,3,5" Grid.Column="2" Grid.Row="3" MinWidth="100" MaxWidth="250" MinHeight="40" MaxHeight="50" HorizontalAlignment="Right"/>
-			<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="3" Grid.Row="3" Content="Filter" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-			<ComboBox x:Name="cmbSort" Margin="3,5,3,5" Grid.Column="4" Grid.Row="3" MinWidth="100"  MaxWidth="200" MinHeight="40" MaxHeight="50" HorizontalAlignment="Right" />
-			<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="5" Grid.Row="3" Content="Sortierung" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-			<DataGrid x:Name="dgdokument" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}"
-				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-
-			<Button x:Name="btnDokAnzeigen" Grid.Row="5" Margin="5" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="anzeigen"/>
-			<Button x:Name="btnOfD" Grid.Row="5" Grid.Column="2" Margin="5" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="durchsuchen"/>
-			<Label x:Name="lblFile" Margin="3,5,3,5" Grid.Column="3" Grid.Row="5" Content="{Binding File}" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-			<ComboBox x:Name="cmbDokKat" Margin="3,5,3,5" Grid.Column="4" Grid.Row="5" MinWidth="100" MaxWidth="250" MinHeight="40" MaxHeight="50" HorizontalAlignment="Right"/>
-			<Button x:Name="btnDokSave" Grid.Row="5" Grid.Column="5" Margin="5" MinWidth="100" MaxWidth="170" MinHeight ="40" MaxHeight="50" Content="Dok speichern"/>
-
-		</Grid>-->
-
 		<Image Grid.Row="4" Margin="0,0,0,5" Source="icon\2932347 - building estate home house.png" VerticalAlignment="Bottom" ></Image>
 
-		<Button x:Name="btnspeichern" Grid.Column="1" Grid.Row="4" Margin="0,10,4,-27" Content="Speichern" MinWidth="150" MaxWidth="170" MinHeight ="50" MaxHeight="60" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" Grid.ColumnSpan="4">
+		<Button x:Name="btnspeichern" Grid.Column="4" Grid.Row="4" Content="Speichern" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" MinHeight="30" FontSize="16" >
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>
@@ -246,7 +186,7 @@
 				</LinearGradientBrush>
 			</Button.BorderBrush>
 		</Button>
-		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Margin="4,10,-94,-27" Content="Verwerfen" MinWidth="150" MaxWidth="170" MinHeight ="50" MaxHeight="60" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"  FontFamily="Calibri" FontSize="16">
+		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Content="Verwerfen"  HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"  MinHeight="30" FontSize="16">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>

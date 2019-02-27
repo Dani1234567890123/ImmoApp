@@ -12,7 +12,16 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<Ribbon x:Name="ribbon"  Height="Auto" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" BorderBrush="CornflowerBlue">
+		<Ribbon x:Name="ribbon"  Height="Auto" VerticalAlignment="Top" FontSize="16" FontFamily="Calibri" BorderBrush="CornflowerBlue" >
+			<Ribbon.Resources>
+				<Style TargetType="{x:Type Image}">
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type RibbonButton}}, Path=IsEnabled}" Value="False">
+							<Setter Property="Opacity" Value="0.4"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</Ribbon.Resources>
 			<Ribbon.QuickAccessToolBar>
 				<RibbonQuickAccessToolBar >
 					<RibbonButton SmallImageSource="icon\226565 - printer.png"/>
@@ -36,8 +45,8 @@
 			</RibbonTab>
 			<RibbonTab x:Name="tabObjekte" Header="Objekte">
 				<RibbonGroup Header="Objekte">
-					<RibbonButton LargeImageSource="icon\loan-149873_960_720.png" Label="alle Objekte" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
+					<RibbonButton LargeImageSource="icon\loan-149873_960_720.png" Label="alle Objekte" MinWidth="60"  />
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" IsEnabled="False" Command="{Binding ObjektNeuCommand}"/>
 					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60"/>
 					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
 				</RibbonGroup>

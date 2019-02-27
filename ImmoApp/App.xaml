@@ -3,7 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ImmoApp"
              StartupUri="View/StartView.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+	<Application.Resources>
+		<Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+			<Setter Property="Button.Height" Value="20" />
+			<Setter Property="Button.FontSize" Value="14" />
+			<Setter Property="Button.Margin" Value="5" />
+			<Setter Property="Button.Width" Value="150"/>
+			<Setter Property="Button.FontFamily" Value="Calibri"/>
+		</Style>
+		<Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
+			<Setter Property="TextBox.FontSize" Value="14" />
+			<Setter Property="TextBox.Margin" Value="5" />
+			<Setter Property="TextBox.FontFamily" Value="Calibri"/>
+			<Setter Property="TextBox.MaxHeight" Value="30"/>
+			<Setter Property="TextBox.Background" Value="WhiteSmoke"/>
+			<Setter Property="TextBlock.TextWrapping" Value="NoWrap"/>
+			<Setter Property="TextBox.MaxLines" Value="1" />
+			<Setter Property="TextBox.HorizontalAlignment" Value="Stretch" />
+			<Setter Property="TextBox.VerticalAlignment" Value="Stretch"/>
+		</Style>
+		<Style x:Key="{x:Type Label}" TargetType="{x:Type Label}">
+			<Setter Property="Label.FontSize" Value="14" />
+			<Setter Property="Label.FontFamily" Value="Calibri"/>
+			<Setter Property="Label.MaxHeight" Value="30"/>
+			<Setter Property="Label.VerticalAlignment" Value="Bottom"/>
+			<Setter Property="Label.HorizontalAlignment" Value="Stretch"/>
+		</Style>
+		<Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
+			<Setter Property="ComboBox.FontSize" Value="14" />
+			<Setter Property="ComboBox.Margin" Value="5" />
+			<Setter Property="ComboBox.FontFamily" Value="Calibri"/>
+			<Setter Property="ComboBox.MaxHeight" Value="30"/>
+			<Setter Property="ComboBox.MinWidth" Value="70"/>
+			<Setter Property="ComboBox.Background" Value="WhiteSmoke"/>
+		</Style>
+		<Style x:Key="{x:Type RibbonWindow}" TargetType="{x:Type RibbonWindow}">
+			<Setter Property="RibbonWindow.FontFamily" Value="Calibri"/>
+		</Style>
+		<Style x:Key="{x:Type Page}" TargetType="{x:Type Page}">
+			<Setter Property="RibbonWindow.FontFamily" Value="Calibri"/>
+		</Style>
+		
+		
+	</Application.Resources>
 </Application>

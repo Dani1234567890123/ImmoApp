@@ -136,6 +136,57 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\DokumentenListeView.xaml.cs">
+      <DependentUpon>DokumentenListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DokumentInsertView.xaml.cs">
+      <DependentUpon>DokumentInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DokumentUpdateView.xaml.cs">
+      <DependentUpon>DokumentUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EinnahmeInsertView.xaml.cs">
+      <DependentUpon>EinnahmeInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EinnahmenListeView.xaml.cs">
+      <DependentUpon>EinnahmenListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EinnahmeUpdateView.xaml.cs">
+      <DependentUpon>EinnahmeUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EinstellungenView.xaml.cs">
+      <DependentUpon>EinstellungenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErstattungInsertView.xaml.cs">
+      <DependentUpon>ErstattungInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErstattungsListeView.xaml.cs">
+      <DependentUpon>ErstattungsListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErstattungUpdateView.xaml.cs">
+      <DependentUpon>ErstattungUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForderungInsertView.xaml.cs">
+      <DependentUpon>ForderungInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForderungListeView.xaml.cs">
+      <DependentUpon>ForderungListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForderungUpdateView.xaml.cs">
+      <DependentUpon>ForderungUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KontaktInsertView.xaml.cs">
+      <DependentUpon>KontaktInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KontaktListeView.xaml.cs">
+      <DependentUpon>KontaktListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KontaktUpdateView.xaml.cs">
+      <DependentUpon>KontaktUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MieteinheitInsertView.xaml.cs">
+      <DependentUpon>MieteinheitInsertView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MieteinheitListeView.xaml.cs">
       <DependentUpon>MieteinheitListeView.xaml</DependentUpon>
     </Compile>
@@ -156,6 +207,18 @@
     </Compile>
     <Compile Include="View\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VertragInsertView.xaml.cs">
+      <DependentUpon>VertragInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VertragslisteView.xaml.cs">
+      <DependentUpon>VertragslisteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VertragUpdateView.xaml.cs">
+      <DependentUpon>VertragUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VorlageListeView.xaml.cs">
+      <DependentUpon>VorlageListeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="vwEinheitDokumente.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
@@ -335,6 +398,74 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\DokumentenListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DokumentInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DokumentUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EinnahmeInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EinnahmenListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EinnahmeUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EinstellungenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErstattungInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErstattungsListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErstattungUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ForderungInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ForderungListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ForderungUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontaktInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontaktListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontaktUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MieteinheitInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MieteinheitListeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -360,6 +491,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VertragInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VertragslisteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VertragUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VorlageListeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
