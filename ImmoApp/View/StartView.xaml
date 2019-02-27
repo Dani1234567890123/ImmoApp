@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImmoApp.View"
+		xmlns:ViewModel="clr-namespace:ImmoApp.ViewModel"
         mc:Ignorable="d"
         Title="StartView" MinHeight="900" MinWidth="1300"  WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen" Icon="icon\Home-icon.png">
+	<RibbonWindow.Resources>
+		<ViewModel:StartViewModel x:Key="vm"/>
+	</RibbonWindow.Resources>
 	<Grid >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -24,9 +28,8 @@
 			</Ribbon.Resources>
 			<Ribbon.QuickAccessToolBar>
 				<RibbonQuickAccessToolBar >
-					<RibbonButton SmallImageSource="icon\226565 - printer.png"/>
-					<RibbonButton SmallImageSource="icon\226571 - glass magnifying.png"/>
-					<RibbonButton SmallImageSource="icon\226602 - reply.png"/>
+					<RibbonButton SmallImageSource="icon\226565 - printer.png" Command="{Binding PrintCommand, Source={StaticResource vm}}"/>
+					<RibbonButton SmallImageSource="icon\226602 - reply.png" ToolTip="Zurück zur Startseite" Click="RibbonButton_Click"/>
 				</RibbonQuickAccessToolBar>
 			</Ribbon.QuickAccessToolBar>
 			<Ribbon.ApplicationMenu>
@@ -37,7 +40,7 @@
 						</StackPanel>
 					</RibbonApplicationMenu.AuxiliaryPaneContent>
 					<RibbonApplicationMenu.FooterPaneContent>
-						<RibbonButton Label="Beenden" SmallImageSource="icon\4115235 - exit logout sign out.png" HorizontalAlignment="Right" Command="{Binding ExitCommand}"/>
+						<RibbonButton Label="Beenden" SmallImageSource="icon\4115235 - exit logout sign out.png" HorizontalAlignment="Right" Command="{Binding ExitCommand, Source={StaticResource vm}}"/>
 					</RibbonApplicationMenu.FooterPaneContent>
 				</RibbonApplicationMenu>
 			</Ribbon.ApplicationMenu>
@@ -45,77 +48,75 @@
 			</RibbonTab>
 			<RibbonTab x:Name="tabObjekte" Header="Objekte">
 				<RibbonGroup Header="Objekte">
-					<RibbonButton LargeImageSource="icon\loan-149873_960_720.png" Label="alle Objekte" MinWidth="60"  />
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" IsEnabled="False" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\loan-149873_960_720.png" Label="alle Objekte" MinWidth="60" Command="{Binding ObjektListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Command="{Binding ObjektInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Command="{Binding ObjektUpdateCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"  Command="{Binding DeleteCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Mieteinheiten">
-					<RibbonButton LargeImageSource="icon\2932347 - building estate home house.png" Label="alle Mieteinheiten" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\2932347 - building estate home house.png" Label="alle Mieteinheiten" MinWidth="60" Command="{Binding MieteinheitListeCommand, Source={StaticResource vm}}" />
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neue Mieteinheit" MinWidth="60"  Command="{Binding MieteinheitInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Command="{Binding MieteinheitUpdateCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60" Command="{Binding MieteinheitDeleteCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
-				<RibbonGroup Header="Mietvertraäge">
-					<RibbonButton LargeImageSource="icon\2932348 - agree deal handshake meeting.png" Label="alle Verträge" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+				<RibbonGroup Header="Mietverträge">
+					<RibbonButton LargeImageSource="icon\2932348 - agree deal handshake meeting.png" Label="alle Verträge" MinWidth="60" Command="{Binding VertragsListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neuer Vertrag" MinWidth="60" Command="{Binding VertragInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Command="{Binding VertragUpdateCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Tools" HorizontalAlignment="Right">
-					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60" Command="{Binding EinstellungenCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60" Command="{Binding PrintCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 			</RibbonTab>
 			<RibbonTab Header="Kontakte">
 				<RibbonGroup Header="Bearbeiten">
-					<RibbonButton LargeImageSource="icon\2932353 - group hr humans people team users.png" Label="alle Kontakte" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neuer Kontakt" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\2932353 - group hr humans people team users.png" Label="alle Kontakte" MinWidth="60" Command="{Binding KontaktListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neuer Kontakt" MinWidth="60" Command="{Binding KontaktInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Command="{Binding KontaktUpdateCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Tools" HorizontalAlignment="Right">
-					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60" Command="{Binding EinstellungenCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60" Command="{Binding PrintCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 			</RibbonTab>
-			<RibbonTab Header="Einnahmen/Forderungen">
+			<RibbonTab Header="Finanzen">
 				<RibbonGroup Header="Einnahmen">
-					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Einnahmen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Einnahme eingeben" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Einnahme bearbeiten" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Einnahmen" MinWidth="60" Command="{Binding EinnahmenListeCommand, Source={StaticResource vm}}" />
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Einnahme eingeben" MinWidth="60" Command="{Binding EinnahmeInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Einnahme bearbeiten" MinWidth="60" Command="{Binding EinnahmeUpdateCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
-				<RibbonGroup Header="Forderungen">
-					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Forderungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Forderung eingeben" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Forderung bearbeiten" MinWidth="60"/>
+				<RibbonGroup Header="Forderungen" >
+					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Forderungen" MinWidth="60" Command="{Binding ForderungenListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Forderung eingeben" MinWidth="60" Command="{Binding ForderungenInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Forderung bearbeiten" MinWidth="60" Command="{Binding ForderungenUpdateCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Erstattung">
-					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Erstattungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Erstattung eingeben" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Erstattung bearbeiten" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\coins.png" Label="alle Erstattungen" MinWidth="60" Command="{Binding ErstattungenListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Erstattung eingeben" MinWidth="60" Command="{Binding ErstattungenInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Erstattung bearbeiten" MinWidth="60" Command="{Binding ErstattungenUpdateCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Tools" HorizontalAlignment="Right">
-					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60" Command="{Binding EinstellungenCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60" Command="{Binding PrintCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 			</RibbonTab>
-			<RibbonTab Header="Dokumente">
+			<RibbonTab Header="Dokumente" >
 				<RibbonGroup Header="Dokumente">
-					<RibbonButton LargeImageSource="icon\1622837 - analytics docs documents gra.png" Label="alle Dokumente" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Dokument hochladen" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Auswählen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\1622837 - analytics docs documents gra.png" Label="alle Dokumente" MinWidth="60" Command="{Binding DokumentListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Dokument hochladen" MinWidth="60" Command="{Binding DokumentInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Auswählen" MinWidth="60" Command="{Binding DokumentUpdateCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60" Command="{Binding DokumentDeleteCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Vorlagen">
-					<RibbonButton LargeImageSource="icon\2932350 - clipboard copy notes paper report survey.png" Label="alle Vorlagen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Vorlage hochladen" MinWidth="60" Command="{Binding ObjektNeuCommand}"/>
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Auswählen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\2932350 - clipboard copy notes paper report survey.png" Label="alle Vorlagen" MinWidth="60" Command="{Binding VorlageListeCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Vorlage hochladen" MinWidth="60" Command="{Binding VorlageInsertCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Auswählen" MinWidth="60" Command="{Binding VorlageUpdateCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60" Command="{Binding VorlageDeleteCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Tools" HorizontalAlignment="Right">
-					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60"/>
-					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60"/>
+					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60" Command="{Binding EinstellungenCommand, Source={StaticResource vm}}"/>
+					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60" Command="{Binding PrintCommand, Source={StaticResource vm}}"/>
 				</RibbonGroup>
 			</RibbonTab>
 		</Ribbon>
@@ -126,7 +127,64 @@
 				<ColumnDefinition Width="70*"/>
 			</Grid.ColumnDefinitions>
 			<DockPanel x:Name="dpTree" Grid.Column="0" Background="AliceBlue" LastChildFill="True">
-				<Image Source="{Binding CurrentImage}"/>
+				<TreeView>
+					<TreeViewItem Header="Objekte" FontSize="16" Selected="ObjektTreeViewItem_Selected">
+						<TreeViewItem.Items>
+							<DockPanel>
+								<Image Source="icon\loan-149873_960_720.png" Width="20" Height="20" Stretch="Uniform"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="ObjektTextBlock_MouseUp">alle Objekte</TextBlock>
+							</DockPanel>
+							<DockPanel>
+								<Image Source="icon\2932347 - building estate home house.png" Width="20" Height="20" Stretch="UniformToFill"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="MieteinheitTextBlock_MouseUp" >Mieteinheiten</TextBlock>
+							</DockPanel>
+							<DockPanel>
+								<Image Source="icon\2932348 - agree deal handshake meeting.png" Width="20" Height="20" Stretch="Fill"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="MietvertragTextBlock_MouseUp">Mietverträge</TextBlock>
+							</DockPanel>
+						</TreeViewItem.Items>
+					</TreeViewItem>
+
+					<TreeViewItem Header="Kontakte" FontSize="16" Selected="KontaktTreeViewItem_Selected">
+						<TreeViewItem.Items>
+							<DockPanel>
+								<Image Source="icon\2932353 - group hr humans people team users.png" Width="20" Height="20" Stretch="Uniform"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="KontaktTextBlock_MouseUp">alle Kontakte</TextBlock>
+							</DockPanel>
+						</TreeViewItem.Items>
+					</TreeViewItem>
+
+					<TreeViewItem Header="Finanzen" FontSize="16" Selected="FinanzenTreeViewItem_Selected">
+						<TreeViewItem.Items>
+							<DockPanel>
+								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Uniform"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="EinnahmenTextBlock_MouseUp">Einnahmen</TextBlock>
+							</DockPanel>
+							<DockPanel>
+								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="UniformToFill"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="ForderungenTextBlock_MouseUp">Forderungen</TextBlock>
+							</DockPanel>
+							<DockPanel>
+								<Image Source="icon\coins.png" Width="20" Height="20" Stretch="Fill"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="ErstattungenTextBlock_MouseUp">Erstattungen</TextBlock>
+							</DockPanel>
+						</TreeViewItem.Items>
+					</TreeViewItem>
+
+					<TreeViewItem Header="Dokumente" FontSize="16" Selected="DokTreeViewItem_Selected">
+						<TreeViewItem.Items>
+							<DockPanel>
+								<Image Source="icon\1622837 - analytics docs documents gra.png" Width="20" Height="20" Stretch="Uniform" />
+								<TextBlock Margin="5" FontSize="14" MouseUp="DokumenteTextBlock_MouseUp">alle Dokumente</TextBlock>
+							</DockPanel>
+							<DockPanel>
+								<Image Source="icon\2932350 - clipboard copy notes paper report survey.png" Width="20" Height="20" Stretch="UniformToFill"/>
+								<TextBlock Margin="5" FontSize="14" MouseUp="VorlagenTextBlock_MouseUp">Vorlagen</TextBlock>
+							</DockPanel>
+						</TreeViewItem.Items>
+					</TreeViewItem>
+
+				</TreeView>
 			</DockPanel>
 			<GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="CornflowerBlue" ShowsPreview="True" Width="5" />
 			<DockPanel x:Name="dpInhalt" Grid.Column="2">

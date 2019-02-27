@@ -55,7 +55,7 @@ namespace ImmoApp.View
         public StartView()
         {
             InitializeComponent();
-            navFrame.NavigationService.Content = oiv;
+            navFrame.NavigationService.Content = sp;
 
             
             PageList.Add(olv);
@@ -87,5 +87,75 @@ namespace ImmoApp.View
             
         }
 
+        private void DokTreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = dlv;
+
+        }
+
+        private void FinanzenTreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = elv;
+        }
+
+        private void KontaktTreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = klv;
+        }
+
+        private void ObjektTreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = olv;
+        }
+
+        private void ObjektTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = olv;
+        }
+
+        private void MieteinheitTextBlock_MouseUp(object sender, MouseEventArgs e)
+        {
+            navFrame.NavigationService.Content = mlv;
+        }
+
+        private void MietvertragTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = vlv;
+        }
+
+        private void KontaktTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = klv;
+        }
+
+        private void EinnahmenTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = elv;
+        }
+
+        private void ForderungenTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = flv;
+        }
+
+        private void ErstattungenTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = erlv;
+        }
+
+        private void DokumenteTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = dlv;
+        }
+
+        private void VorlagenTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            navFrame.NavigationService.Content = volv;
+        }
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = sp;
+        }
     }
 }

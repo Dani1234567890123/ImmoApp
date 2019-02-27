@@ -136,6 +136,7 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\StartViewModel.cs" />
     <Compile Include="View\DokumentenListeView.xaml.cs">
       <DependentUpon>DokumentenListeView.xaml</DependentUpon>
     </Compile>
@@ -512,7 +513,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <ProjectReference Include="..\ImmoLib\ImmoLib.csproj">
+      <Project>{04d32559-e60e-48a4-9a33-813228937c18}</Project>
+      <Name>ImmoLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
