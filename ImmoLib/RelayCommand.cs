@@ -21,6 +21,7 @@ namespace ImmoLib
         #region Fields
         readonly Action<object> _execute;
         readonly Func<object, bool> _canExecute;
+
         #endregion // Fields
 
         #region Constructor
@@ -37,6 +38,8 @@ namespace ImmoLib
             this._execute = execute;
             this._canExecute = canExecute;
         }
+
+        
         #endregion // Constructors
 
         #region ICommand Members

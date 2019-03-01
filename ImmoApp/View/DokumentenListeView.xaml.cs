@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,22 @@ namespace ImmoApp.View
     /// </summary>
     public partial class DokumentenListeView : UserControl
     {
+        
+        DokumentInsertView div = new DokumentInsertView();
+        StartViewModel sv = new StartViewModel();
         public DokumentenListeView()
         {
             InitializeComponent();
         }
+
+        private void DokBearbButton_Click(object sender, RoutedEventArgs e)
+        {
+            sv.ChangeViewModel(new DokumentUpdateView() as IPageViewModel);
+        }
+
+        //private void DokNeuButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    sv.navFrame.NavigationService.Content = div;
+        //}
     }
 }

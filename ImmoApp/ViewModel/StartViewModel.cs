@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace ImmoApp.ViewModel
@@ -24,29 +25,13 @@ namespace ImmoApp.ViewModel
             // Add available pages
             PageViewModels.Add(new StartPageViewModel());
             PageViewModels.Add(new ObjektListeViewModel());
-            //PageViewModels.Add(new ObjektInsertViewModel());
-            //PageViewModels.Add(new ObjektUpdateViewModel());
             PageViewModels.Add(new MieteinheitListeViewModel());
-            //PageViewModels.Add(new MieteinheitInsertViewModel());
-            //PageViewModels.Add(new MieteinheitUpdateViewModel());
             PageViewModels.Add(new VertragslisteViewModel());
-            //PageViewModels.Add(new VertragInsertViewModel());
-            //PageViewModels.Add(new VertragUpdateViewModel());
             PageViewModels.Add(new KontaktListeViewModel());
-            //PageViewModels.Add(new KontaktInsertViewModel());
-            //PageViewModels.Add(new KontaktUpdateViewModel());
             PageViewModels.Add(new EinnahmenListeViewModel());
-            //PageViewModels.Add(new EinnahmeInsertViewModel());
-            //PageViewModels.Add(new EinnahmeUpdateViewModel());
             PageViewModels.Add(new ForderungListeViewModel());
-            //PageViewModels.Add(new ForderungInsertViewModel());
-            //PageViewModels.Add(new ForderungUpdateViewModel());
             PageViewModels.Add(new ErstattungslisteViewModel());
-            //PageViewModels.Add(new ErstattungInsertViewModel());
-            //PageViewModels.Add(new ErstattungUpdateViewModel());
             PageViewModels.Add(new DokumentenListeViewModel());
-            //PageViewModels.Add(new DokumentInsertViewModel());
-            //PageViewModels.Add(new DokumentUpdateViewModel());
             PageViewModels.Add(new VorlageListeViewModel());
             PageViewModels.Add(new EinstellungenViewModel());
             // Set starting page
@@ -101,7 +86,7 @@ namespace ImmoApp.ViewModel
 
         #region Methods
 
-        private void ChangeViewModel(IPageViewModel viewModel)
+        public void ChangeViewModel(IPageViewModel viewModel)
         {
             if (!PageViewModels.Contains(viewModel))
                 PageViewModels.Add(viewModel);
