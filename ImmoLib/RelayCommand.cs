@@ -25,6 +25,8 @@ namespace ImmoLib
         #endregion // Fields
 
         #region Constructor
+
+        public RelayCommand(Action<object> execute) : this(execute, null){}
         /// <summary>
         /// Creates a new command.
         /// </summary>
