@@ -155,6 +155,7 @@
     <Compile Include="ViewModel\VertragslisteViewModel.cs" />
     <Compile Include="ViewModel\VertragUpdateViewModel.cs" />
     <Compile Include="ViewModel\VorlageListeViewModel.cs" />
+    <Compile Include="View\ButtonMethoden.cs" />
     <Compile Include="View\DokumentenListeView.xaml.cs">
       <DependentUpon>DokumentenListeView.xaml</DependentUpon>
     </Compile>
