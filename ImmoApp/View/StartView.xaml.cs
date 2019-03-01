@@ -45,7 +45,7 @@ namespace ImmoApp.View
         ErstattungUpdateView eruv = new ErstattungUpdateView();
         ErstattungInsertView eriv = new ErstattungInsertView();
         DokumentenListeView dlv = new DokumentenListeView();
-        DokumentUpdateView duv = new DokumentUpdateView();
+        public DokumentUpdateView duv = new DokumentUpdateView();
         DokumentInsertView div = new DokumentInsertView();
         VorlageListeView volv = new VorlageListeView();
         EinstellungenView ev = new EinstellungenView();

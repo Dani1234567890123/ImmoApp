@@ -17,6 +17,7 @@ namespace ImmoApp.ViewModel
 
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+        public DokumentUpdateViewModel duv = new DokumentUpdateViewModel();
 
         #endregion
 

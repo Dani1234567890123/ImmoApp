@@ -31,7 +31,7 @@ namespace ImmoApp.View
 
         private void DokBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            sv.ChangeViewModel(new DokumentUpdateView() as IPageViewModel);
+        
         }
 
         //private void DokNeuButton_Click(object sender, RoutedEventArgs e)
