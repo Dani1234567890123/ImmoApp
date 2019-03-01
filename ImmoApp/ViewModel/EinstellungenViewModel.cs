@@ -1,4 +1,6 @@
-﻿using ImmoLib;
+﻿
+using ImmoLib;
+using ImmoLib.Locator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ImmoApp.ViewModel
 {
+    [LocatorAttribute("Einstellungen")]
     public class EinstellungenViewModel : ObservableObject, IPageViewModel
     {
         public string Name

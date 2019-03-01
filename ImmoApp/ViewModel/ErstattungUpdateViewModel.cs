@@ -1,4 +1,5 @@
 ﻿using ImmoLib;
+using ImmoLib.Locator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace ImmoApp.ViewModel
 {
+    [LocatorAttribute("Erstattungen bearbeiten")]
     public class ErstattungUpdateViewModel : ObservableObject, IPageViewModel
     {
         public string Name
         {
             get
             {
-                return "Erstattunge bearbeiten";
+                return "Erstattungen bearbeiten";
             }
         }
     }
