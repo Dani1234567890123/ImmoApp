@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ImmoApp.View.ButtonMethoden;
 
 namespace ImmoApp.View
 {
@@ -23,6 +24,16 @@ namespace ImmoApp.View
         public ErstattungUpdateView()
         {
             InitializeComponent();
+        }
+
+        private void btnspeichern_Click(object sender, RoutedEventArgs e)
+        {
+            Speichern((Window)this.Parent);
+        }
+
+        private void btnAbbruch_Click(object sender, RoutedEventArgs e)
+        {
+            Abbrechen((Window)this.Parent);
         }
     }
 }

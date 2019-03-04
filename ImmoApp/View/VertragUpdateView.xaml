@@ -139,7 +139,7 @@
 
 			<Label Grid.Row="0" Grid.Column="0" FontSize="16" FontWeight="Bold" Content="Notizen"/>
 			<TextBox x:Name="tbNotiz" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" TextWrapping="Wrap" AcceptsReturn="True" />
-			<Button x:Name="btnNotiz" Grid.Row="0" Grid.Column="5" Content="Zufügen"/>
+			<Button x:Name="btnNotiz" Grid.Row="0" Grid.Column="5" Content="Zufügen" Click="btnNotiz_Click"/>
 			<DataGrid x:Name="dgNotizen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"  Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
 			<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Content="Dokumente" VerticalAlignment="Bottom"/>
@@ -149,25 +149,25 @@
 			<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="5" Grid.Row="2" Content="Sortierung" FontSize="12" HorizontalAlignment="Left"/>
 			<DataGrid x:Name="dgdokument" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
-			<Button x:Name="btnDokAnzeigen" Grid.Row="4" Content="anzeigen"/>
-			<Button x:Name="btnOfD" Grid.Row="4" Grid.Column="2" Content="durchsuchen"/>
+			<Button x:Name="btnDokAnzeigen" Grid.Row="4" Content="anzeigen" Click="btnDokAnzeigen_Click"/>
+			<Button x:Name="btnOfD" Grid.Row="4" Grid.Column="2" Content="durchsuchen" Click="btnOfD_Click"/>
 			<Label x:Name="lblFile" Margin="3,5,3,5" Grid.Column="3" Grid.Row="4" Content="{Binding File}" FontSize="12" HorizontalAlignment="Left"/>
 			<ComboBox x:Name="cmbDokKat" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Right"/>
-			<Button x:Name="btnDokSave" Grid.Row="4" Grid.Column="5" Content="Dok speichern"/>
+			<Button x:Name="btnDokSave" Grid.Row="4" Grid.Column="5" Content="Dok speichern" Click="btnDokSave_Click"/>
 
 			<Label Grid.Row="5" Grid.Column="0" FontSize="16" FontWeight="Bold" Content="Forderungen"/>
 			<CheckBox x:Name="chkFord" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Height="20" Width="20" />
 			<Label Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Content="nur offene Forderungen anzeigen"/>
 			<DataGrid x:Name="dgForderungen" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-			<Button x:Name="btnFordAnzeigen" Grid.Row="7" Content="anzeigen"/>
-			<Button x:Name="btnFordNeu" Grid.Row="7" Grid.Column="1" Content="neue Forderung"/>
+			<Button x:Name="btnFordAnzeigen" Grid.Row="7" Content="anzeigen" Click="btnFordAnzeigen_Click"/>
+			<Button x:Name="btnFordNeu" Grid.Row="7" Grid.Column="1" Content="neue Forderung" Click="btnFordNeu_Click"/>
 
 			<Label Grid.Row="8" Grid.Column="0"  FontSize="16" FontWeight="Bold" Content="Erstattungen" VerticalAlignment="Bottom"/>
 			<CheckBox x:Name="chkErst" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right" Margin="4" Height="20" Width="20" />
 			<Label Grid.Row="8" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Content="nur offene Erstattungen anzeigen"/>
 			<DataGrid x:Name="dgErstattungen" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-			<Button x:Name="btnErstAnzeigen" Grid.Row="10" Content="anzeigen"/>
-			<Button x:Name="btnErstNeu" Grid.Row="10" Grid.Column="1" Content="neue Forderung"/>
+			<Button x:Name="btnErstAnzeigen" Grid.Row="10" Content="anzeigen" Click="btnErstAnzeigen_Click"/>
+			<Button x:Name="btnErstNeu" Grid.Row="10" Grid.Column="1" Content="neue Forderung" Click="btnErstNeu_Click"/>
 
 		</Grid>
 
@@ -176,7 +176,7 @@
 
 		<Image Grid.Row="4" Margin="0,0,0,5" Source="icon\2932348 - agree deal handshake meeting.png" VerticalAlignment="Bottom" ></Image>
 
-		<Button x:Name="btnspeichern" Grid.Column="4" Grid.Row="4" Margin="0,10,4,-27" Content="Speichern" MinHeight="30" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16">
+		<Button x:Name="btnspeichern" Grid.Column="4" Grid.Row="4" Margin="0,10,4,-27" Content="Speichern" MinHeight="30" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" Click="btnspeichern_Click">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>
@@ -184,7 +184,7 @@
 				</LinearGradientBrush>
 			</Button.BorderBrush>
 		</Button>
-		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Margin="4,10,-94,-27" Content="Verwerfen" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16">
+		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Margin="4,10,-94,-27" Content="Verwerfen" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" Click="btnAbbruch_Click">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>

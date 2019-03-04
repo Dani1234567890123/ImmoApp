@@ -178,6 +178,10 @@
 					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Erstattung eingeben" MinWidth="60" Click="ErstattungNeuButton_Click"/>
 					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Erstattung bearbeiten" MinWidth="60" Click="ErstattungBearbButton_Click"/>
 				</RibbonGroup>
+				<RibbonGroup Header="Bankdaten">
+					<RibbonButton LargeImageSource="icon\ec_karte.png" Label="alle Konten" MinWidth="60" Click="KontenButton_Click" />
+					<RibbonButton LargeImageSource="icon\Haus7.png" Label="alle Banken" MinWidth="60" Click="BankenButton_Click"/>
+				</RibbonGroup>
 				<RibbonGroup Header="Tools" HorizontalAlignment="Right">
 					<RibbonButton LargeImageSource="icon\einstelungenBlau.png" Label="Einstellungen" MinWidth="60" Click="ToolsButton_Click"/>
 					<RibbonButton LargeImageSource="icon\226565 - printer.png" Label="Drucken" MinWidth="60" IsEnabled="False"/>

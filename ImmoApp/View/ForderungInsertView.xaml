@@ -43,7 +43,7 @@
 			</Grid.ColumnDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Content="Kategorie"/>
 			<ComboBox  x:Name="cmbKat" Grid.Row="0" Grid.Column="1" />
-			<Button x:Name="btnKatNeu" Grid.Row="0" Grid.Column="2" Content="neue Kategorie"/>
+			<Button x:Name="btnKatNeu" Grid.Row="0" Grid.Column="2" Content="neue Kategorie" Click="btnKatNeu_Click"/>
 
 			<Label Grid.Row="1" Grid.Column="0" Content="Mieter"/>
 			<ComboBox  x:Name="cmbMieter" Grid.Row="1" Grid.Column="1" />
@@ -57,7 +57,7 @@
 
 			<Label Grid.Row="4" Grid.Column="0" Content="Einnahme zuordnen"/>
 			<ComboBox  x:Name="cmbEinn" Grid.Row="4" Grid.Column="1"/>
-			<Button x:Name="btnEinnNeu" Grid.Row="4" Grid.Column="2" Content="neue Einnahme"/>
+			<Button x:Name="btnEinnNeu" Grid.Row="4" Grid.Column="2" Content="neue Einnahme" Click="btnEinnNeu_Click"/>
 
 			<Label Grid.Row="5" Grid.Column="0" Content="zu Mietvertrag"/>
 			<ComboBox x:Name="cmbVertrag" Grid.Row="5" Grid.Column="1" />
@@ -67,7 +67,7 @@
 		<DataGrid x:Name="dgForderungen" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"  Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 		<Image Grid.Row="4" Margin="0,0,0,5" Source="icon\coins.png" VerticalAlignment="Bottom" ></Image>
 
-		<Button x:Name="btnspeichern" Grid.Column="4" Grid.Row="4" Margin="0,10,4,-27" Content="Speichern" MinHeight="30" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" >
+		<Button x:Name="btnspeichern" Grid.Column="4" Grid.Row="4" Margin="0,10,4,-27" Content="Speichern" MinHeight="30" HorizontalAlignment="Right" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" Click="btnspeichern_Click" >
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>
@@ -75,7 +75,7 @@
 				</LinearGradientBrush>
 			</Button.BorderBrush>
 		</Button>
-		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Margin="4,10,-94,-27" Content="Verwerfen" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"   FontSize="16">
+		<Button x:Name="btnAbbruch" Grid.Column="5" Grid.Row="4" Margin="4,10,-94,-27" Content="Verwerfen" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"   FontSize="16" Click="btnAbbruch_Click">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>
@@ -83,7 +83,7 @@
 				</LinearGradientBrush>
 			</Button.BorderBrush>
 		</Button>
-		<Button x:Name="btnFordNeu" Grid.Column="3" Grid.Row="4" Margin="4,10,-94,-27" Content="Weitere Forderung" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"  FontSize="16">
+		<Button x:Name="btnWeitFord" Grid.Column="3" Grid.Row="4" Margin="4,10,-94,-27" Content="Weitere Forderung" MinHeight="30" HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA"  FontSize="16" Click="btnWeitFord_Click">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>

@@ -72,5 +72,10 @@ namespace ImmoApp.View
         {
             Zwischenspeichern("Dokument");
         }
+
+        private void btnNotiz_Click(object sender, RoutedEventArgs e)
+        {
+            Zwischenspeichern("Notiz");
+        }
     }
 }

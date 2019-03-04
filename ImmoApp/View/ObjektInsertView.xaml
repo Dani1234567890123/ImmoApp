@@ -84,7 +84,7 @@
 					<RowDefinition Height="10*"/>
 				</Grid.RowDefinitions>
 				<Label Grid.Row="0" Content="Notiz"/>
-				<Button x:Name="btnNotiz" Grid.Row="1" Content="Zufügen"/>
+				<Button x:Name="btnNotiz" Grid.Row="1" Content="Zufügen" Click="btnNotiz_Click"/>
 			</Grid>
 			<TextBox x:Name="tbNotiz" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True" />
 		</Grid>

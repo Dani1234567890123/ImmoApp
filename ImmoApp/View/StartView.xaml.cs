@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static ImmoApp.View.ButtonMethoden;
 
 namespace ImmoApp.View
 {
@@ -49,6 +50,13 @@ namespace ImmoApp.View
         DokumentInsertView div = new DokumentInsertView();
         VorlageListeView volv = new VorlageListeView();
         EinstellungenView ev = new EinstellungenView();
+        BankListeView blv = new BankListeView();
+        BankInsertView biv = new BankInsertView();
+        BankUpdateView buv = new BankUpdateView();
+        KontenListeView ktolv = new KontenListeView();
+        KontoInsertView ktoiv = new KontoInsertView();
+        KontoUpdateView ktouv = new KontoUpdateView();
+        LeerstandView lv = new LeerstandView();
 
         List<UserControl> PageList = new List<UserControl>();
 
@@ -83,8 +91,13 @@ namespace ImmoApp.View
             PageList.Add(div);
             PageList.Add(volv);
             PageList.Add(ev);
-
-
+            PageList.Add(blv);
+            PageList.Add(biv);
+            PageList.Add(buv);
+            PageList.Add(ktolv);
+            PageList.Add(ktolv);
+            PageList.Add(ktolv);
+            PageList.Add(lv);
         }
 
 
@@ -100,7 +113,7 @@ namespace ImmoApp.View
 
         private void ObjektNeuRibbonButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = oiv;
+            Neu(new ObjektInsertView(), "Neues Objekt");
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -110,7 +123,7 @@ namespace ImmoApp.View
 
         private void ObjektBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = ouv;
+            Neu(new ObjektUpdateView(), "Objekt Bearbeiten");
         }
 
         private void EinheitenButton_Click(object sender, RoutedEventArgs e)
@@ -120,17 +133,17 @@ namespace ImmoApp.View
 
         private void EinheitNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = miv;
+            Neu(new MieteinheitInsertView(), "Neue Mieteinheit");
         }
 
         private void EinheitBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = muv;
+            Neu(new MieteinheitUpdateView(), "Mieteinheit Bearbeiten");
         }
 
         private void VertragNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = viv;
+            Neu(new VertragInsertView(), "neuer Vertrag");
         }
 
         private void VerträgeButton_Click(object sender, RoutedEventArgs e)
@@ -140,12 +153,12 @@ namespace ImmoApp.View
 
         private void VertragBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = vuv;
+            Neu(new VertragUpdateView(), "Vertrag Bearbeiten");
         }
 
         private void ToolsButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = ev;
+            Neu(new EinstellungenView(), "Kategorien zufügen");
         }
 
         private void KontakteButton_Click(object sender, RoutedEventArgs e)
@@ -155,12 +168,12 @@ namespace ImmoApp.View
 
         private void KontaktNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = kiv;
+            Neu(new KontaktInsertView(), "Neuer Kontakt");
         }
 
         private void KontaktBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = kuv;
+            Neu(new KontaktUpdateView(), "Kontakt Bearbeiten");
         }
 
         private void EinnahmenButton_Click(object sender, RoutedEventArgs e)
@@ -170,12 +183,12 @@ namespace ImmoApp.View
 
         private void EinnahmeNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = eiv;
+            Neu(new EinnahmeInsertView(), "neue Einnahme buchen");
         }
 
         private void EinnahmeBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = euv;
+            Neu(new EinnahmeUpdateView(), "Einnahme bearbeiten");
         }
 
         private void ForderungenButton_Click(object sender, RoutedEventArgs e)
@@ -185,12 +198,12 @@ namespace ImmoApp.View
 
         private void ForderungNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = fiv;
+            Neu(new ForderungInsertView(), "Neue Forderung");
         }
 
         private void ForderungBearbButon_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = fuv;
+            Neu(new ForderungUpdateView(), "Forderung bearbeiten");
         }
 
         private void ErstattungenButton_Click(object sender, RoutedEventArgs e)
@@ -200,12 +213,12 @@ namespace ImmoApp.View
 
         private void ErstattungNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = eriv;
+            Neu(new ErstattungInsertView(), "Neue Erstattung");
         }
 
         private void ErstattungBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = eruv;
+            Neu(new ErstattungUpdateView(), "Erstatung bearbeiten");
         }
 
         private void DokumenteButton_Click(object sender, RoutedEventArgs e)
@@ -215,17 +228,27 @@ namespace ImmoApp.View
 
         private void DokNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = div;
+            Neu(new DokumentInsertView(), "Neues Dokument speichern");
         }
 
         private void DokBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            navFrame.NavigationService.Content = duv;
+            Neu(new DokumentUpdateView(), "Dokument bearbeiten");
         }
 
         private void VorlagenButton_Click(object sender, RoutedEventArgs e)
         {
             navFrame.NavigationService.Content = volv;
+        }
+
+        private void BankenButton_Click(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = blv;
+        }
+
+        private void KontenButton_Click(object sender, RoutedEventArgs e)
+        {
+            navFrame.NavigationService.Content = ktolv;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,14 @@ namespace ImmoApp.View
             Window win = new Window();
             win = window;
             MessageBoxResult result = MessageBox.Show("Sind Sie sicher? Alle Eingaben werden gelöscht", "Abbrechen", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
-            if (result == MessageBoxResult.No)
-                return;
-            else
-                win.Close();
+          
+                if (result == MessageBoxResult.No)
+                    return;
+                else
+                { MessageBox.Show("Daten wurden gelöscht");
+                    win.Close();
+                }
+         
         }
 
         public static void Speichern(Window window)
@@ -26,10 +31,12 @@ namespace ImmoApp.View
             Window win = new Window();
             win = window;
             MessageBoxResult result = MessageBox.Show("Sind alle Eingabe korrekt?", "Speichern", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
-            if (result == MessageBoxResult.No)
-                return;
-            else
-                win.Close();
+           
+                if (result == MessageBoxResult.No)
+                    return;
+                else
+                    MessageBox.Show("Daten wurden in der Db gespeichert");
+                    win.Close();
         }
 
         public static void Zwischenspeichern(string propName)

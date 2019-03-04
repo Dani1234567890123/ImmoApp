@@ -46,9 +46,11 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -155,6 +157,15 @@
     <Compile Include="ViewModel\VertragslisteViewModel.cs" />
     <Compile Include="ViewModel\VertragUpdateViewModel.cs" />
     <Compile Include="ViewModel\VorlageListeViewModel.cs" />
+    <Compile Include="View\BankInsertView.xaml.cs">
+      <DependentUpon>BankInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BankListeView.xaml.cs">
+      <DependentUpon>BankListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BankUpdateView.xaml.cs">
+      <DependentUpon>BankUpdateView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ButtonMethoden.cs" />
     <Compile Include="View\DokumentenListeView.xaml.cs">
       <DependentUpon>DokumentenListeView.xaml</DependentUpon>
@@ -208,6 +219,18 @@
       <DependentUpon>KontaktUpdateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\KontaktUpdateViewModel.cs" />
+    <Compile Include="View\KontenListeView.xaml.cs">
+      <DependentUpon>KontenListeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KontoInsertView.xaml.cs">
+      <DependentUpon>KontoInsertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KontoUpdateView.xaml.cs">
+      <DependentUpon>KontoUpdateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LeerstandView.xaml.cs">
+      <DependentUpon>LeerstandView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MieteinheitInsertView.xaml.cs">
       <DependentUpon>MieteinheitInsertView.xaml</DependentUpon>
     </Compile>
@@ -361,6 +384,8 @@
       <DependentUpon>ImmoModel.edmx</DependentUpon>
       <LastGenOutput>ImmoModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="View\icon\ec_karte.png" />
+    <Resource Include="View\icon\Haus7.png" />
     <Resource Include="View\icon\2932350 - clipboard copy notes paper report survey.png" />
     <Resource Include="View\icon\einstelungenBlau.png" />
     <Resource Include="View\icon\2932347 - building estate home house.png" />
@@ -428,6 +453,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\BankInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BankListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BankUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DokumentenListeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -489,6 +526,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\KontaktUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontenListeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontoInsertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\KontoUpdateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LeerstandView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

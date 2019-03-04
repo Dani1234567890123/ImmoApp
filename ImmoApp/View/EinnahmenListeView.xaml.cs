@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ImmoApp.View.ButtonMethoden;
 
 namespace ImmoApp.View
 {
@@ -23,6 +24,16 @@ namespace ImmoApp.View
         public EinnahmenListeView()
         {
             InitializeComponent();
+        }
+
+        private void btnAuswahl_Click(object sender, RoutedEventArgs e)
+        {
+            Bearbeiten(new EinnahmeUpdateView(), "Einnahme bearbeiten");
+        }
+
+        private void btnNeu_Click(object sender, RoutedEventArgs e)
+        {
+            Neu(new EinnahmeInsertView(), "neue Einnahme buchen");
         }
     }
 }

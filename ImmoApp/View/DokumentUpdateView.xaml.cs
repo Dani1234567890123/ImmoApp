@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ImmoApp.View.ButtonMethoden;
 
 namespace ImmoApp.View
 {
@@ -23,6 +25,25 @@ namespace ImmoApp.View
         public DokumentUpdateView()
         {
             InitializeComponent();
+        }
+
+        private void btnDokÄndern_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == true)
+            {
+                lblDatei.Content = ofd.FileName;
+            }
+        }
+
+        private void btnspeichern_Click(object sender, RoutedEventArgs e)
+        {
+            Speichern((Window)this.Parent);
+        }
+
+        private void btnAbbruch_Click(object sender, RoutedEventArgs e)
+        {
+            Abbrechen((Window)this.Parent);
         }
     }
 }

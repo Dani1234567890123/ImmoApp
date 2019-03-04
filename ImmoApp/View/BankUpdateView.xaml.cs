@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,25 +17,14 @@ using static ImmoApp.View.ButtonMethoden;
 namespace ImmoApp.View
 {
     /// <summary>
-    /// Interaktionslogik für DokumentInsertView.xaml
+    /// Interaktionslogik für BankUpdateView.xaml
     /// </summary>
-    public partial class DokumentInsertView : UserControl
+    public partial class BankUpdateView : UserControl
     {
-        public DokumentInsertView()
+        public BankUpdateView()
         {
             InitializeComponent();
         }
-
-        private void btnDokÄndern_Click(object sender, RoutedEventArgs e)
-      
-            {
-                OpenFileDialog ofd = new OpenFileDialog();
-                if (ofd.ShowDialog() == true)
-                {
-                    lblDatei.Content = ofd.FileName;
-                }
-            }
-      
 
         private void btnspeichern_Click(object sender, RoutedEventArgs e)
         {
@@ -46,11 +34,6 @@ namespace ImmoApp.View
         private void btnAbbruch_Click(object sender, RoutedEventArgs e)
         {
             Abbrechen((Window)this.Parent);
-        }
-
-        private void btnDokNeu_Click(object sender, RoutedEventArgs e)
-        {
-            Zwischenspeichern("Dokument");
         }
     }
 }

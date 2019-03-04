@@ -32,7 +32,7 @@
 		<Image Grid.Row="2" Margin="0,0,0,5" Source="icon\2932350 - clipboard copy notes paper report survey.png" VerticalAlignment="Bottom" ></Image>
 
 		
-		<Button x:Name="btnÖffnen" Grid.Column="5" Grid.Row="2" Margin="4,10,3,10" Content="Vorlage öffnen" MinHeight="30"  HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16">
+		<Button x:Name="btnÖffnen" Grid.Column="5" Grid.Row="2" Margin="4,10,3,10" Content="Vorlage öffnen" MinHeight="30"  HorizontalAlignment="Left" Background="#FF416FC1" Foreground="#FFFBFAFA" FontSize="16" Click="btnÖffnen_Click">
 			<Button.BorderBrush>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="Black" Offset="0"/>

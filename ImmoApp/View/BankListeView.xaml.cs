@@ -17,18 +17,23 @@ using static ImmoApp.View.ButtonMethoden;
 namespace ImmoApp.View
 {
     /// <summary>
-    /// Interaktionslogik für VorlageListeView.xaml
+    /// Interaktionslogik für BankListeView.xaml
     /// </summary>
-    public partial class VorlageListeView : UserControl
+    public partial class BankListeView : UserControl
     {
-        public VorlageListeView()
+        public BankListeView()
         {
             InitializeComponent();
         }
 
-        private void btnÖffnen_Click(object sender, RoutedEventArgs e)
+        private void btnAuswahl_Click(object sender, RoutedEventArgs e)
         {
-            DokÖffnen();
+            Bearbeiten(new BankUpdateView(), "Kreditinstitut bearbeiten");
+        }
+
+        private void btnNeu_Click(object sender, RoutedEventArgs e)
+        {
+            Neu(new BankInsertView(), "Neues Kreditinstitut");
         }
     }
 }

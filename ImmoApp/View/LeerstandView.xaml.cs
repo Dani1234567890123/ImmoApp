@@ -17,18 +17,28 @@ using static ImmoApp.View.ButtonMethoden;
 namespace ImmoApp.View
 {
     /// <summary>
-    /// Interaktionslogik für VorlageListeView.xaml
+    /// Interaktionslogik für LeerstandView.xaml
     /// </summary>
-    public partial class VorlageListeView : UserControl
+    public partial class LeerstandView : UserControl
     {
-        public VorlageListeView()
+        public LeerstandView()
         {
             InitializeComponent();
         }
 
-        private void btnÖffnen_Click(object sender, RoutedEventArgs e)
+        private void btnWeitLeerstand_Click(object sender, RoutedEventArgs e)
         {
-            DokÖffnen();
+            Zwischenspeichern("Leerstand");
+        }
+
+        private void btnAbbruch_Click(object sender, RoutedEventArgs e)
+        {
+            Abbrechen((Window)this.Parent);
+        }
+
+        private void btnspeichern_Click(object sender, RoutedEventArgs e)
+        {
+            Speichern((Window)this.Parent);
         }
     }
 }
