@@ -273,6 +273,9 @@
     <Compile Include="View\VorlageListeView.xaml.cs">
       <DependentUpon>VorlageListeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vwDokumente.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="vwEinheitDokumente.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
@@ -282,7 +285,13 @@
     <Compile Include="vwEinnahman.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="vwKontaktDokumente.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="vwKontakte.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwKontaktNotiz.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwMieteinheiten.cs">
@@ -292,6 +301,9 @@
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwObjekte.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwObjektEinheiten.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwObjektNotiz.cs">

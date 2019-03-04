@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="immoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="immoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="anrede">
           <Key>
             <PropertyRef Name="text" />
@@ -260,19 +260,21 @@
           <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategorie" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwDokumente' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+       
         <EntityType Name="vwDokumente">
-          <Property Name="Datum" Type="date" />
+          <Key>
+            <PropertyRef Name="dokID" />
+          </Key>
+          <Property Name="datum" Type="date" />
           <Property Name="Art" Type="nvarchar" MaxLength="25" />
-          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="titel" Type="nvarchar" MaxLength="50" />
           <Property Name="zu Vertagsnr" Type="int" />
           <Property Name="zu Person" Type="nvarchar" MaxLength="101" />
           <Property Name="zu Objekt" Type="nvarchar" MaxLength="50" />
           <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+          <Property Name="dokID" Type="int" Nullable="false" />
+        </EntityType>
+      
         <EntityType Name="vwEinheitDokumente">
           <Key>
             <PropertyRef Name="MieteinheitNr" />
@@ -283,8 +285,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitDokumente' ist kein Primärs
           <Property Name="MieteinheitNr" Type="int" Nullable="false" />
           <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+   
         <EntityType Name="vwEinheitNotiz">
           <Key>
             <PropertyRef Name="Nr" />
@@ -294,8 +295,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitNotiz' ist kein Primärschl�
           <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
           <Property Name="Nr" Type="int" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinnahmen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+     
         <EntityType Name="vwEinnahmen">
           <Key>
             <PropertyRef Name="Nr" />
@@ -309,16 +309,18 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinnahmen' ist kein Primärschlüss
           <Property Name="Einnahmebetrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
           <Property Name="Eingangsdatum" Type="date" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwKontaktDokumente' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+      
         <EntityType Name="vwKontaktDokumente">
-          <Property Name="Datum" Type="date" />
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="datum" Type="date" />
           <Property Name="Art" Type="nvarchar" MaxLength="25" />
-          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="titel" Type="nvarchar" MaxLength="50" />
           <Property Name="zu Person" Type="nvarchar" MaxLength="101" />
-        </EntityType>-->
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontakte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+     
         <EntityType Name="vwKontakte">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -341,16 +343,18 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontakte' ist kein Primärschlüsse
           <Property Name="BIC" Type="nvarchar" MaxLength="11" />
           <Property Name="Kreditinstitut" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwKontaktNotiz' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+     
         <EntityType Name="vwKontaktNotiz">
-          <Property Name="Datum" Type="date" />
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="datum" Type="date" />
           <Property Name="Notiz" Type="nvarchar" MaxLength="400" />
           <Property Name="Person" Type="nvarchar" MaxLength="101" />
-          <Property Name="Firma" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwMieteinheiten' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+          <Property Name="firma" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+     
         <EntityType Name="vwMieteinheiten">
           <Key>
             <PropertyRef Name="NR" />
@@ -369,8 +373,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwMieteinheiten' ist kein Primärschl
           <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
           <Property Name="Aktiv" Type="bit" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+     
         <EntityType Name="vwObjektDokumente">
           <Key>
             <PropertyRef Name="Objektnr" />
@@ -381,8 +384,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektDokumente' ist kein Primärsc
           <Property Name="Objektnr" Type="int" Nullable="false" />
           <Property Name="Objektbezeichnung" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjekte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+     
         <EntityType Name="vwObjekte">
           <Key>
             <PropertyRef Name="Objektnummer" />
@@ -400,17 +402,19 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjekte' ist kein Primärschlüssel
           <Property Name="Gaszähler" Type="nvarchar" MaxLength="40" />
           <Property Name="Baujahr" Type="int" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6013: Für Tabelle/Sicht 'immo.dbo.vwObjektEinheiten' ist kein Primärschlüssel definiert, und es konnte kein gültiger Primärschlüssel abgeleitet werden. Diese Tabelle/Sicht wurde ausgeschlossen. Wenn Sie die Entität verwenden möchten, müssen Sie das Schema überprüfen, die richtigen Schlüssel hinzufügen und die Auskommentierung aufheben.
+    
         <EntityType Name="vwObjektEinheiten">
+          <Key>
+            <PropertyRef Name="objektID" />
+          </Key>
           <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
           <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
           <Property Name="Lage" Type="nvarchar" MaxLength="21" />
           <Property Name="akt. Mieter" Type="nvarchar" MaxLength="101" />
           <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
-        </EntityType>-->
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+          <Property Name="objektID" Type="int" Nullable="false" />
+        </EntityType>
+      
         <EntityType Name="vwObjektNotiz">
           <Key>
             <PropertyRef Name="ObjektNr" />
@@ -420,8 +424,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektNotiz' ist kein Primärschlü
           <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
           <Property Name="ObjektNr" Type="int" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonBankverbindung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+     
         <EntityType Name="vwPersonBankverbindung">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -439,8 +442,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonBankverbindung' ist kein Prim
           <Property Name="Land" Type="nvarchar" MaxLength="5" />
           <Property Name="Ansprechpartner" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenErstattungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+      
         <EntityType Name="vwPersonenErstattungen">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -457,8 +459,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenErstattungen' ist kein Prim
           <Property Name="Erstattet am" Type="date" />
           <Property Name="erledigt" Type="bit" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenForderungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+       
         <EntityType Name="vwPersonenForderungen">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -473,8 +474,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenForderungen' ist kein Prim�
           <Property Name="Beglichen am" Type="date" />
           <Property Name="offen" Type="bit" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+       
         <EntityType Name="vwVertragDokumente">
           <Key>
             <PropertyRef Name="zu Vertagsnr" />
@@ -484,8 +484,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragDokumente' ist kein Primärs
           <Property Name="Titel" Type="nvarchar" MaxLength="50" />
           <Property Name="zu Vertagsnr" Type="int" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträge' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+     
         <EntityType Name="vwVerträge">
           <Key>
             <PropertyRef Name="Vertragsnr" />
@@ -500,8 +499,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträge' ist kein Primärschlüss
           <Property Name="Ende" Type="date" />
           <Property Name="Aktiv" Type="bit" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträgeUndLeerstände' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+      
         <EntityType Name="vwVerträgeUndLeerstände">
           <Key>
             <PropertyRef Name="MiteinheitNr" />
@@ -513,8 +511,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträgeUndLeerstände' ist kein P
           <Property Name="Vertragsende" Type="date" />
           <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        
         <EntityType Name="vwVertragNotiz">
           <Key>
             <PropertyRef Name="zuMietvertrag" />
@@ -524,8 +521,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragNotiz' ist kein Primärschl�
           <Property Name="zuMietvertrag" Type="int" Nullable="false" />
           <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+      
         <EntityType Name="vwVertragsforderung">
           <Key>
             <PropertyRef Name="Vertragsnr" />
@@ -944,6 +940,18 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
           <EntitySet Name="vertragsforderungen" EntityType="Self.vertragsforderungen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wohneinheitMiete" EntityType="Self.wohneinheitMiete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zahlungskategorie" EntityType="Self.zahlungskategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwDokumente" EntityType="Self.vwDokumente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwDokumente].[datum] AS [datum], 
+    [vwDokumente].[Art] AS [Art], 
+    [vwDokumente].[titel] AS [titel], 
+    [vwDokumente].[zu Vertagsnr] AS [zu Vertagsnr], 
+    [vwDokumente].[zu Person] AS [zu Person], 
+    [vwDokumente].[zu Objekt] AS [zu Objekt], 
+    [vwDokumente].[zu Mieteinheit] AS [zu Mieteinheit], 
+    [vwDokumente].[dokID] AS [dokID]
+    FROM [dbo].[vwDokumente] AS [vwDokumente]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwEinheitDokumente" EntityType="Self.vwEinheitDokumente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwEinheitDokumente].[Datum] AS [Datum], 
@@ -970,6 +978,15 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
     [vwEinnahmen].[Eingangsdatum] AS [Eingangsdatum]
     FROM [dbo].[vwEinnahmen] AS [vwEinnahmen]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwKontaktDokumente" EntityType="Self.vwKontaktDokumente" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwKontaktDokumente].[datum] AS [datum], 
+    [vwKontaktDokumente].[Art] AS [Art], 
+    [vwKontaktDokumente].[titel] AS [titel], 
+    [vwKontaktDokumente].[zu Person] AS [zu Person], 
+    [vwKontaktDokumente].[id] AS [id]
+    FROM [dbo].[vwKontaktDokumente] AS [vwKontaktDokumente]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwKontakte" EntityType="Self.vwKontakte" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwKontakte].[KontaktID] AS [KontaktID], 
@@ -990,6 +1007,15 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
     [vwKontakte].[BIC] AS [BIC], 
     [vwKontakte].[Kreditinstitut] AS [Kreditinstitut]
     FROM [dbo].[vwKontakte] AS [vwKontakte]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwKontaktNotiz" EntityType="Self.vwKontaktNotiz" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwKontaktNotiz].[datum] AS [datum], 
+    [vwKontaktNotiz].[Notiz] AS [Notiz], 
+    [vwKontaktNotiz].[Person] AS [Person], 
+    [vwKontaktNotiz].[firma] AS [firma], 
+    [vwKontaktNotiz].[id] AS [id]
+    FROM [dbo].[vwKontaktNotiz] AS [vwKontaktNotiz]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwMieteinheiten" EntityType="Self.vwMieteinheiten" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1030,6 +1056,16 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
     [vwObjekte].[Gaszähler] AS [Gaszähler], 
     [vwObjekte].[Baujahr] AS [Baujahr]
     FROM [dbo].[vwObjekte] AS [vwObjekte]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwObjektEinheiten" EntityType="Self.vwObjektEinheiten" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwObjektEinheiten].[Objekt] AS [Objekt], 
+    [vwObjektEinheiten].[Mieteinheit] AS [Mieteinheit], 
+    [vwObjektEinheiten].[Lage] AS [Lage], 
+    [vwObjektEinheiten].[akt. Mieter] AS [akt. Mieter], 
+    [vwObjektEinheiten].[Bruttomiete] AS [Bruttomiete], 
+    [vwObjektEinheiten].[objektID] AS [objektID]
+    FROM [dbo].[vwObjektEinheiten] AS [vwObjektEinheiten]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwObjektNotiz" EntityType="Self.vwObjektNotiz" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1253,8 +1289,7 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
             <End Role="vertragsforderungen" EntitySet="vertragsforderungen" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="immoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2296,7 +2331,55 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
             <End Role="forderung" EntitySet="forderungs" />
             <End Role="mietvertrag" EntitySet="mietvertrags" />
           </AssociationSet>
+          <EntitySet Name="vwDokumentes" EntityType="immoModel.vwDokumente" />
+          <EntitySet Name="vwKontaktDokumentes" EntityType="immoModel.vwKontaktDokumente" />
+          <EntitySet Name="vwKontaktNotizs" EntityType="immoModel.vwKontaktNotiz" />
+          <EntitySet Name="vwObjektEinheitens" EntityType="immoModel.vwObjektEinheiten" />
         </EntityContainer>
+        <EntityType Name="vwDokumente">
+          <Key>
+            <PropertyRef Name="dokID" />
+          </Key>
+          <Property Name="datum" Type="DateTime" Precision="0" />
+          <Property Name="Art" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zu_Vertagsnr" Type="Int32" />
+          <Property Name="zu_Person" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="zu_Objekt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zu_Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dokID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwKontaktDokumente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="datum" Type="DateTime" Precision="0" />
+          <Property Name="Art" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="zu_Person" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwKontaktNotiz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="datum" Type="DateTime" Precision="0" />
+          <Property Name="Notiz" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Person" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="firma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwObjektEinheiten">
+          <Key>
+            <PropertyRef Name="objektID" />
+          </Key>
+          <Property Name="Objekt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lage" Type="String" MaxLength="21" FixedLength="false" Unicode="true" />
+          <Property Name="akt__Mieter" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Bruttomiete" Type="Decimal" Precision="21" Scale="3" />
+          <Property Name="objektID" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2795,6 +2878,54 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primär
               <ScalarProperty Name="vertragsnr" ColumnName="zuMietvertrag" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="vwDokumentes">
+            <EntityTypeMapping TypeName="immoModel.vwDokumente">
+              <MappingFragment StoreEntitySet="vwDokumente">
+                <ScalarProperty Name="dokID" ColumnName="dokID" />
+                <ScalarProperty Name="zu_Mieteinheit" ColumnName="zu Mieteinheit" />
+                <ScalarProperty Name="zu_Objekt" ColumnName="zu Objekt" />
+                <ScalarProperty Name="zu_Person" ColumnName="zu Person" />
+                <ScalarProperty Name="zu_Vertagsnr" ColumnName="zu Vertagsnr" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwKontaktDokumentes">
+            <EntityTypeMapping TypeName="immoModel.vwKontaktDokumente">
+              <MappingFragment StoreEntitySet="vwKontaktDokumente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="zu_Person" ColumnName="zu Person" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="Art" ColumnName="Art" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwKontaktNotizs">
+            <EntityTypeMapping TypeName="immoModel.vwKontaktNotiz">
+              <MappingFragment StoreEntitySet="vwKontaktNotiz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firma" ColumnName="firma" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="Notiz" ColumnName="Notiz" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwObjektEinheitens">
+            <EntityTypeMapping TypeName="immoModel.vwObjektEinheiten">
+              <MappingFragment StoreEntitySet="vwObjektEinheiten">
+                <ScalarProperty Name="objektID" ColumnName="objektID" />
+                <ScalarProperty Name="Bruttomiete" ColumnName="Bruttomiete" />
+                <ScalarProperty Name="akt__Mieter" ColumnName="akt. Mieter" />
+                <ScalarProperty Name="Lage" ColumnName="Lage" />
+                <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
+                <ScalarProperty Name="Objekt" ColumnName="Objekt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

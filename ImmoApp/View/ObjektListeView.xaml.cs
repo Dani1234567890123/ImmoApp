@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace ImmoApp.View
         public ObjektListeView()
         {
             InitializeComponent();
+            ObjektListeViewModel olvm = new ObjektListeViewModel();
+            this.DataContext = olvm;
         }
 
         private void ObjBearbButton_Click(object sender, RoutedEventArgs e)
@@ -34,6 +37,11 @@ namespace ImmoApp.View
         private void ObjNeuButton_Click(object sender, RoutedEventArgs e)
         {
             Neu(new ObjektInsertView(), "Neues Objekt");
+        }
+
+        private void cmbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -73,6 +73,10 @@
         <AssociationConnector Association="immoModel.FK_notiz_vertrag" ManuallyRouted="false" />
         <AssociationConnector Association="immoModel.FK_notiz_objekt" ManuallyRouted="false" />
         <AssociationConnector Association="immoModel.vertragsforderungen" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="immoModel.vwDokumente" Width="1.5" PointX="8.375" PointY="11.75" />
+        <EntityTypeShape EntityType="immoModel.vwKontaktDokumente" Width="1.5" PointX="11.375" PointY="10.75" />
+        <EntityTypeShape EntityType="immoModel.vwKontaktNotiz" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="immoModel.vwObjektEinheiten" Width="1.5" PointX="13.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
