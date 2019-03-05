@@ -11,9 +11,6 @@ namespace ImmoApp.ViewModel
     [LocatorAttribute("Objekte")]
     public class ObjektListeViewModel : ObservableObject, IPageViewModel
     {
-        private List<vwObjekte> _objektListe = new List<vwObjekte>();
-        private string _sortKrit;
-
         public string Name
         {
             get
@@ -21,53 +18,55 @@ namespace ImmoApp.ViewModel
                 return "Objekte";
             }
         }
+
+        private List<vwObjekte> _objektListe = new List<vwObjekte>();
+        public List<vwObjekte> ObjektListe
+        {
+            get { return _objektListe; }
+            private set { OnPropertyChanged("ObjektListe"); }
+        }
+        private string _sortKrit;
         public string SortKrit
         {
             get { return _sortKrit; }
             set
             {
                 _sortKrit = value;
-                OnPropertyChanged("SortKrit"); 
+                OnPropertyChanged("SortKrit");
             }
         }
-        public List<vwObjekte> ObjektListe
+        private List<string> _cmbSort = new List<string>();
+        public List<string> CmbSort
         {
-            get { return _objektListe; }
-            private set { }
+            get { return _cmbSort; }
+            private set
+            { OnPropertyChanged("CmbSort"); }
         }
-
-        public List<string> cmbSort { get; private set; }
-
-
-
-        public ObjektListeViewModel()
-        {
-            cmbSort = SortierkriterienListeFüllen();
-            _objektListe = GetObjekte();
-            
-            SortKrit = "Objektnummer";
-
-        }
-
         public List<string> SortierkriterienListeFüllen()
         {
-            cmbSort = new List<string>();
-            cmbSort.Add("Objektnummer");
-            cmbSort.Add("Straße");
-            cmbSort.Add("Ort");
-            cmbSort.Add("Vermieter");
-            cmbSort.Add("Baujahr");
-            return cmbSort;
+            CmbSort = new List<string>();
+            CmbSort.Add("Objektnummer");
+            CmbSort.Add("Straße");
+            CmbSort.Add("Ort");
+            CmbSort.Add("Vermieter");
+            CmbSort.Add("Baujahr");
+            return CmbSort;
         }
-
         public static List<vwObjekte> GetObjekte()
         {
             using (immoEntities context = new immoEntities())
             {
                 var query = context.vwObjektes.ToList();
                 return query;
-
             }
+        }
+        public ObjektListeViewModel()
+        {
+            CmbSort = SortierkriterienListeFüllen();
+            _objektListe = GetObjekte();
+
+            SortKrit = "Objektnummer";
         }
     }
 }
+

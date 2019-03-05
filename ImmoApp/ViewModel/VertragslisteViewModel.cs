@@ -19,5 +19,58 @@ namespace ImmoApp.ViewModel
             }
         }
 
+
+        private List<vwVerträge> _vertragsListe = new List<vwVerträge>();
+        public List<vwVerträge> VertragsListe
+        {
+            get { return _vertragsListe; }
+            private set { OnPropertyChanged("VertragsListe"); }
+        }
+        private string _sortKrit;
+        public string SortKrit
+        {
+            get { return _sortKrit; }
+            set
+            {
+                _sortKrit = value;
+                OnPropertyChanged("SortKrit");
+            }
+        }
+        private List<string> _cmbSort = new List<string>();
+        public List<string> CmbSort
+        {
+            get { return _cmbSort; }
+            private set
+            { OnPropertyChanged("CmbSort"); }
+        }
+        public List<string> SortierkriterienListeFüllen()
+        {
+            CmbSort = new List<string>();
+            CmbSort.Add("Vertragsnr");
+            CmbSort.Add("Objekt");
+            CmbSort.Add("Mieteinheit");
+            CmbSort.Add("Mieter");
+            CmbSort.Add("Vermieter");
+            CmbSort.Add("Beginn");
+            CmbSort.Add("Ende");
+            CmbSort.Add("Aktiv");
+            CmbSort.Add("Beendet");
+            return CmbSort;
+        }
+        public static List<vwVerträge> GetVerträge()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var query = context.vwVerträge.ToList();
+                return query;
+            }
+        }
+        public VertragslisteViewModel()
+        {
+            CmbSort = SortierkriterienListeFüllen();
+            _vertragsListe = GetVerträge();
+
+            SortKrit = "Vertragsnr";
+        }
     }
 }

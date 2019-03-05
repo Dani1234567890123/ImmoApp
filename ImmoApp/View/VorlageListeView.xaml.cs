@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace ImmoApp.View
         public VorlageListeView()
         {
             InitializeComponent();
+            VorlageListeViewModel vlvm = new VorlageListeViewModel();
+            this.DataContext = vlvm;
         }
 
         private void btnÖffnen_Click(object sender, RoutedEventArgs e)

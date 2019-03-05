@@ -22,82 +22,36 @@ namespace ImmoApp.View
     /// </summary>
     public partial class StartView : RibbonWindow
     {
-
         StartPage sp = new StartPage();
         ObjektListeView olv = new ObjektListeView();
-        ObjektUpdateView ouv = new ObjektUpdateView();
-        ObjektInsertView oiv = new ObjektInsertView();
         MieteinheitListeView mlv = new MieteinheitListeView();
-        MieteinheitUpdateView muv = new MieteinheitUpdateView();
-        MieteinheitInsertView miv = new MieteinheitInsertView();
         VertragslisteView vlv = new VertragslisteView();
-        VertragUpdateView vuv = new VertragUpdateView();
-        VertragInsertView viv = new VertragInsertView();
         KontaktListeView klv = new KontaktListeView();
-        KontaktUpdateView kuv = new KontaktUpdateView();
-        KontaktInsertView kiv = new KontaktInsertView();
         EinnahmenListeView elv = new EinnahmenListeView();
-        EinnahmeUpdateView euv = new EinnahmeUpdateView();
-        EinnahmeInsertView eiv = new EinnahmeInsertView();
         ForderungListeView flv = new ForderungListeView();
-        ForderungUpdateView fuv = new ForderungUpdateView();
-        ForderungInsertView fiv = new ForderungInsertView();
         ErstattungsListeView erlv = new ErstattungsListeView();
-        ErstattungUpdateView eruv = new ErstattungUpdateView();
-        ErstattungInsertView eriv = new ErstattungInsertView();
         DokumentenListeView dlv = new DokumentenListeView();
-        public DokumentUpdateView duv = new DokumentUpdateView();
-        DokumentInsertView div = new DokumentInsertView();
         VorlageListeView volv = new VorlageListeView();
         EinstellungenView ev = new EinstellungenView();
         BankListeView blv = new BankListeView();
-        BankInsertView biv = new BankInsertView();
-        BankUpdateView buv = new BankUpdateView();
         KontenListeView ktolv = new KontenListeView();
-        KontoInsertView ktoiv = new KontoInsertView();
-        KontoUpdateView ktouv = new KontoUpdateView();
-        LeerstandView lv = new LeerstandView();
-
         List<UserControl> PageList = new List<UserControl>();
 
         public StartView()
         {
             InitializeComponent();
-            //navFrame.NavigationService.Content = sp;
-
-
             PageList.Add(olv);
-            PageList.Add(ouv);
             PageList.Add(mlv);
-            PageList.Add(muv);
-            PageList.Add(miv);
             PageList.Add(vlv);
-            PageList.Add(vuv);
-            PageList.Add(viv);
             PageList.Add(klv);
-            PageList.Add(kuv);
-            PageList.Add(kiv);
             PageList.Add(elv);
-            PageList.Add(euv);
-            PageList.Add(eiv);
             PageList.Add(flv);
-            PageList.Add(fuv);
-            PageList.Add(fiv);
             PageList.Add(erlv);
-            PageList.Add(eruv);
-            PageList.Add(eriv);
             PageList.Add(dlv);
-            PageList.Add(duv);
-            PageList.Add(div);
             PageList.Add(volv);
             PageList.Add(ev);
             PageList.Add(blv);
-            PageList.Add(biv);
-            PageList.Add(buv);
             PageList.Add(ktolv);
-            PageList.Add(ktolv);
-            PageList.Add(ktolv);
-            PageList.Add(lv);
         }
 
 

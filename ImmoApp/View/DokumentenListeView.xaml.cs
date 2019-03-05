@@ -27,6 +27,8 @@ namespace ImmoApp.View
         public DokumentenListeView()
         {
             InitializeComponent();
+            DokumentenListeViewModel dlvm = new DokumentenListeViewModel();
+            this.DataContext = dlvm;
         }
 
         private void DokBearbButton_Click(object sender, RoutedEventArgs e)

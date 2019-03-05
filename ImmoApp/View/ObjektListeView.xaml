@@ -22,7 +22,7 @@
 			<RowDefinition Height="46*"/>
 			<RowDefinition Height="6*"/>
 		</Grid.RowDefinitions>
-		<ComboBox x:Name="cmbSort" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" IsReadOnly="True" ItemsSource="{Binding cmbSort}" SelectedIndex="0" SelectedValue="{Binding SortKrit, Mode=TwoWay}" />
+		<ComboBox x:Name="cmbSort" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" IsReadOnly="True" ItemsSource="{Binding CmbSort}" SelectedIndex="0" SelectedValue="{Binding SortKrit, Mode=TwoWay}" />
 		<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="1" Grid.Row="0" Content="Sortierung" FontSize="12" HorizontalAlignment="Left" />
 		<DataGrid x:Name="dgObjekte" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="20,20,20,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding ObjektListe}" 
 				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

@@ -1,26 +1,31 @@
-﻿using ImmoLib;
-using ImmoLib.Locator;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImmoLib;
 
 namespace ImmoApp.ViewModel
 {
-    [LocatorAttribute("Einnahmen")]
-    public class EinnahmenListeViewModel : ObservableObject, IPageViewModel
+    public class BankListeViewModel : ObservableObject, IPageViewModel
     {
-        private List<vwEinnahman> _einnahmenListe = new List<vwEinnahman>();
-        private string _sortKrit;
-
         public string Name
         {
             get
             {
-                return "Einnahmen";
+                return "Banken";
             }
         }
+        private List<vwBanken> _bankListe = new List<vwBanken>();
+        public List<vwBanken> BankListe
+        {
+            get { return _bankListe; }
+            private set
+            {
+                OnPropertyChanged("BankListe");
+            }
+        }
+        private string _sortKrit;
         public string SortKrit
         {
             get { return _sortKrit; }
@@ -30,11 +35,6 @@ namespace ImmoApp.ViewModel
                 OnPropertyChanged("SortKrit");
             }
         }
-        public List<vwEinnahman> EinnahmenListe
-        {
-            get { return _einnahmenListe; }
-            private set { OnPropertyChanged("EinnahmenListe"); }
-        }
         private List<string> _cmbSort = new List<string>();
         public List<string> CmbSort
         {
@@ -42,31 +42,30 @@ namespace ImmoApp.ViewModel
             private set
             { OnPropertyChanged("CmbSort"); }
         }
-        public EinnahmenListeViewModel()
+
+        public BankListeViewModel()
         {
             CmbSort = SortierkriterienListeFüllen();
-            _einnahmenListe = GetEinnahmen();
-
-            SortKrit = "Einnahmenr";
+            _bankListe = GetBanken();
+            SortKrit = "Name";
         }
 
-        private List<vwEinnahman> GetEinnahmen()
+        private List<vwBanken> GetBanken()
         {
             using (immoEntities context = new immoEntities())
             {
-                var query = context.vwEinnahmen.ToList();
+                var query = context.vwBankens.ToList();
                 return query;
+
             }
         }
 
         private List<string> SortierkriterienListeFüllen()
         {
             CmbSort = new List<string>();
-            CmbSort.Add("Einnahmenr");
-            CmbSort.Add("Kategorie");
-            CmbSort.Add("Bezeichnung");
-            CmbSort.Add("Betrag");
-            CmbSort.Add("Datum");
+            CmbSort.Add("Name");
+            CmbSort.Add("Straße");
+            CmbSort.Add("Ort");
             return CmbSort;
         }
     }

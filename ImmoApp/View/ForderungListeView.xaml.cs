@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace ImmoApp.View
         public ForderungListeView()
         {
             InitializeComponent();
+            ForderungListeViewModel flvm = new ForderungListeViewModel();
+            this.DataContext = flvm;
         }
 
         private void btnAuswahl_Click(object sender, RoutedEventArgs e)

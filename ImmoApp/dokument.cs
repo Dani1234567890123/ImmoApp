@@ -23,6 +23,7 @@ namespace ImmoApp
         public Nullable<int> zuObjekt { get; set; }
         public Nullable<int> zuEinheit { get; set; }
         public Nullable<int> zuVertrag { get; set; }
+        public Nullable<bool> Vorlage { get; set; }
     
         public virtual mieteinheit mieteinheit { get; set; }
         public virtual dokumentenkategorie dokumentenkategorie { get; set; }

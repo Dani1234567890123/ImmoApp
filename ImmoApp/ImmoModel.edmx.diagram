@@ -77,6 +77,11 @@
         <EntityTypeShape EntityType="immoModel.vwKontaktDokumente" Width="1.5" PointX="11.375" PointY="10.75" />
         <EntityTypeShape EntityType="immoModel.vwKontaktNotiz" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="immoModel.vwObjektEinheiten" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="immoModel.vwBanken" Width="1.5" PointX="13.375" PointY="6.75" />
+        <EntityTypeShape EntityType="immoModel.vwBankverbindung" Width="1.5" PointX="13.375" PointY="10.75" />
+        <EntityTypeShape EntityType="immoModel.vwErstattungen" Width="1.5" PointX="10.375" PointY="13.75" />
+        <EntityTypeShape EntityType="immoModel.vwForderungen" Width="1.5" PointX="12.375" PointY="13.75" />
+        <EntityTypeShape EntityType="immoModel.vwVorlagen" Width="1.5" PointX="14.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

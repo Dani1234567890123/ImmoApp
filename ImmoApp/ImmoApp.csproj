@@ -139,6 +139,7 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BankListeViewModel.cs" />
     <Compile Include="ViewModel\DokumentenListeViewModel.cs" />
     <Compile Include="ViewModel\DokumentInsertViewModel.cs" />
     <Compile Include="ViewModel\DokumentUpdateViewModel.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="ViewModel\ErstattungUpdateViewModel.cs" />
     <Compile Include="ViewModel\ForderungInsertViewModel.cs" />
     <Compile Include="ViewModel\ForderungListeViewModel.cs" />
+    <Compile Include="ViewModel\KontenListeViewModel.cs" />
     <Compile Include="ViewModel\StartPageViewModel.cs" />
     <Compile Include="ViewModel\StartViewModel.cs" />
     <Compile Include="ViewModel\VertragInsertViewModel.cs" />
@@ -273,6 +275,12 @@
     <Compile Include="View\VorlageListeView.xaml.cs">
       <DependentUpon>VorlageListeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vwBanken.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwBankverbindung.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="vwDokumente.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
@@ -283,6 +291,12 @@
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwEinnahman.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwErstattungen.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwForderungen.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwKontaktDokumente.cs">
@@ -331,6 +345,9 @@
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwVerträgeUndLeerstände.cs">
+      <DependentUpon>ImmoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwVorlagen.cs">
       <DependentUpon>ImmoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="wohneinheitMiete.cs">

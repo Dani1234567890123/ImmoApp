@@ -46,6 +46,7 @@
           <Property Name="zuObjekt" Type="int" />
           <Property Name="zuEinheit" Type="int" />
           <Property Name="zuVertrag" Type="int" />
+          <Property Name="Vorlage" Type="bit" />
         </EntityType>
         <EntityType Name="dokumentenkategorie">
           <Key>
@@ -260,7 +261,38 @@
           <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategorie" Type="nvarchar" MaxLength="25" Nullable="false" />
         </EntityType>
-       
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwBanken' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwBanken">
+          <Key>
+            <PropertyRef Name="Banknr" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Banknr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Straße" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hausnr" Type="nvarchar" MaxLength="5" />
+          <Property Name="Plz" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ort" Type="nvarchar" MaxLength="50" />
+          <Property Name="Land" Type="nvarchar" MaxLength="5" />
+          <Property Name="Ansprechpartner" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwBankverbindung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwBankverbindung">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IBAN" />
+            <PropertyRef Name="Bank" />
+          </Key>
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IBAN" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BIC" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwDokumente">
           <Key>
             <PropertyRef Name="dokID" />
@@ -274,7 +306,8 @@
           <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
           <Property Name="dokID" Type="int" Nullable="false" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwEinheitDokumente">
           <Key>
             <PropertyRef Name="MieteinheitNr" />
@@ -285,7 +318,8 @@
           <Property Name="MieteinheitNr" Type="int" Nullable="false" />
           <Property Name="zu Mieteinheit" Type="nvarchar" MaxLength="50" />
         </EntityType>
-   
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinheitNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwEinheitNotiz">
           <Key>
             <PropertyRef Name="Nr" />
@@ -295,7 +329,8 @@
           <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
           <Property Name="Nr" Type="int" Nullable="false" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwEinnahmen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwEinnahmen">
           <Key>
             <PropertyRef Name="Nr" />
@@ -309,7 +344,42 @@
           <Property Name="Einnahmebetrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
           <Property Name="Eingangsdatum" Type="date" Nullable="false" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwErstattungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwErstattungen">
+          <Key>
+            <PropertyRef Name="Erstattungsnr" />
+            <PropertyRef Name="Betrag" />
+          </Key>
+          <Property Name="Erstattungsnr" Type="int" Nullable="false" />
+          <Property Name="Grund" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fälligkeit" Type="date" />
+          <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="VErtragsnr" Type="int" />
+          <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zahlungsdatum" Type="date" />
+          <Property Name="Erledigt" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwForderungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwForderungen">
+          <Key>
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="Forderungsnr" Type="int" Nullable="false" />
+          <Property Name="Kategorie" Type="nvarchar" MaxLength="25" />
+          <Property Name="Fälligkeit" Type="date" />
+          <Property Name="Vertragsnr" Type="int" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nachname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mieteinheit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" />
+          <Property Name="Erledigt" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontaktDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwKontaktDokumente">
           <Key>
             <PropertyRef Name="id" />
@@ -320,7 +390,8 @@
           <Property Name="zu Person" Type="nvarchar" MaxLength="101" />
           <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontakte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwKontakte">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -343,7 +414,8 @@
           <Property Name="BIC" Type="nvarchar" MaxLength="11" />
           <Property Name="Kreditinstitut" Type="nvarchar" MaxLength="50" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwKontaktNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwKontaktNotiz">
           <Key>
             <PropertyRef Name="id" />
@@ -354,7 +426,8 @@
           <Property Name="firma" Type="nvarchar" MaxLength="50" />
           <Property Name="id" Type="int" Nullable="false" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwMieteinheiten' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwMieteinheiten">
           <Key>
             <PropertyRef Name="NR" />
@@ -373,7 +446,8 @@
           <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
           <Property Name="Aktiv" Type="bit" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwObjektDokumente">
           <Key>
             <PropertyRef Name="Objektnr" />
@@ -384,7 +458,8 @@
           <Property Name="Objektnr" Type="int" Nullable="false" />
           <Property Name="Objektbezeichnung" Type="nvarchar" MaxLength="50" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjekte' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwObjekte">
           <Key>
             <PropertyRef Name="Objektnummer" />
@@ -402,7 +477,8 @@
           <Property Name="Gaszähler" Type="nvarchar" MaxLength="40" />
           <Property Name="Baujahr" Type="int" />
         </EntityType>
-    
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektEinheiten' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwObjektEinheiten">
           <Key>
             <PropertyRef Name="objektID" />
@@ -414,7 +490,8 @@
           <Property Name="Bruttomiete" Type="decimal" Precision="21" Scale="3" />
           <Property Name="objektID" Type="int" Nullable="false" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwObjektNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwObjektNotiz">
           <Key>
             <PropertyRef Name="ObjektNr" />
@@ -424,7 +501,8 @@
           <Property Name="Objekt" Type="nvarchar" MaxLength="50" />
           <Property Name="ObjektNr" Type="int" Nullable="false" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonBankverbindung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwPersonBankverbindung">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -442,7 +520,8 @@
           <Property Name="Land" Type="nvarchar" MaxLength="5" />
           <Property Name="Ansprechpartner" Type="nvarchar" MaxLength="50" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenErstattungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwPersonenErstattungen">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -459,7 +538,8 @@
           <Property Name="Erstattet am" Type="date" />
           <Property Name="erledigt" Type="bit" />
         </EntityType>
-       
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwPersonenForderungen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwPersonenForderungen">
           <Key>
             <PropertyRef Name="KontaktID" />
@@ -474,7 +554,8 @@
           <Property Name="Beglichen am" Type="date" />
           <Property Name="offen" Type="bit" />
         </EntityType>
-       
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragDokumente' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwVertragDokumente">
           <Key>
             <PropertyRef Name="zu Vertagsnr" />
@@ -484,7 +565,8 @@
           <Property Name="Titel" Type="nvarchar" MaxLength="50" />
           <Property Name="zu Vertagsnr" Type="int" Nullable="false" />
         </EntityType>
-     
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträge' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwVerträge">
           <Key>
             <PropertyRef Name="Vertragsnr" />
@@ -499,7 +581,8 @@
           <Property Name="Ende" Type="date" />
           <Property Name="Aktiv" Type="bit" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVerträgeUndLeerstände' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwVerträgeUndLeerstände">
           <Key>
             <PropertyRef Name="MiteinheitNr" />
@@ -511,7 +594,8 @@
           <Property Name="Vertragsende" Type="date" />
           <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
         </EntityType>
-        
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragNotiz' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwVertragNotiz">
           <Key>
             <PropertyRef Name="zuMietvertrag" />
@@ -521,7 +605,8 @@
           <Property Name="zuMietvertrag" Type="int" Nullable="false" />
           <Property Name="Mieter" Type="nvarchar" MaxLength="101" />
         </EntityType>
-      
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVertragsforderung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="vwVertragsforderung">
           <Key>
             <PropertyRef Name="Vertragsnr" />
@@ -533,6 +618,18 @@
           <Property Name="Betrag" Type="decimal" Precision="17" Scale="3" />
           <Property Name="Beglichen am" Type="date" />
           <Property Name="offen" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="vwVorlagen">
+          <Key>
+            <PropertyRef Name="Dokumentennr" />
+            <PropertyRef Name="Datei" />
+          </Key>
+          <Property Name="Dokumentennr" Type="int" Nullable="false" />
+          <Property Name="Kategorie" Type="nvarchar" MaxLength="25" />
+          <Property Name="Titel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Datei" Type="binary" MaxLength="1" Nullable="false" />
         </EntityType>
         <Association Name="FK_anrede">
           <End Role="anrede" Type="Self.anrede" Multiplicity="0..1">
@@ -940,6 +1037,27 @@
           <EntitySet Name="vertragsforderungen" EntityType="Self.vertragsforderungen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wohneinheitMiete" EntityType="Self.wohneinheitMiete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="zahlungskategorie" EntityType="Self.zahlungskategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwBanken" EntityType="Self.vwBanken" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwBanken].[Banknr] AS [Banknr], 
+    [vwBanken].[Name] AS [Name], 
+    [vwBanken].[Straße] AS [Straße], 
+    [vwBanken].[Hausnr] AS [Hausnr], 
+    [vwBanken].[Plz] AS [Plz], 
+    [vwBanken].[Ort] AS [Ort], 
+    [vwBanken].[Land] AS [Land], 
+    [vwBanken].[Ansprechpartner] AS [Ansprechpartner]
+    FROM [dbo].[vwBanken] AS [vwBanken]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwBankverbindung" EntityType="Self.vwBankverbindung" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwBankverbindung].[Vorname] AS [Vorname], 
+    [vwBankverbindung].[Name] AS [Name], 
+    [vwBankverbindung].[IBAN] AS [IBAN], 
+    [vwBankverbindung].[Bank] AS [Bank], 
+    [vwBankverbindung].[BIC] AS [BIC]
+    FROM [dbo].[vwBankverbindung] AS [vwBankverbindung]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwDokumente" EntityType="Self.vwDokumente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwDokumente].[datum] AS [datum], 
@@ -977,6 +1095,33 @@
     [vwEinnahmen].[Einnahmebetrag] AS [Einnahmebetrag], 
     [vwEinnahmen].[Eingangsdatum] AS [Eingangsdatum]
     FROM [dbo].[vwEinnahmen] AS [vwEinnahmen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwErstattungen" EntityType="Self.vwErstattungen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwErstattungen].[Erstattungsnr] AS [Erstattungsnr], 
+    [vwErstattungen].[Grund] AS [Grund], 
+    [vwErstattungen].[Fälligkeit] AS [Fälligkeit], 
+    [vwErstattungen].[Betrag] AS [Betrag], 
+    [vwErstattungen].[Vorname] AS [Vorname], 
+    [vwErstattungen].[Name] AS [Name], 
+    [vwErstattungen].[VErtragsnr] AS [VErtragsnr], 
+    [vwErstattungen].[Mieteinheit] AS [Mieteinheit], 
+    [vwErstattungen].[Zahlungsdatum] AS [Zahlungsdatum], 
+    [vwErstattungen].[Erledigt] AS [Erledigt]
+    FROM [dbo].[vwErstattungen] AS [vwErstattungen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwForderungen" EntityType="Self.vwForderungen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwForderungen].[Forderungsnr] AS [Forderungsnr], 
+    [vwForderungen].[Kategorie] AS [Kategorie], 
+    [vwForderungen].[Fälligkeit] AS [Fälligkeit], 
+    [vwForderungen].[Vertragsnr] AS [Vertragsnr], 
+    [vwForderungen].[Vorname] AS [Vorname], 
+    [vwForderungen].[Nachname] AS [Nachname], 
+    [vwForderungen].[Mieteinheit] AS [Mieteinheit], 
+    [vwForderungen].[Betrag] AS [Betrag], 
+    [vwForderungen].[Erledigt] AS [Erledigt]
+    FROM [dbo].[vwForderungen] AS [vwForderungen]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwKontaktDokumente" EntityType="Self.vwKontaktDokumente" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1164,6 +1309,14 @@
     [vwVertragsforderung].[offen] AS [offen]
     FROM [dbo].[vwVertragsforderung] AS [vwVertragsforderung]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwVorlagen" EntityType="Self.vwVorlagen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVorlagen].[Dokumentennr] AS [Dokumentennr], 
+    [vwVorlagen].[Kategorie] AS [Kategorie], 
+    [vwVorlagen].[Titel] AS [Titel], 
+    [vwVorlagen].[Datei] AS [Datei]
+    FROM [dbo].[vwVorlagen] AS [vwVorlagen]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_anrede" Association="Self.FK_anrede">
             <End Role="anrede" EntitySet="anrede" />
             <End Role="kontakt" EntitySet="kontakt" />
@@ -1343,6 +1496,7 @@
           <NavigationProperty Name="objekt" Relationship="Self.FK_dok_objekt" FromRole="dokument" ToRole="objekt" />
           <NavigationProperty Name="kontakt" Relationship="Self.FK_dok_person" FromRole="dokument" ToRole="kontakt" />
           <NavigationProperty Name="mietvertrag" Relationship="Self.FK_dok_vertrag" FromRole="dokument" ToRole="mietvertrag" />
+          <Property Name="Vorlage" Type="Boolean" />
         </EntityType>
         <EntityType Name="dokumentenkategorie">
           <Key>
@@ -2335,6 +2489,11 @@
           <EntitySet Name="vwKontaktDokumentes" EntityType="immoModel.vwKontaktDokumente" />
           <EntitySet Name="vwKontaktNotizs" EntityType="immoModel.vwKontaktNotiz" />
           <EntitySet Name="vwObjektEinheitens" EntityType="immoModel.vwObjektEinheiten" />
+          <EntitySet Name="vwBankens" EntityType="immoModel.vwBanken" />
+          <EntitySet Name="vwBankverbindungs" EntityType="immoModel.vwBankverbindung" />
+          <EntitySet Name="vwErstattungens" EntityType="immoModel.vwErstattungen" />
+          <EntitySet Name="vwForderungens" EntityType="immoModel.vwForderungen" />
+          <EntitySet Name="vwVorlagens" EntityType="immoModel.vwVorlagen" />
         </EntityContainer>
         <EntityType Name="vwDokumente">
           <Key>
@@ -2380,6 +2539,72 @@
           <Property Name="Bruttomiete" Type="Decimal" Precision="21" Scale="3" />
           <Property Name="objektID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="vwBanken">
+          <Key>
+            <PropertyRef Name="Banknr" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Banknr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Straße" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hausnr" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Plz" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Land" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Ansprechpartner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwBankverbindung">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IBAN" />
+            <PropertyRef Name="Bank" />
+          </Key>
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IBAN" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Bank" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BIC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwErstattungen">
+          <Key>
+            <PropertyRef Name="Erstattungsnr" />
+            <PropertyRef Name="Betrag" />
+          </Key>
+          <Property Name="Erstattungsnr" Type="Int32" Nullable="false" />
+          <Property Name="Grund" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fälligkeit" Type="DateTime" Precision="0" />
+          <Property Name="Betrag" Type="Decimal" Nullable="false" Precision="17" Scale="3" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VErtragsnr" Type="Int32" />
+          <Property Name="Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zahlungsdatum" Type="DateTime" Precision="0" />
+          <Property Name="Erledigt" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwForderungen">
+          <Key>
+            <PropertyRef Name="Forderungsnr" />
+          </Key>
+          <Property Name="Forderungsnr" Type="Int32" Nullable="false" />
+          <Property Name="Kategorie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Fälligkeit" Type="DateTime" Precision="0" />
+          <Property Name="Vertragsnr" Type="Int32" />
+          <Property Name="Vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mieteinheit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Betrag" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="Erledigt" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="vwVorlagen">
+          <Key>
+            <PropertyRef Name="Dokumentennr" />
+            <PropertyRef Name="Datei" />
+          </Key>
+          <Property Name="Dokumentennr" Type="Int32" Nullable="false" />
+          <Property Name="Kategorie" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Datei" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2420,6 +2645,7 @@
           <EntitySetMapping Name="dokuments">
             <EntityTypeMapping TypeName="immoModel.dokument">
               <MappingFragment StoreEntitySet="dokument">
+                <ScalarProperty Name="Vorlage" ColumnName="Vorlage" />
                 <ScalarProperty Name="dokID" ColumnName="dokID" />
                 <ScalarProperty Name="kategorie" ColumnName="kategorie" />
                 <ScalarProperty Name="titel" ColumnName="titel" />
@@ -2923,6 +3149,72 @@
                 <ScalarProperty Name="Lage" ColumnName="Lage" />
                 <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
                 <ScalarProperty Name="Objekt" ColumnName="Objekt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwBankens">
+            <EntityTypeMapping TypeName="immoModel.vwBanken">
+              <MappingFragment StoreEntitySet="vwBanken">
+                <ScalarProperty Name="Ansprechpartner" ColumnName="Ansprechpartner" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="Plz" ColumnName="Plz" />
+                <ScalarProperty Name="Hausnr" ColumnName="Hausnr" />
+                <ScalarProperty Name="Straße" ColumnName="Straße" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Banknr" ColumnName="Banknr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwBankverbindungs">
+            <EntityTypeMapping TypeName="immoModel.vwBankverbindung">
+              <MappingFragment StoreEntitySet="vwBankverbindung">
+                <ScalarProperty Name="BIC" ColumnName="BIC" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwErstattungens">
+            <EntityTypeMapping TypeName="immoModel.vwErstattungen">
+              <MappingFragment StoreEntitySet="vwErstattungen">
+                <ScalarProperty Name="Erledigt" ColumnName="Erledigt" />
+                <ScalarProperty Name="Zahlungsdatum" ColumnName="Zahlungsdatum" />
+                <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
+                <ScalarProperty Name="VErtragsnr" ColumnName="VErtragsnr" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Betrag" ColumnName="Betrag" />
+                <ScalarProperty Name="Fälligkeit" ColumnName="Fälligkeit" />
+                <ScalarProperty Name="Grund" ColumnName="Grund" />
+                <ScalarProperty Name="Erstattungsnr" ColumnName="Erstattungsnr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwForderungens">
+            <EntityTypeMapping TypeName="immoModel.vwForderungen">
+              <MappingFragment StoreEntitySet="vwForderungen">
+                <ScalarProperty Name="Erledigt" ColumnName="Erledigt" />
+                <ScalarProperty Name="Betrag" ColumnName="Betrag" />
+                <ScalarProperty Name="Mieteinheit" ColumnName="Mieteinheit" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Vertragsnr" ColumnName="Vertragsnr" />
+                <ScalarProperty Name="Fälligkeit" ColumnName="Fälligkeit" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Forderungsnr" ColumnName="Forderungsnr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVorlagens">
+            <EntityTypeMapping TypeName="immoModel.vwVorlagen">
+              <MappingFragment StoreEntitySet="vwVorlagen">
+                <ScalarProperty Name="Datei" ColumnName="Datei" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Dokumentennr" ColumnName="Dokumentennr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

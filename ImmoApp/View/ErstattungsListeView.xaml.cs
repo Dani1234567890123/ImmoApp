@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,11 @@ namespace ImmoApp.View
         public ErstattungsListeView()
         {
             InitializeComponent();
+            ErstattungslisteViewModel elvm = new ErstattungslisteViewModel();
+            this.DataContext = elvm;
         }
+
+     
 
         private void btnAuswahl_Click(object sender, RoutedEventArgs e)
         {

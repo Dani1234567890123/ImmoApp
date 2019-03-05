@@ -67,5 +67,10 @@ namespace ImmoApp
         public virtual DbSet<vwKontaktDokumente> vwKontaktDokumentes { get; set; }
         public virtual DbSet<vwKontaktNotiz> vwKontaktNotizs { get; set; }
         public virtual DbSet<vwObjektEinheiten> vwObjektEinheitens { get; set; }
+        public virtual DbSet<vwBanken> vwBankens { get; set; }
+        public virtual DbSet<vwBankverbindung> vwBankverbindungs { get; set; }
+        public virtual DbSet<vwErstattungen> vwErstattungens { get; set; }
+        public virtual DbSet<vwForderungen> vwForderungens { get; set; }
+        public virtual DbSet<vwVorlagen> vwVorlagens { get; set; }
     }
 }
