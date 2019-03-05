@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,30 +31,37 @@ namespace ImmoApp.View
         public EinstellungenView()
         {
             InitializeComponent();
+            EinstellungenViewModel evm = new EinstellungenViewModel();
+            this.DataContext = evm;
         }
-
+        //ToDo!
+        //Exception wenn versucht wird, ein neues Element in die ListBox einzufügen, da der Content durch das Binding festgelegt wird
         private void btnAddKat_Click(object sender, RoutedEventArgs e)
         {
-            Kontaktkat.Add(tbKat.Text);
-            lbKontKat.Items.Add(tbKat.Text);
+            //Kontaktkat.Add(tbKat.Text);
+            //lbKontKat.Items.Add(tbKat.Text);
+            //Eingegebenen Wert in die Db schreiben, dann ListBox aktualisieren
         }
 
         private void btnAddZahlKat_Click(object sender, RoutedEventArgs e)
         {
-            Zahlungskat.Add(tbZahlKat.Text);
-            lbZahlKat.Items.Add(tbZahlKat.Text);
+            //Zahlungskat.Add(tbZahlKat.Text);
+            //lbZahlKat.Items.Add(tbZahlKat.Text);
+            //Eingegebenen Wert in die Db schreiben, dann ListBox aktualisieren
         }
 
         private void btnAddAnrde_Click(object sender, RoutedEventArgs e)
         {
-            AnredeKat.Add(tbAnrede.Text);
-            lbAnrede.Items.Add(tbAnrede.Text);
+            //AnredeKat.Add(tbAnrede.Text);
+            //lbAnrede.Items.Add(tbAnrede.Text);
+            //Eingegebenen Wert in die Db schreiben, dann ListBox aktualisieren
         }
 
         private void btnAddDokKat_Click(object sender, RoutedEventArgs e)
         {
-            Dokumentkat.Add(tbDokKat.Text);
-            lbDoklKat.Items.Add(tbDokKat.Text);
+            //Dokumentkat.Add(tbDokKat.Text);
+            //lbDoklKat.Items.Add(tbDokKat.Text);
+            //Eingegebenen Wert in die Db schreiben, dann ListBox aktualisieren
         }
 
         private void btnspeichern_Click(object sender, RoutedEventArgs e)

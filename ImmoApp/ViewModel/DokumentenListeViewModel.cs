@@ -29,6 +29,8 @@ namespace ImmoApp.ViewModel
                 OnPropertyChanged("SortKrit");
             }
         }
+
+       
         public List<vwDokumente> DokListe
         {
             get { return _dokListe; }
@@ -41,14 +43,48 @@ namespace ImmoApp.ViewModel
             private set
             { OnPropertyChanged("CmbSort"); }
         }
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                OnPropertyChanged("FilterKrit");
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { OnPropertyChanged("CmbFilter"); }
+        }
+       
+
+
+
         public DokumentenListeViewModel()
         {
             CmbSort = SortierkriterienListeFüllen();
             _dokListe = GetDoks();
-
             SortKrit = "Dokumentennr";
+            FilterKrit = "";
+            CmbFilter.Add("");
+            GetDokKategorien();
+            
         }
 
+        private void GetDokKategorien()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var liste  = (from p in context.dokumentenkategories select p.kategorie);
+                foreach (var item in liste)
+                {
+                    CmbFilter.Add(item.ToString());
+                }
+            }
+        }
         private List<vwDokumente> GetDoks()
         {
             using (immoEntities context = new immoEntities())

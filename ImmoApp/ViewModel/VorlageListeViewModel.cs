@@ -50,6 +50,23 @@ namespace ImmoApp.ViewModel
             CmbSort.Add("Titel");
             return CmbSort;
         }
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                OnPropertyChanged("FilterKrit");
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { OnPropertyChanged("CmbFilter"); }
+        }
+
         public static List<vwVorlagen> GetVorlagen()
         {
             using (immoEntities context = new immoEntities())
@@ -58,11 +75,24 @@ namespace ImmoApp.ViewModel
                 return query;
             }
         }
+        private void GetDokKategorien()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var liste = (from p in context.dokumentenkategories select p.kategorie);
+                foreach (var item in liste)
+                {
+                    CmbFilter.Add(item.ToString());
+                }
+            }
+        }
         public VorlageListeViewModel()
         {
             CmbSort = SortierkriterienListeFüllen();
             _vorlagenListe = GetVorlagen();
-
+            FilterKrit = "";
+            CmbFilter.Add("");
+            GetDokKategorien();
             SortKrit = "Dokumentennr";
         }
     }

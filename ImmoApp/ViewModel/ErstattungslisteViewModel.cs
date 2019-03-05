@@ -41,6 +41,23 @@ namespace ImmoApp.ViewModel
             private set
             { OnPropertyChanged("CmbSort"); }
         }
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                OnPropertyChanged("FilterKrit");
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { OnPropertyChanged("CmbFilter"); }
+        }
+
         public List<string> SortierkriterienListeFüllen()
         {
             CmbSort = new List<string>();
@@ -66,7 +83,10 @@ namespace ImmoApp.ViewModel
         {
             CmbSort = SortierkriterienListeFüllen();
             _erstattungsListe = GetErstattungen();
-
+            FilterKrit = "";
+            CmbFilter.Add("");
+            CmbFilter.Add("Offen");
+            CmbFilter.Add("Erledigt");
             SortKrit = "Erstattungsnr";
         }
     }

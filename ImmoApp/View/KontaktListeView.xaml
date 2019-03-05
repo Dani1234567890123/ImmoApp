@@ -22,7 +22,7 @@
 			<RowDefinition Height="46*"/>
 			<RowDefinition Height="6*"/>
 		</Grid.RowDefinitions>
-		<ComboBox x:Name="cmbFilter" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+		<ComboBox x:Name="cmbFilter" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" ItemsSource="{Binding CmbFilter}" SelectedIndex="0" SelectedValue="{Binding FilterKrit, Mode=TwoWay}"/>
 		<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="1" Grid.Row="0" Content="Filter" FontSize="12" HorizontalAlignment="Left" />
 		<ComboBox x:Name="cmbSort" Grid.Column="2" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" ItemsSource="{Binding CmbSort}" SelectedIndex="0" SelectedValue="{Binding SortKrit, Mode=TwoWay}"/>
 		<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="3" Grid.Row="0" Content="Sortierung" FontSize="12" HorizontalAlignment="Left" />
