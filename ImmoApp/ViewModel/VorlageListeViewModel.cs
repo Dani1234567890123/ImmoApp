@@ -19,37 +19,14 @@ namespace ImmoApp.ViewModel
             }
         }
 
-        private List<vwVorlagen> _vorlagenListe = new List<vwVorlagen>();
-        public List<vwVorlagen> VorlagenListe
+        private IEnumerable<vwVorlagen> _vorlagenListe ;
+        public IEnumerable<vwVorlagen> VorlagenListe
         {
             get { return _vorlagenListe; }
             private set { OnPropertyChanged("VorlagenListe"); }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
-        public List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Dokumentennr");
-            CmbSort.Add("Kategorie");
-            CmbSort.Add("Titel");
-            return CmbSort;
-        }
+        
+      
         private string _filterKrit;
         public string FilterKrit
         {
@@ -88,12 +65,12 @@ namespace ImmoApp.ViewModel
         }
         public VorlageListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+           
             _vorlagenListe = GetVorlagen();
             FilterKrit = "";
             CmbFilter.Add("");
             GetDokKategorien();
-            SortKrit = "Dokumentennr";
+           
         }
     }
 }

@@ -24,9 +24,8 @@
 		</Grid.RowDefinitions>
 		<ComboBox x:Name="cmbFilter" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" ItemsSource="{Binding CmbFilter}" SelectedIndex="0" SelectedValue="{Binding FilterKrit, Mode=TwoWay}"/>
 		<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="1" Grid.Row="0" Content="Filter" FontSize="12" HorizontalAlignment="Left" />
-		<ComboBox x:Name="cmbSort" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" ItemsSource="{Binding CmbSort}" SelectedIndex="0" SelectedValue="{Binding SortKrit, Mode=TwoWay}" />
-		<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="3" Grid.Row="0" Content="Sortierung" FontSize="12" HorizontalAlignment="Left" />
-		<DataGrid x:Name="dgEinheiten" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0,30,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding VorlagenListe}" 
+
+		<DataGrid x:Name="dgEinheiten" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0,30,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding VorlagenListe, UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="True"   
 				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 		</DataGrid>
 		<Image Grid.Row="2" Margin="0,0,0,5" Source="icon\2932350 - clipboard copy notes paper report survey.png" VerticalAlignment="Bottom" ></Image>

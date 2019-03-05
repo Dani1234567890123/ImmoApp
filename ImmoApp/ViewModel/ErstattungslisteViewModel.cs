@@ -18,29 +18,14 @@ namespace ImmoApp.ViewModel
                 return "Erstattungen";
             }
         }
-       private List<vwErstattungen> _erstattungsListe = new List<vwErstattungen>();
-        public List<vwErstattungen> Erstattungsliste
+       private IEnumerable<vwErstattungen> _erstattungsListe;
+        public IEnumerable<vwErstattungen> Erstattungsliste
         {
             get { return _erstattungsListe; }
             private set { OnPropertyChanged("Erstattungsliste"); }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+        
+       
         private string _filterKrit;
         public string FilterKrit
         {
@@ -58,19 +43,7 @@ namespace ImmoApp.ViewModel
             private set { OnPropertyChanged("CmbFilter"); }
         }
 
-        public List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Erstattungsnr");
-            CmbSort.Add("Mietvertrag");
-            CmbSort.Add("Person");
-            CmbSort.Add("Betrag");
-            CmbSort.Add("Grund");
-            CmbSort.Add("Erledigt");
-            CmbSort.Add("Offen");
-            CmbSort.Add("Zahlungsdatum");
-            return CmbSort;
-        }
+        
         public static List<vwErstattungen> GetErstattungen()
         {
             using (immoEntities context = new immoEntities())
@@ -81,13 +54,13 @@ namespace ImmoApp.ViewModel
         }
         public ErstattungslisteViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+           
             _erstattungsListe = GetErstattungen();
             FilterKrit = "";
             CmbFilter.Add("");
             CmbFilter.Add("Offen");
             CmbFilter.Add("Erledigt");
-            SortKrit = "Erstattungsnr";
+          
         }
     }
 }

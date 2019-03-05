@@ -18,29 +18,13 @@ namespace ImmoApp.ViewModel
                 return "Kontakte";
             }
         }
-        private List<vwKontakte> _kontaktListe = new List<vwKontakte>();
-        public List<vwKontakte> KontaktListe
+        private IEnumerable<vwKontakte> _kontaktListe;
+        public IEnumerable<vwKontakte> KontaktListe
         {
             get { return _kontaktListe; }
             private set { OnPropertyChanged("KontaktListe"); }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+       
         private string _filterKrit;
         public string FilterKrit
         {
@@ -58,19 +42,7 @@ namespace ImmoApp.ViewModel
             private set { OnPropertyChanged("CmbFilter"); }
         }
 
-        public List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Kontaktnr");
-            CmbSort.Add("Nachname");
-            CmbSort.Add("Kategorie");
-            CmbSort.Add("Anrede");
-            CmbSort.Add("Plz");
-            CmbSort.Add("Ort");
-            CmbSort.Add("Geb-Datum");
-            CmbSort.Add("Kreditinstitut");
-            return CmbSort;
-        }
+      
         public static List<vwKontakte> GetKontakte()
         {
             using (immoEntities context = new immoEntities())
@@ -92,14 +64,14 @@ namespace ImmoApp.ViewModel
         }
         public KontaktListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+          
             _kontaktListe = GetKontakte();
             FilterKrit = "";
             CmbFilter.Add("");
             GetKontaktKategorien();
             CmbFilter.Add("Offen");
             CmbFilter.Add("Erledigt");
-            SortKrit = "Kontaktnr";
+          
         }
     }
 }

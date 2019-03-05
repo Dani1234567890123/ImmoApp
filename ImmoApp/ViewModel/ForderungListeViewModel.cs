@@ -19,29 +19,14 @@ namespace ImmoApp.ViewModel
             }
         }
 
-        private List<vwForderungen> _forderungsListe = new List<vwForderungen>();
-        public List<vwForderungen> ForderungsListe
+        private IEnumerable<vwForderungen> _forderungsListe;
+        public IEnumerable<vwForderungen> ForderungsListe
         {
             get { return _forderungsListe; }
             private set { OnPropertyChanged("ForderungsListe"); }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+       
+        
         private string _filterKrit;
         public string FilterKrit
         {
@@ -60,20 +45,8 @@ namespace ImmoApp.ViewModel
         }
 
 
-        public List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Forderungsnr");
-            CmbSort.Add("Kategorie");
-            CmbSort.Add("Fälligkeit");
-            CmbSort.Add("Name");
-            CmbSort.Add("Mieteinheit");
-            CmbSort.Add("Betrag");
-            CmbSort.Add("Offen");
-            CmbSort.Add("Erledigt");
-            return CmbSort;
-        }
-        public static List<vwForderungen> GetForderungen()
+      
+        public static IEnumerable<vwForderungen> GetForderungen()
         {
             using (immoEntities context = new immoEntities())
             {
@@ -83,14 +56,14 @@ namespace ImmoApp.ViewModel
         }
         public ForderungListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+           
             _forderungsListe = GetForderungen();
             FilterKrit = "";
             CmbFilter.Add("");
             GetZahlungsKategorien();
             CmbFilter.Add("Offen");
             CmbFilter.Add("Erledigt");
-            SortKrit = "Forderungsnr";
+           
         }
         private void GetZahlungsKategorien()
         {

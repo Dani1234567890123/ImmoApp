@@ -11,9 +11,8 @@ namespace ImmoApp.ViewModel
     [LocatorAttribute("Einnahmen")]
     public class EinnahmenListeViewModel : ObservableObject, IPageViewModel
     {
-        private List<vwEinnahman> _einnahmenListe = new List<vwEinnahman>();
-        private string _sortKrit;
-
+        private IEnumerable<vwEinnahman> _einnahmenListe;
+       
         public string Name
         {
             get
@@ -21,27 +20,13 @@ namespace ImmoApp.ViewModel
                 return "Einnahmen";
             }
         }
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        public List<vwEinnahman> EinnahmenListe
+     
+        public IEnumerable<vwEinnahman> EinnahmenListe
         {
             get { return _einnahmenListe; }
             private set { OnPropertyChanged("EinnahmenListe"); }
         }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+        
         private string _filterKrit;
         public string FilterKrit
         {
@@ -61,12 +46,12 @@ namespace ImmoApp.ViewModel
 
         public EinnahmenListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+           
             _einnahmenListe = GetEinnahmen();
             FilterKrit = "";
             CmbFilter.Add("");
             GetZahlungsKategorien();
-            SortKrit = "Einnahmenr";
+            
         }
 
         private List<vwEinnahman> GetEinnahmen()
@@ -88,15 +73,5 @@ namespace ImmoApp.ViewModel
                 }
             }
         }
-        private List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Einnahmenr");
-            CmbSort.Add("Kategorie");
-            CmbSort.Add("Bezeichnung");
-            CmbSort.Add("Betrag");
-            CmbSort.Add("Datum");
-            return CmbSort;
-        }
-    }
+          }
 }

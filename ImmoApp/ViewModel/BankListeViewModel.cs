@@ -16,8 +16,8 @@ namespace ImmoApp.ViewModel
                 return "Banken";
             }
         }
-        private List<vwBanken> _bankListe = new List<vwBanken>();
-        public List<vwBanken> BankListe
+        private IEnumerable<vwBanken> _bankListe;
+        public IEnumerable<vwBanken> BankListe
         {
             get { return _bankListe; }
             private set
@@ -25,32 +25,17 @@ namespace ImmoApp.ViewModel
                 OnPropertyChanged("BankListe");
             }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+        
+       
 
         public BankListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+            
             _bankListe = GetBanken();
-            SortKrit = "Name";
+            
         }
 
-        private List<vwBanken> GetBanken()
+        private IEnumerable<vwBanken> GetBanken()
         {
             using (immoEntities context = new immoEntities())
             {
@@ -60,13 +45,5 @@ namespace ImmoApp.ViewModel
             }
         }
 
-        private List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("Name");
-            CmbSort.Add("Straße");
-            CmbSort.Add("Ort");
-            return CmbSort;
-        }
-    }
+            }
 }

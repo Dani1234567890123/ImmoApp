@@ -19,29 +19,13 @@ namespace ImmoApp.ViewModel
             }
         }
 
-        private List<vwMieteinheiten> _einheitenListe = new List<vwMieteinheiten>();
-        public List<vwMieteinheiten> EinheitenListe
+        private IEnumerable<vwMieteinheiten> _einheitenListe ;
+        public IEnumerable<vwMieteinheiten> EinheitenListe
         {
             get { return _einheitenListe; }
             private set { OnPropertyChanged("EinheitenListe"); }
         }
-        private string _sortKrit;
-        public string SortKrit
-        {
-            get { return _sortKrit; }
-            set
-            {
-                _sortKrit = value;
-                OnPropertyChanged("SortKrit");
-            }
-        }
-        private List<string> _cmbSort = new List<string>();
-        public List<string> CmbSort
-        {
-            get { return _cmbSort; }
-            private set
-            { OnPropertyChanged("CmbSort"); }
-        }
+      
         private string _filterKrit;
         public string FilterKrit
         {
@@ -59,19 +43,7 @@ namespace ImmoApp.ViewModel
             private set { OnPropertyChanged("CmbFilter"); }
         }
 
-        public List<string> SortierkriterienListeFüllen()
-        {
-            CmbSort = new List<string>();
-            CmbSort.Add("MieteinheitNr");
-            CmbSort.Add("Bezeichnung");
-            CmbSort.Add("Objektnr");
-            CmbSort.Add("Objekt");
-            CmbSort.Add("Mietvertrag");
-            CmbSort.Add("Mieter");
-            CmbSort.Add("Vermietet");
-            CmbSort.Add("Leerstehend");
-            return CmbSort;
-        }
+      
         public static List<vwMieteinheiten> GetEinheiten()
         {
             using (immoEntities context = new immoEntities())
@@ -82,14 +54,14 @@ namespace ImmoApp.ViewModel
         }
         public MieteinheitListeViewModel()
         {
-            CmbSort = SortierkriterienListeFüllen();
+           
             _einheitenListe = GetEinheiten();
             CmbFilter.Add("");
             CmbFilter.Add("Vermietet");
             CmbFilter.Add("Leerstehend");
             CmbFilter.Add("Aktiv");
             CmbFilter.Add("Inaktiv");
-            SortKrit = "MieteinheitNr";
+          
         }
     }
 }
