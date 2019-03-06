@@ -1,5 +1,5 @@
 ﻿using ImmoLib;
-using ImmoLib.Locator;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImmoApp.ViewModel
 {
-    [LocatorAttribute("Einnahmen")]
+
     public class EinnahmenListeViewModel : ObservableObject, IPageViewModel
     {
         private IEnumerable<vwEinnahman> _einnahmenListe;
