@@ -39,7 +39,7 @@ namespace ImmoApp.ViewModel
             CurrentPageViewModel = PageViewModels[0];
         }
 
-        #region Properties / Commands
+        #region Naviagationsbuttons + Methoden
 
         public ICommand ChangePageCommand
         {
@@ -47,8 +47,8 @@ namespace ImmoApp.ViewModel
             {
                 if (_changePageCommand == null)
                 {
-                    _changePageCommand = new RelayCommand(
-                        p => ChangeViewModel((IPageViewModel)p),
+                    _changePageCommand = new RelayCommand<IPageViewModel>(
+                        p => ChangeViewModel(p),
                         p => p is IPageViewModel);
                 }
 
@@ -82,11 +82,6 @@ namespace ImmoApp.ViewModel
                 }
             }
         }
-
-        #endregion
-
-        #region Methods
-
         public void ChangeViewModel(IPageViewModel viewModel)
         {
             if (!PageViewModels.Contains(viewModel))
@@ -95,6 +90,18 @@ namespace ImmoApp.ViewModel
             CurrentPageViewModel = PageViewModels
                 .FirstOrDefault(vm => vm == viewModel);
         }
+
+        #endregion
+
+        #region Commands
+       
+
+
+
+        #endregion
+        #region Methods
+
+
 
         #endregion
     }

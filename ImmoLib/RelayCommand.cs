@@ -16,51 +16,47 @@ namespace ImmoLib
     /// default return value for the CanExecute
     /// method is 'true'.
     /// </summary>
-    public class RelayCommand : ICommand
+    public class RelayCommand<T> : ICommand
     {
         #region Fields
-        readonly Action<object> _execute;
-        readonly Func<object, bool> _canExecute;
+        Action<T> _execute { get; set; }
+        Predicate<T> _canExecute { get; set; }
 
         #endregion // Fields
 
         #region Constructor
 
-        public RelayCommand(Action<object> execute) : this(execute, null){}
-        /// <summary>
-        /// Creates a new command.
-        /// </summary>
-        /// <param name="execute">The execution logic.</param>
-        /// <param name="canExecute">The execution status logic.</param>
-        public RelayCommand(Action<object> execute, Func<object,bool> canExecute)
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute) 
         {
+            this._canExecute = canExecute;
+
             if (execute == null)
-                throw new ArgumentNullException("execute");
+                throw new ArgumentNullException("execute","Bitte den Command spezifizieren");
 
             this._execute = execute;
-            this._canExecute = canExecute;
         }
 
-        
+
         #endregion // Constructors
 
         #region ICommand Members
 
+        public void RaiseCanExecuteChanged()
+        { if (this.CanExecuteChanged != null)
+                this.CanExecuteChanged(this, null);
+                }
         [DebuggerStepThrough]
-        public bool CanExecute(object parameters)
+        public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute(parameters);
+            return _canExecute == null || _canExecute((T)parameter) == true; 
         }
 
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        public event EventHandler CanExecuteChanged;
+       
 
-        public void Execute(object parameters)
+        public void Execute(object parameter)
         {
-            _execute(parameters);
+            _execute((T)parameter);
         }
         #endregion // ICommand Members
     }
