@@ -78,7 +78,7 @@ namespace ImmoApp.ViewModel
                 if (_currentPageViewModel != value)
                 {
                     _currentPageViewModel = value;
-                    OnPropertyChanged("CurrentPageViewModel");
+                    this.OnPropertyChanged();
                 }
             }
         }

@@ -23,7 +23,7 @@ namespace ImmoApp.ViewModel
         public IEnumerable<vwObjekte> ObjektListe
         {
             get { return _objektListe; }
-            private set { OnPropertyChanged("ObjektListe"); }
+            private set { this.OnPropertyChanged(); }
         }
         
        

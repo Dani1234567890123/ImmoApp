@@ -20,7 +20,7 @@ namespace ImmoApp.ViewModel
         public IEnumerable<vwBankverbindung>KontenListe
         {
             get { return _kontenListe; }
-            private set { OnPropertyChanged("KontenListe"); }
+            private set { this.OnPropertyChanged(); }
         }
        
        

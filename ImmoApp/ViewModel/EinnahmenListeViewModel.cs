@@ -24,7 +24,7 @@ namespace ImmoApp.ViewModel
         public IEnumerable<vwEinnahman> EinnahmenListe
         {
             get { return _einnahmenListe; }
-            private set { OnPropertyChanged("EinnahmenListe"); }
+            private set { this.OnPropertyChanged(); }
         }
         
         private string _filterKrit;
@@ -34,14 +34,14 @@ namespace ImmoApp.ViewModel
             set
             {
                 _filterKrit = value;
-                OnPropertyChanged("FilterKrit");
+                this.OnPropertyChanged();
             }
         }
         private List<string> _cmbFilter = new List<string>();
         public List<string> CmbFilter
         {
             get { return _cmbFilter; }
-            private set { OnPropertyChanged("CmbFilter"); }
+            private set { this.OnPropertyChanged(); }
         }
 
         public EinnahmenListeViewModel()

@@ -23,25 +23,25 @@ namespace ImmoApp.ViewModel
         public IEnumerable<string> KategorieListe
         {
             get { return _kategorieListe; }
-            private set { OnPropertyChanged("KategorieListe"); }
+            private set { this.OnPropertyChanged(); }
         }
         private IEnumerable<string> _zahlungskategorieListe ;
         public IEnumerable<string> ZahlungsKategorieListe
         {
             get { return _zahlungskategorieListe; }
-            private set { OnPropertyChanged("ZahlungsKategorieListe"); }
+            private set { this.OnPropertyChanged(); }
         }
         private IEnumerable<string> _anredeListe ;
         public IEnumerable<string> AnredeListe
         {
             get { return _anredeListe; }
-            private set { OnPropertyChanged("AnredeListe"); }
+            private set { this.OnPropertyChanged(); }
         }
         private IEnumerable<string> _dokumentenKategorieListe;
         public IEnumerable<string> DokumentenKategorieListe
         {
             get { return _dokumentenKategorieListe; }
-            private set { OnPropertyChanged("DokumentenKategorieListe"); }
+            private set { this.OnPropertyChanged(); }
         }
 
         private void GetKategorien()

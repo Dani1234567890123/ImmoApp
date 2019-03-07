@@ -22,7 +22,7 @@ namespace ImmoApp.ViewModel
         public IEnumerable<vwErstattungen> Erstattungsliste
         {
             get { return _erstattungsListe; }
-            private set { OnPropertyChanged("Erstattungsliste"); }
+            private set { this.OnPropertyChanged(); }
         }
         
        
@@ -33,14 +33,14 @@ namespace ImmoApp.ViewModel
             set
             {
                 _filterKrit = value;
-                OnPropertyChanged("FilterKrit");
+                this.OnPropertyChanged();
             }
         }
         private List<string> _cmbFilter = new List<string>();
         public List<string> CmbFilter
         {
             get { return _cmbFilter; }
-            private set { OnPropertyChanged("CmbFilter"); }
+            private set { this.OnPropertyChanged(); }
         }
 
         

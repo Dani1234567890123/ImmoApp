@@ -26,7 +26,7 @@ namespace ImmoApp.ViewModel
         public IEnumerable<vwDokumente> DokListe
         {
             get { return _dokListe; }
-            private set { OnPropertyChanged("DokListe"); }
+            private set { this.OnPropertyChanged(); }
         }
        
         private string _filterKrit;
@@ -36,14 +36,14 @@ namespace ImmoApp.ViewModel
             set
             {
                 _filterKrit = value;
-                OnPropertyChanged("FilterKrit");
+                this.OnPropertyChanged();
             }
         }
         private List<string> _cmbFilter = new List<string>();
         public List<string> CmbFilter
         {
             get { return _cmbFilter; }
-            private set { OnPropertyChanged("CmbFilter");  }
+            private set { this.OnPropertyChanged();  }
         }
 
 

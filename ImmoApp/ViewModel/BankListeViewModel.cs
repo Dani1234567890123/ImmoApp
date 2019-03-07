@@ -22,7 +22,7 @@ namespace ImmoApp.ViewModel
             get { return _bankListe; }
             private set
             {
-                OnPropertyChanged("BankListe");
+                this.OnPropertyChanged();
             }
         }
         
