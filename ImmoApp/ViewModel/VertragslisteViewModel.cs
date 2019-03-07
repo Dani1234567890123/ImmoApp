@@ -11,11 +11,24 @@ namespace ImmoApp.ViewModel
     
     public class VertragslisteViewModel : ObservableObject, IPageViewModel
     {
+        public static int übergabewert;
         public string Name
         {
             get
             {
                 return "Mietverträge";
+            }
+        }
+        private vwVerträge _selectedVertrag;            
+
+        public vwVerträge SelectedVertrag
+        {
+            get { return _selectedVertrag; }
+            set {
+                if ( _selectedVertrag != value)
+                    _selectedVertrag = value;
+                übergabewert = _selectedVertrag.Vertragsnr;
+                this.OnPropertyChanged();
             }
         }
 
