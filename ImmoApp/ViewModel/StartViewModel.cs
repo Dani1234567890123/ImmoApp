@@ -19,14 +19,11 @@ namespace ImmoApp.ViewModel
 
         private IPageViewModel _currentPageViewModel;
         private List<IPageViewModel> _pageViewModels;
+        public DokumentUpdateViewModel duv = new DokumentUpdateViewModel();
+        ObjektInsertView oiv = new ObjektInsertView();
         private Window _win;
         public Window Win
-        { get
-            {
-                if (_win == null)
-                    _win = new Window();
-                return _win;
-            }
+        { get { if (_win == null)  _win = new Window(); return _win; }
             set { this.OnPropertyChanged(); }
         }
         #endregion

@@ -18,18 +18,6 @@ namespace ImmoApp.ViewModel
                 return "Objekte";
             }
         }
-        private vwObjekte _currentItem = new vwObjekte();
-        public vwObjekte CurrentItem
-        {
-            get { return _currentItem; }
-            set
-            {
-                if (_currentItem != value)
-                    _currentItem = value;
-                this.OnPropertyChanged();
-            }
-        }
-         
 
         private IEnumerable<vwObjekte> _objektListe;
         public IEnumerable<vwObjekte> ObjektListe

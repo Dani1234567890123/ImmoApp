@@ -49,8 +49,8 @@ namespace ImmoApp.ViewModel
             using (immoEntities context = new immoEntities())
             {
                 var liste = (from p in context.kategories select p.bezeichnung);
-
-                _kategorieListe = liste; 
+              
+                    KategorieListe = liste; 
                
             }
         }
@@ -59,8 +59,8 @@ namespace ImmoApp.ViewModel
             using (immoEntities context = new immoEntities())
             {
                 var liste = (from p in context.zahlungskategories select p.kategorie);
-
-                _zahlungskategorieListe = liste;
+                
+                    ZahlungsKategorieListe= liste;
                
             }
         }
@@ -69,8 +69,8 @@ namespace ImmoApp.ViewModel
             using (immoEntities context = new immoEntities())
             {
                 var liste = (from p in context.anredes select p.text);
-
-                _anredeListe = liste;
+                
+                    AnredeListe = liste;
                
             }
         }
@@ -79,8 +79,8 @@ namespace ImmoApp.ViewModel
             using (immoEntities context = new immoEntities())
             {
                 var liste = (from p in context.dokumentenkategories select p.kategorie);
-
-                _dokumentenKategorieListe = liste;
+                
+                    DokumentenKategorieListe=liste;
                 
             }
         }

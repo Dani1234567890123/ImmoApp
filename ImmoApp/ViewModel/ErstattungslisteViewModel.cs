@@ -26,7 +26,23 @@ namespace ImmoApp.ViewModel
         }
         
        
-       
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { this.OnPropertyChanged(); }
+        }
+
         
         public static List<vwErstattungen> GetErstattungen()
         {
@@ -40,7 +56,11 @@ namespace ImmoApp.ViewModel
         {
            
             _erstattungsListe = GetErstattungen();
-                     
+            FilterKrit = "";
+            CmbFilter.Add("");
+            CmbFilter.Add("Offen");
+            CmbFilter.Add("Erledigt");
+          
         }
     }
 }
