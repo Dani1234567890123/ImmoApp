@@ -22,7 +22,9 @@
 			<RowDefinition Height="46*"/>
 			<RowDefinition Height="6*"/>
 		</Grid.RowDefinitions>
-		
+		<ComboBox x:Name="cmbFilter" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" ItemsSource="{Binding CmbFilter}" SelectedIndex="0" SelectedValue="{Binding FilterKrit, Mode=TwoWay}"/>
+		<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="1" Grid.Row="0" Content="Filter" FontSize="12" HorizontalAlignment="Left"/>
+	
 		<DataGrid x:Name="dgErstattungen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0,30,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding Erstattungsliste, UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="True" 
 				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 		</DataGrid>

@@ -24,7 +24,6 @@ namespace ImmoApp.View
     {
         public VertragslisteView()
         {
-
             InitializeComponent();
             VertragslisteViewModel vlvm = new VertragslisteViewModel();
             this.DataContext = vlvm;

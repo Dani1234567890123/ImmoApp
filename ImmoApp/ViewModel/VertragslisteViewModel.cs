@@ -19,7 +19,7 @@ namespace ImmoApp.ViewModel
             }
         }
 
-      
+
         private IEnumerable<vwVerträge> _vertragsListe;
         public IEnumerable<vwVerträge> VertragsListe
         {
@@ -27,7 +27,22 @@ namespace ImmoApp.ViewModel
             private set { this.OnPropertyChanged(); }
         }
        
-        
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { this.OnPropertyChanged(); }
+        }
        
         public static List<vwVerträge> GetVerträge()
         {
@@ -41,6 +56,9 @@ namespace ImmoApp.ViewModel
         {
            
             _vertragsListe = GetVerträge();
+            CmbFilter.Add("");
+            CmbFilter.Add("Aktiv");
+            CmbFilter.Add("Beendet");
           
         }
     }

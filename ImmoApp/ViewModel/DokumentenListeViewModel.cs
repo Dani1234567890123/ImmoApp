@@ -28,18 +28,51 @@ namespace ImmoApp.ViewModel
             get { return _dokListe; }
             private set { this.OnPropertyChanged(); }
         }
-           
-        
+       
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { this.OnPropertyChanged();  }
+        }
+
+
+
 
         public DokumentenListeViewModel()
         {
            
             _dokListe = GetDoks();
             _dokListe.OrderBy(p => p.titel);
+
+           
+            FilterKrit = "";
+            CmbFilter.Add("");
+            GetDokKategorien();
+
+        }
           
+        private void GetDokKategorien()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var liste = (from p in context.dokumentenkategories select p.kategorie);
+                foreach (var item in liste)
+                {
+                    CmbFilter.Add(item.ToString());
                 }
-          
-       
+            }
+        }
         private IEnumerable<vwDokumente> GetDoks()
         {
             

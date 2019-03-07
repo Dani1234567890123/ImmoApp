@@ -27,12 +27,30 @@ namespace ImmoApp.ViewModel
             private set { this.OnPropertyChanged(); }
         }
         
-       
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { this.OnPropertyChanged(); }
+        }
+
         public EinnahmenListeViewModel()
         {
            
             _einnahmenListe = GetEinnahmen();
-           
+            FilterKrit = "";
+            CmbFilter.Add("");
+            GetZahlungsKategorien();
             
         }
 
@@ -44,6 +62,16 @@ namespace ImmoApp.ViewModel
                 return query;
             }
         }
-       
+        private void GetZahlungsKategorien()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var liste = (from p in context.zahlungskategories select p.kategorie);
+                foreach (var item in liste)
+                {
+                    CmbFilter.Add(item.ToString());
+                }
+            }
+        }
           }
 }

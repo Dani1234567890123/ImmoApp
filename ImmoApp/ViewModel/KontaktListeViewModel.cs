@@ -24,7 +24,25 @@ namespace ImmoApp.ViewModel
             get { return _kontaktListe; }
             private set { this.OnPropertyChanged(); }
         }
-     
+       
+        private string _filterKrit;
+        public string FilterKrit
+        {
+            get { return _filterKrit; }
+            set
+            {
+                _filterKrit = value;
+                this.OnPropertyChanged();
+            }
+        }
+        private List<string> _cmbFilter = new List<string>();
+        public List<string> CmbFilter
+        {
+            get { return _cmbFilter; }
+            private set { this.OnPropertyChanged(); }
+        }
+
+      
         public static List<vwKontakte> GetKontakte()
         {
             using (immoEntities context = new immoEntities())
@@ -33,12 +51,27 @@ namespace ImmoApp.ViewModel
                 return query;
             }
         }
-      
+        private void GetKontaktKategorien()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var liste = (from p in context.kategories select p.bezeichnung);
+                foreach (var item in liste)
+                {
+                    CmbFilter.Add(item.ToString());
+                }
+            }
+        }
         public KontaktListeViewModel()
         {
           
             _kontaktListe = GetKontakte();
-           
+            FilterKrit = "";
+            CmbFilter.Add("");
+            GetKontaktKategorien();
+            CmbFilter.Add("Offen");
+            CmbFilter.Add("Erledigt");
+          
         }
     }
 }
