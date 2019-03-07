@@ -26,23 +26,7 @@ namespace ImmoApp.ViewModel
             private set { this.OnPropertyChanged(); }
         }
       
-        private string _filterKrit;
-        public string FilterKrit
-        {
-            get { return _filterKrit; }
-            set
-            {
-                _filterKrit = value;
-                this.OnPropertyChanged();
-            }
-        }
-        private List<string> _cmbFilter = new List<string>();
-        public List<string> CmbFilter
-        {
-            get { return _cmbFilter; }
-            private set { this.OnPropertyChanged(); }
-        }
-
+        
       
         public static List<vwMieteinheiten> GetEinheiten()
         {
@@ -56,12 +40,7 @@ namespace ImmoApp.ViewModel
         {
            
             _einheitenListe = GetEinheiten();
-            CmbFilter.Add("");
-            CmbFilter.Add("Vermietet");
-            CmbFilter.Add("Leerstehend");
-            CmbFilter.Add("Aktiv");
-            CmbFilter.Add("Inaktiv");
-          
+           
         }
     }
 }
