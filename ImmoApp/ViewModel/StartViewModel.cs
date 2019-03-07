@@ -47,15 +47,14 @@ namespace ImmoApp.ViewModel
             {
                 if (_changePageCommand == null)
                 {
-                    _changePageCommand = new RelayCommand<IPageViewModel>(
-                        p => ChangeViewModel(p),
+                    _changePageCommand = new RelayCommand(
+                        p => ChangeViewModel((IPageViewModel)p),
                         p => p is IPageViewModel);
                 }
 
                 return _changePageCommand;
             }
         }
-
         public List<IPageViewModel> PageViewModels
         {
             get
