@@ -24,36 +24,6 @@ namespace ImmoApp.ViewModel
         
         
 
-        public StartPageViewModel()
-        {
-            _changeViewCommand = new RelayCommand(param => ChangeView((UserControl)param));
-        }
-        private bool _canExecute = true;
-        public bool CanExecute
-        {
-            get { return this._canExecute; }
-            set
-            {
-                if (this._canExecute == value)
-                    return;
-
-                this._canExecute = value;
-            }
-        }
-        private ICommand _changeViewCommand;
-        public ICommand ChangeViewCommand
-        {
-            get { return _changeViewCommand; }
-            set { _changeViewCommand = value; }
-        }
-
-        private void ChangeView(UserControl name)
-        {
-            Window win = ViewCreator<Window>.CreateSingletonView();
-            UserControl uc = new UserControl();
-            uc = name;
-            win.Content = uc;
-            win.Show();
-        }
+        
     }
 }

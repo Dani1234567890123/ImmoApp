@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImmoApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,7 @@ namespace ImmoApp.View
         BankListeView blv = new BankListeView();
         KontenListeView ktolv = new KontenListeView();
         List<UserControl> PageList = new List<UserControl>();
+        StartViewModel svm = new StartViewModel();
 
         public StartView()
         {
@@ -52,8 +54,11 @@ namespace ImmoApp.View
             PageList.Add(ev);
             PageList.Add(blv);
             PageList.Add(ktolv);
+
+            this.DataContext = svm;
         }
 
+        #region Click_Events => Commands
 
         private void ObjekteRibbonButton_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +72,8 @@ namespace ImmoApp.View
 
         private void ObjektNeuRibbonButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ObjektInsertView(), "Neues Objekt");
+
+            svm.ChangeViewCommand.Execute(new ObjektInsertView());
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -77,7 +83,7 @@ namespace ImmoApp.View
 
         private void ObjektBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ObjektUpdateView(), "Objekt Bearbeiten");
+            svm.ChangeViewCommand.Execute(new ObjektUpdateView());
         }
 
         private void EinheitenButton_Click(object sender, RoutedEventArgs e)
@@ -87,17 +93,17 @@ namespace ImmoApp.View
 
         private void EinheitNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new MieteinheitInsertView(), "Neue Mieteinheit");
+            svm.ChangeViewCommand.Execute(new MieteinheitInsertView());
         }
 
         private void EinheitBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new MieteinheitUpdateView(), "Mieteinheit Bearbeiten");
+            svm.ChangeViewCommand.Execute(new MieteinheitUpdateView());
         }
 
         private void VertragNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new VertragInsertView(), "neuer Vertrag");
+            svm.ChangeViewCommand.Execute(new VertragInsertView());
         }
 
         private void VerträgeButton_Click(object sender, RoutedEventArgs e)
@@ -107,12 +113,12 @@ namespace ImmoApp.View
 
         private void VertragBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new VertragUpdateView(), "Vertrag Bearbeiten");
+            svm.ChangeViewCommand.Execute(new VertragUpdateView());
         }
 
         private void ToolsButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new EinstellungenView(), "Kategorien zufügen");
+            svm.ChangeViewCommand.Execute(new EinstellungenView());
         }
 
         private void KontakteButton_Click(object sender, RoutedEventArgs e)
@@ -122,12 +128,12 @@ namespace ImmoApp.View
 
         private void KontaktNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new KontaktInsertView(), "Neuer Kontakt");
+            svm.ChangeViewCommand.Execute(new KontaktInsertView());
         }
 
         private void KontaktBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new KontaktUpdateView(), "Kontakt Bearbeiten");
+            svm.ChangeViewCommand.Execute(new KontaktUpdateView());
         }
 
         private void EinnahmenButton_Click(object sender, RoutedEventArgs e)
@@ -137,12 +143,12 @@ namespace ImmoApp.View
 
         private void EinnahmeNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new EinnahmeInsertView(), "neue Einnahme buchen");
+            svm.ChangeViewCommand.Execute(new EinnahmeInsertView());
         }
 
         private void EinnahmeBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new EinnahmeUpdateView(), "Einnahme bearbeiten");
+            svm.ChangeViewCommand.Execute(new EinnahmeUpdateView());
         }
 
         private void ForderungenButton_Click(object sender, RoutedEventArgs e)
@@ -152,12 +158,12 @@ namespace ImmoApp.View
 
         private void ForderungNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ForderungInsertView(), "Neue Forderung");
+            svm.ChangeViewCommand.Execute(new ForderungInsertView());
         }
 
         private void ForderungBearbButon_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ForderungUpdateView(), "Forderung bearbeiten");
+            svm.ChangeViewCommand.Execute(new ForderungUpdateView());
         }
 
         private void ErstattungenButton_Click(object sender, RoutedEventArgs e)
@@ -167,12 +173,12 @@ namespace ImmoApp.View
 
         private void ErstattungNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ErstattungInsertView(), "Neue Erstattung");
+            svm.ChangeViewCommand.Execute(new ErstattungInsertView());
         }
 
         private void ErstattungBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new ErstattungUpdateView(), "Erstatung bearbeiten");
+            svm.ChangeViewCommand.Execute(new ErstattungUpdateView());
         }
 
         private void DokumenteButton_Click(object sender, RoutedEventArgs e)
@@ -182,12 +188,12 @@ namespace ImmoApp.View
 
         private void DokNeuButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new DokumentInsertView(), "Neues Dokument speichern");
+            svm.ChangeViewCommand.Execute(new DokumentInsertView());
         }
 
         private void DokBearbButton_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new DokumentUpdateView(), "Dokument bearbeiten");
+            svm.ChangeViewCommand.Execute(new DokumentUpdateView());
         }
 
         private void VorlagenButton_Click(object sender, RoutedEventArgs e)
@@ -204,5 +210,6 @@ namespace ImmoApp.View
         {
             navFrame.NavigationService.Content = ktolv;
         }
+        #endregion
     }
 }

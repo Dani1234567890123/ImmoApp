@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ImmoApp.View"
 		xmlns:ViewModel="clr-namespace:ImmoApp.ViewModel"
         mc:Ignorable="d"
+		
         Title="StartView" MinHeight="800" MinWidth="1280" Width="Auto" Height="Auto"  WindowStartupLocation="CenterScreen" Icon="icon\Home-icon.png">
 	<RibbonWindow.Resources>
 		<ViewModel:StartViewModel x:Key="vm"/>
@@ -131,8 +132,8 @@
 			<RibbonTab x:Name="tabObjekte" Header="Objekte">
 				<RibbonGroup Header="Objekte">
 					<RibbonButton LargeImageSource="icon\loan-149873_960_720.png" Label="alle Objekte" MinWidth="60" Click="ObjekteRibbonButton_Click" />
-					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Click="ObjektNeuRibbonButton_Click" />
-					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Click="ObjektBearbButton_Click" />
+					<RibbonButton LargeImageSource="icon\226562 - add square.png" Label="Neues Objekt" MinWidth="60" Click="ObjektNeuRibbonButton_Click"/>
+					<RibbonButton LargeImageSource="icon\226561 - check square.png" Label="Bearbeiten" MinWidth="60" Click="ObjektBearbButton_Click"  />
 					<RibbonButton LargeImageSource="icon\227551 - trash.png" Label="Löschen" MinWidth="60"  IsEnabled="False"/>
 				</RibbonGroup>
 				<RibbonGroup Header="Mieteinheiten">
