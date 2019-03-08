@@ -27,7 +27,6 @@ namespace ImmoApp
         public Nullable<decimal> garage { get; set; }
         public Nullable<decimal> stellplatz { get; set; }
         public Nullable<decimal> sonstMietbestandteile { get; set; }
-        public bool aktiv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<wohneinheitMiete> wohneinheitMietes { get; set; }

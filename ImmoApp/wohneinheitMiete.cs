@@ -18,7 +18,7 @@ namespace ImmoApp
         public int einheit { get; set; }
         public bool aktiv { get; set; }
     
-        public virtual miete miete { get; set; }
         public virtual mieteinheit mieteinheit { get; set; }
+        public virtual miete miete { get; set; }
     }
 }

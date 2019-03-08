@@ -24,8 +24,17 @@
 		</Grid.RowDefinitions>
 		
 
-		<DataGrid x:Name="dgVerträge" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0,30,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding VertragsListe, UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="True"  
-				  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+		<DataGrid x:Name="dgVerträge" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0,30,25" FontSize="14" IsReadOnly="True" ItemsSource="{Binding VertragsListe, UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedVertrag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgVerträge_SelectionChanged">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Vertragsnr" Binding="{Binding Path=Vertragsnr}" Width="SizeToHeader"/>
+				<DataGridTextColumn Header="Objekt" Binding="{Binding Path=Objekt}" Width="30*"/>
+				<DataGridTextColumn Header="Mieteinheit" Binding="{Binding Path=Mieteinheit}" Width="30*"/>
+				<DataGridTextColumn Header="Mieter" Binding="{Binding Path=Mieter}" Width="30*"/>
+				<DataGridTextColumn Header="Vermieter" Binding="{Binding Path=Vermieter}" Width="30*"/>
+				<DataGridTextColumn Header="Beginn" Binding="{Binding Path=Beginn, StringFormat=dd.MM.yyyy}" Width="15*"/>
+				<DataGridTextColumn Header="Ende" Binding="{Binding Path=Ende,StringFormat=dd.MM.yyyy}" Width="15*"/>
+				<DataGridCheckBoxColumn Header="Aktiv" Binding="{Binding Path=Aktiv}" Width="SizeToHeader"/>
+			</DataGrid.Columns>
 		</DataGrid>
 		<Image Grid.Row="2" Margin="0,0,0,5" Source="icon\2932348 - agree deal handshake meeting.png" VerticalAlignment="Bottom" ></Image>
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using ImmoApp.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,11 @@ namespace ImmoApp.View
     /// </summary>
     public partial class VertragUpdateView : UserControl
     {
+        public VertragUpdateViewModel vuvm = new VertragUpdateViewModel();
         public VertragUpdateView()
         {
             InitializeComponent();
+            this.DataContext = vuvm;
         }
 
         private void btnNotiz_Click(object sender, RoutedEventArgs e)
@@ -46,7 +49,7 @@ namespace ImmoApp.View
             }
         }
 
-        private void btnDokSave_Click(object sender, RoutedEventArgs e)
+        private void btnDokNeu_Click(object sender, RoutedEventArgs e)
         {
             Zwischenspeichern("Dokument");
         }
@@ -79,6 +82,36 @@ namespace ImmoApp.View
         private void btnAbbruch_Click(object sender, RoutedEventArgs e)
         {
             Abbrechen((Window)this.Parent);
+        }
+
+        private void dgNotizen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vuvm.SelectedNotiz = (notiz)dgNotizen.SelectedItem;
+        }
+
+        private void dgdokument_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vuvm.SelectedDok = (vwDokumente)dgdokument.SelectedItem;
+        }
+
+        private void dgForderungen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vuvm.SelectedForderung = (vwVertragsforderung)dgForderungen.SelectedItem;
+        }
+
+        private void chkFord_Checked(object sender, RoutedEventArgs e)
+        {
+            vuvm.OffeneForderungChecked = true;
+        }
+
+        private void chkErst_Checked(object sender, RoutedEventArgs e)
+        {
+            vuvm.OffeneErstattungChecked = true;
+        }
+
+        private void dgErstattungen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vuvm.OffeneErstattungChecked = true;
         }
     }
 }

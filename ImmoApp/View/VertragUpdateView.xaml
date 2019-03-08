@@ -44,36 +44,36 @@
 				<ColumnDefinition Width="20*"/>
 			</Grid.ColumnDefinitions>
 			<Label Grid.Row="0" Grid.Column="0" Content="Objekt"/>
-			<Label x:Name="lblObjekt"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="4" Content="Objektbezeichnung" Background="WhiteSmoke"/>
+			<Label x:Name="lblObjekt"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="4" Content="{Binding ObjektBez}" Background="WhiteSmoke"/>
 			<Label Grid.Row="1" Grid.Column="0" Content="Mieteinheit"/>
-			<Label x:Name="lblMieteinheit" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="Bezeichnung der Mieteinheit" Background="WhiteSmoke" />
+			<Label x:Name="lblMieteinheit" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding MieteinheitBez}" Background="WhiteSmoke" />
 			<Label Grid.Row="2" Grid.Column="0" Content="Mieter"/>
-			<Label x:Name="lblMieter" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="Name des Mieters" Background="WhiteSmoke"/>
+			<Label x:Name="lblMieter" Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Mieter}" Background="WhiteSmoke"/>
 
 			<Label Grid.Row="3" Grid.Column="0" Content="Vermieter"/>
-			<Label x:Name="LblVermieter" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="Name des Vermieters" Background="WhiteSmoke"/>
+			<Label x:Name="LblVermieter" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Vermieter}" Background="WhiteSmoke"/>
 
 
 			<Label Grid.Row="4" Grid.Column="0" Content="Vertragsdatum"/>
-			<Label x:Name="LblDatum" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="Vertragsdatum" Background="WhiteSmoke"/>
+			<Label x:Name="LblDatum" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Vertragsdatum, Mode=TwoWay}" Background="WhiteSmoke" />
 
 			<Label Grid.Row="5" Grid.Column="0" Content="Vertragsbeginn"/>
-			<Label x:Name="LblBeginn" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="Beginn" Background="WhiteSmoke"/>
+			<Label x:Name="LblBeginn" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Vertragsbeginn, Mode=TwoWay}" Background="WhiteSmoke"/>
 			<Label Grid.Row="5" Grid.Column="2" Content="Vertragsende"/>
-			<DatePicker x:Name="dpEnde" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" />
+			<DatePicker x:Name="dpEnde" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" DisplayDate="{Binding Vertagsende, Mode=TwoWay}" SelectedDate="{Binding Vertragsende, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" ToolTip="bitte ein Enddatum wählen" />
 
 			<Label Grid.Row="6" Grid.Column="0" Content="Kaution"/>
-			<Label x:Name="lblKaution" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="Kautionsbetrag" Background="WhiteSmoke"/>
+			<Label x:Name="lblKaution" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Kaution, StringFormat=F2, Mode=TwoWay}" Background="WhiteSmoke"/>
 			<Label Grid.Row="6" Grid.Column="2" Content="bezahlt"/>
-			<CheckBox x:Name="chkKaution" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Height="20" Width="20" />
+			<CheckBox x:Name="chkKaution" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Height="20" Width="20" Content="{Binding KautionBez}" />
 
 			<Label Grid.Row="7" Grid.Column="0" Content="Kautionsratenhöhe"/>
-			<Label x:Name="lblRatenhöhe" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="Betrag"/>
+			<Label x:Name="lblRatenhöhe" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding KautionsratenHöhe, Mode=TwoWay}" Background="WhiteSmoke"/>
 			<Label Grid.Row="7" Grid.Column="2" Content="Anzahl der Raten"/>
-			<Label x:Name="lblAnzRaten" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" Content="Zahl" Background="WhiteSmoke"/>
+			<Label x:Name="lblAnzRaten" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Kautionsraten}" Background="WhiteSmoke" />
 
 			<Label Grid.Row="8" Grid.Column="0" Content="Kündigungsfrist"/>
-			<Label x:Name="lblKfrist" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="Angabe des Zeitraums" Background="WhiteSmoke"/>
+			<Label x:Name="lblKfrist" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Kündigungsfrist}" Background="WhiteSmoke"/>
 			
 		</Grid>
 
@@ -92,27 +92,27 @@
 				<ColumnDefinition Width="20*"/>
 				<ColumnDefinition Width="20*"/>
 			</Grid.ColumnDefinitions>
-			<Label Grid.Row="0" Grid.Column="0" FontSize="28" Content="Miete" />
+			<Label Grid.Row="0" Grid.Column="0" FontSize="16" Content="Miete" />
 			<Label Grid.Row="1" Grid.Column="0" Content="Gültig ab"/>
-			<DatePicker x:Name="dpGültigAb" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" />
+			<DatePicker x:Name="dpGültigAb" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" DisplayDate="{Binding GültigAb, Mode=TwoWay}" SelectedDate="{Binding GültigAb, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
 			<Label Grid.Row="1" Grid.Column="2" Content="Kaltmiete"/>
-			<TextBox x:Name="tbKaltmiete" Grid.Row="1" Grid.Column="3"/>
+			<TextBox x:Name="tbKaltmiete" Grid.Row="1" Grid.Column="3" Text="{Binding Kaltmiete, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
 			<Label Grid.Row="2" Grid.Column="0" Content="NK-Abschlag"/>
-			<TextBox x:Name="tbNK" Grid.Row="2" Grid.Column="1"/>
+			<TextBox x:Name="tbNK" Grid.Row="2" Grid.Column="1"  Text="{Binding NK, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 			<Label Grid.Row="2" Grid.Column="2" Content="Garage"/>
-			<TextBox x:Name="tbGarage" Grid.Row="2" Grid.Column="3" />
+			<TextBox x:Name="tbGarage" Grid.Row="2" Grid.Column="3"  Text="{Binding Garage, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
 
-			<Label Grid.Row="3" Grid.Column="0" Content="Stellplatz"/>
-			<TextBox x:Name="tbStellplatz" Grid.Row="3" Grid.Column="1" />
+			<Label Grid.Row="3" Grid.Column="0" Content="Stellplatz" />
+			<TextBox x:Name="tbStellplatz" Grid.Row="3" Grid.Column="1" Text="{Binding Stellplatz, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 			<Label Grid.Row="3" Grid.Column="2" Content="sonstige Mietbestandteile"/>
-			<TextBox x:Name="tbSonstMiete" Grid.Row="3" Grid.Column="3"/>
+			<TextBox x:Name="tbSonstMiete" Grid.Row="3" Grid.Column="3" Text="{Binding SonstMietbestandteile, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
 
 			<Label Grid.Row="4" Grid.Column="2" Content="Bruttomiete"/>
-			<Label x:Name="lblBruttomiete" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" Content="Berechnung" Background="WhiteSmoke"/>
-
+			<Label x:Name="lblBruttomiete" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" Margin="4" Content="{Binding BruttoMiete, UpdateSourceTrigger=PropertyChanged}" Background="WhiteSmoke"/>
+		
 		</Grid>
 		<Grid x:Name="grdListen" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="3" Background="#FFC5DAF0" Margin="5,0,5,5">
 			<Grid.RowDefinitions>
@@ -136,36 +136,65 @@
 				<ColumnDefinition Width="10*"/>
 				<ColumnDefinition Width="10*"/>
 			</Grid.ColumnDefinitions>
-
+			
 			<Label Grid.Row="0" Grid.Column="0" FontSize="16" FontWeight="Bold" Content="Notizen"/>
 			<TextBox x:Name="tbNotiz" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" TextWrapping="Wrap" AcceptsReturn="True" />
 			<Button x:Name="btnNotiz" Grid.Row="0" Grid.Column="5" Content="Zufügen" Click="btnNotiz_Click"/>
-			<DataGrid x:Name="dgNotizen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"  Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<DataGrid x:Name="dgNotizen" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"  Margin="5"  FontSize="14"  IsReadOnly="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedVertrag, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgNotizen_SelectionChanged" CanUserSortColumns="True" ItemsSource="{Binding VertNotizListe, UpdateSourceTrigger=PropertyChanged}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Nr" Binding="{Binding Path=notizID}" Width="5*"/>
+					<DataGridTextColumn Header="Datum" Binding="{Binding Path=datum,StringFormat=dd.MM.yyyy}" Width="20*"/>
+					<DataGridTextColumn Header="Notiz" Binding="{Binding Path=notizText}" Width="75*"/>
+				</DataGrid.Columns>
+			</DataGrid>
 
 			<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="16" FontWeight="Bold" Content="Dokumente" VerticalAlignment="Bottom"/>
-			<ComboBox x:Name="cmbFilter" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right"/>
-			<Label x:Name="lblFilter" Margin="3,5,3,5" Grid.Column="3" Grid.Row="2" Content="Filter" FontSize="12" HorizontalAlignment="Left"/>
-			<ComboBox x:Name="cmbSort" Grid.Column="4" Grid.Row="2"  HorizontalAlignment="Right" />
-			<Label x:Name="lblSort" Margin="3,5,3,5" Grid.Column="5" Grid.Row="2" Content="Sortierung" FontSize="12" HorizontalAlignment="Left"/>
-			<DataGrid x:Name="dgdokument" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<DataGrid x:Name="dgdokument" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" CanUserSortColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedDok, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgdokument_SelectionChanged" ItemsSource="{Binding VertDokListe, UpdateSourceTrigger=PropertyChanged}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Nr" Binding="{Binding Path=dokID}" Width="5*"/>
+					<DataGridTextColumn Header="Datum" Binding="{Binding Path=datum,StringFormat=dd.MM.yyyy}" Width="20*"/>
+					<DataGridTextColumn Header="Kategorie" Binding="{Binding Path=Art}" Width="30*"/>
+					<DataGridTextColumn Header="Titel" Binding="{Binding Path=titel}" Width="80*"/>
+				</DataGrid.Columns>
+			</DataGrid>
+			
 
 			<Button x:Name="btnDokAnzeigen" Grid.Row="4" Content="anzeigen" Click="btnDokAnzeigen_Click"/>
 			<Button x:Name="btnOfD" Grid.Row="4" Grid.Column="2" Content="durchsuchen" Click="btnOfD_Click"/>
 			<Label x:Name="lblFile" Margin="3,5,3,5" Grid.Column="3" Grid.Row="4" Content="{Binding File}" FontSize="12" HorizontalAlignment="Left"/>
-			<ComboBox x:Name="cmbDokKat" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Right"/>
-			<Button x:Name="btnDokSave" Grid.Row="4" Grid.Column="5" Content="Dok speichern" Click="btnDokSave_Click"/>
+			<Button x:Name="btnDokNeu" Grid.Row="4" Grid.Column="5" Content="Dok speichern" Click="btnDokNeu_Click"/>
 
 			<Label Grid.Row="5" Grid.Column="0" FontSize="16" FontWeight="Bold" Content="Forderungen"/>
-			<CheckBox x:Name="chkFord" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Height="20" Width="20" />
+			<CheckBox x:Name="chkFord" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Height="20" Width="20" Checked="chkFord_Checked"  />
 			<Label Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Content="nur offene Forderungen anzeigen"/>
-			<DataGrid x:Name="dgForderungen" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			
+			<DataGrid x:Name="dgForderungen" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding VertFordListe, UpdateSourceTrigger=PropertyChanged}" CanUserSortColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedForderung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgForderungen_SelectionChanged">
+				<DataGrid.Columns>
+				<DataGridTextColumn Header="Nr" Binding="{Binding Path=Forderungsnr}" Width="5*"/>
+				<DataGridTextColumn Header="Fällig am" Binding="{Binding Path=Fällig_am,StringFormat=dd.MM.yyyy}" Width="20*"/>
+				<DataGridTextColumn Header="Betrag" Binding="{Binding Path=Betrag,StringFormat=F2}" Width="30*"/>
+				<DataGridTextColumn Header="Beglichen am" Binding="{Binding Path=Beglichen_am, StringFormat=dd.MM.yyyy}" Width="20*"/>
+				<DataGridCheckBoxColumn Header="erledigt" Binding="{Binding Path=offen}" Width="SizeToHeader"/>
+				</DataGrid.Columns>
+			</DataGrid>
 			<Button x:Name="btnFordAnzeigen" Grid.Row="7" Content="anzeigen" Click="btnFordAnzeigen_Click"/>
 			<Button x:Name="btnFordNeu" Grid.Row="7" Grid.Column="1" Content="neue Forderung" Click="btnFordNeu_Click"/>
 
 			<Label Grid.Row="8" Grid.Column="0"  FontSize="16" FontWeight="Bold" Content="Erstattungen" VerticalAlignment="Bottom"/>
-			<CheckBox x:Name="chkErst" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right" Margin="4" Height="20" Width="20" />
+			<CheckBox x:Name="chkErst" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right" Margin="4" Height="20" Width="20" Checked="chkErst_Checked" />
 			<Label Grid.Row="8" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Content="nur offene Erstattungen anzeigen"/>
-			<DataGrid x:Name="dgErstattungen" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" ItemsSource="{Binding}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+			<DataGrid x:Name="dgErstattungen" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" CanUserSortColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedErstattung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgErstattungen_SelectionChanged"  ItemsSource="{Binding ErstattungenListe, UpdateSourceTrigger=PropertyChanged}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Nr" Binding="{Binding Path=vwPersonenErstattungen.ErstattungsNr}" Width="5*"/>
+				<DataGridTextColumn Header="Vorname" Binding="{Binding Path=Vorname}" Width="15*"/>
+				<DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="15*"/>
+				<DataGridTextColumn Header="Grund der Erstattung" Binding="{Binding Path=Erstattungsgrund}" Width="25*"/>
+				<DataGridTextColumn Header="Fällig am" Binding="{Binding Path=Fällig_am,StringFormat=dd.MM.yyyy}" Width="15*"/>
+				<DataGridTextColumn Header="Betrag" Binding="{Binding Path=Betrag,StringFormat=F2}" Width="10*"/>
+				<DataGridTextColumn Header="Erstattet am" Binding="{Binding Path=Erstattet_am, StringFormat=dd.MM.yyyy}" Width="15*"/>
+				<DataGridCheckBoxColumn Header="erledigt" Binding="{Binding Path=erledigt}" Width="SizeToHeader"/>
+			</DataGrid.Columns>
+			</DataGrid>
 			<Button x:Name="btnErstAnzeigen" Grid.Row="10" Content="anzeigen" Click="btnErstAnzeigen_Click"/>
 			<Button x:Name="btnErstNeu" Grid.Row="10" Grid.Column="1" Content="neue Forderung" Click="btnErstNeu_Click"/>
 

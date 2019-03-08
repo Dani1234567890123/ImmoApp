@@ -38,7 +38,6 @@ namespace ImmoApp
         public virtual DbSet<kategorie> kategories { get; set; }
         public virtual DbSet<kontakt> kontakts { get; set; }
         public virtual DbSet<leerstand> leerstands { get; set; }
-        public virtual DbSet<miete> mietes { get; set; }
         public virtual DbSet<mieteinheit> mieteinheits { get; set; }
         public virtual DbSet<mietvertrag> mietvertrags { get; set; }
         public virtual DbSet<notiz> notizs { get; set; }
@@ -72,5 +71,6 @@ namespace ImmoApp
         public virtual DbSet<vwErstattungen> vwErstattungens { get; set; }
         public virtual DbSet<vwForderungen> vwForderungens { get; set; }
         public virtual DbSet<vwVorlagen> vwVorlagens { get; set; }
+        public virtual DbSet<miete> mietes { get; set; }
     }
 }

@@ -148,7 +148,6 @@
           <Property Name="garage" Type="decimal" Precision="17" Scale="3" />
           <Property Name="stellplatz" Type="decimal" Precision="17" Scale="3" />
           <Property Name="sonstMietbestandteile" Type="decimal" Precision="17" Scale="3" />
-          <Property Name="aktiv" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="mieteinheit">
           <Key>
@@ -1611,20 +1610,6 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
           <Property Name="ende" Type="DateTime" Precision="0" />
           <NavigationProperty Name="mieteinheit1" Relationship="Self.FK_leerstand_einheit" FromRole="leerstand" ToRole="mieteinheit" />
         </EntityType>
-        <EntityType Name="miete">
-          <Key>
-            <PropertyRef Name="mietID" />
-          </Key>
-          <Property Name="mietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kaltmiete" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
-          <Property Name="gültigAb" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NkAbschlag" Type="Decimal" Precision="17" Scale="3" Nullable="false" />
-          <Property Name="garage" Type="Decimal" Precision="17" Scale="3" />
-          <Property Name="stellplatz" Type="Decimal" Precision="17" Scale="3" />
-          <Property Name="sonstMietbestandteile" Type="Decimal" Precision="17" Scale="3" />
-          <Property Name="aktiv" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="wohneinheitMietes" Relationship="Self.FK_miete" FromRole="miete" ToRole="wohneinheitMiete" />
-        </EntityType>
         <EntityType Name="mieteinheit">
           <Key>
             <PropertyRef Name="mieteinheitID" />
@@ -1742,8 +1727,8 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
           <Property Name="mietID" Type="Int32" Nullable="false" />
           <Property Name="einheit" Type="Int32" Nullable="false" />
           <Property Name="aktiv" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="miete" Relationship="Self.FK_miete" FromRole="wohneinheitMiete" ToRole="miete" />
           <NavigationProperty Name="mieteinheit" Relationship="Self.FK_einheit" FromRole="wohneinheitMiete" ToRole="mieteinheit" />
+          <NavigationProperty Name="miete" Relationship="immoModel.FK_miete" FromRole="wohneinheitMiete" ToRole="miete" />
         </EntityType>
         <EntityType Name="zahlungskategorie">
           <Key>
@@ -2236,18 +2221,6 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_miete">
-          <End Role="miete" Type="Self.miete" Multiplicity="1" />
-          <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="miete">
-              <PropertyRef Name="mietID" />
-            </Principal>
-            <Dependent Role="wohneinheitMiete">
-              <PropertyRef Name="mietID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_einheit">
           <End Role="mieteinheit" Type="Self.mieteinheit" Multiplicity="1" />
           <End Role="wohneinheitMiete" Type="Self.wohneinheitMiete" Multiplicity="*" />
@@ -2340,7 +2313,6 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
           <EntitySet Name="kategories" EntityType="Self.kategorie" />
           <EntitySet Name="kontakts" EntityType="Self.kontakt" />
           <EntitySet Name="leerstands" EntityType="Self.leerstand" />
-          <EntitySet Name="mietes" EntityType="Self.miete" />
           <EntitySet Name="mieteinheits" EntityType="Self.mieteinheit" />
           <EntitySet Name="mietvertrags" EntityType="Self.mietvertrag" />
           <EntitySet Name="notizs" EntityType="Self.notiz" />
@@ -2453,10 +2425,6 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
             <End Role="mieteinheit" EntitySet="mieteinheits" />
             <End Role="leerstand" EntitySet="leerstands" />
           </AssociationSet>
-          <AssociationSet Name="FK_miete" Association="Self.FK_miete">
-            <End Role="miete" EntitySet="mietes" />
-            <End Role="wohneinheitMiete" EntitySet="wohneinheitMietes" />
-          </AssociationSet>
           <AssociationSet Name="FK_einheit" Association="Self.FK_einheit">
             <End Role="mieteinheit" EntitySet="mieteinheits" />
             <End Role="wohneinheitMiete" EntitySet="wohneinheitMietes" />
@@ -2494,6 +2462,11 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
           <EntitySet Name="vwErstattungens" EntityType="immoModel.vwErstattungen" />
           <EntitySet Name="vwForderungens" EntityType="immoModel.vwForderungen" />
           <EntitySet Name="vwVorlagens" EntityType="immoModel.vwVorlagen" />
+          <EntitySet Name="mietes" EntityType="immoModel.miete" />
+          <AssociationSet Name="FK_miete" Association="immoModel.FK_miete">
+            <End Role="miete" EntitySet="mietes" />
+            <End Role="wohneinheitMiete" EntitySet="wohneinheitMietes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="vwDokumente">
           <Key>
@@ -2605,6 +2578,31 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
           <Property Name="Titel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Datei" Type="Binary" Nullable="false" MaxLength="1" FixedLength="true" />
         </EntityType>
+        <EntityType Name="miete">
+          <Key>
+            <PropertyRef Name="mietID" />
+          </Key>
+          <Property Name="mietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kaltmiete" Type="Decimal" Nullable="false" Precision="17" Scale="3" />
+          <Property Name="gültigAb" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NkAbschlag" Type="Decimal" Nullable="false" Precision="17" Scale="3" />
+          <Property Name="garage" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="stellplatz" Type="Decimal" Precision="17" Scale="3" />
+          <Property Name="sonstMietbestandteile" Type="Decimal" Precision="17" Scale="3" />
+          <NavigationProperty Name="wohneinheitMietes" Relationship="immoModel.FK_miete" FromRole="miete" ToRole="wohneinheitMiete" />
+        </EntityType>
+        <Association Name="FK_miete">
+          <End Type="immoModel.miete" Role="miete" Multiplicity="1" />
+          <End Type="immoModel.wohneinheitMiete" Role="wohneinheitMiete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="miete">
+              <PropertyRef Name="mietID" />
+            </Principal>
+            <Dependent Role="wohneinheitMiete">
+              <PropertyRef Name="mietID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2753,20 +2751,6 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
                 <ScalarProperty Name="mieteinheit" ColumnName="mieteinheit" />
                 <ScalarProperty Name="beginn" ColumnName="beginn" />
                 <ScalarProperty Name="ende" ColumnName="ende" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mietes">
-            <EntityTypeMapping TypeName="immoModel.miete">
-              <MappingFragment StoreEntitySet="miete">
-                <ScalarProperty Name="mietID" ColumnName="mietID" />
-                <ScalarProperty Name="kaltmiete" ColumnName="kaltmiete" />
-                <ScalarProperty Name="gültigAb" ColumnName="gültigAb" />
-                <ScalarProperty Name="NkAbschlag" ColumnName="NkAbschlag" />
-                <ScalarProperty Name="garage" ColumnName="garage" />
-                <ScalarProperty Name="stellplatz" ColumnName="stellplatz" />
-                <ScalarProperty Name="sonstMietbestandteile" ColumnName="sonstMietbestandteile" />
-                <ScalarProperty Name="aktiv" ColumnName="aktiv" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3215,6 +3199,19 @@ Warnung 6002: Für Tabelle/Sicht 'immo.dbo.vwVorlagen' ist kein Primärschlüsse
                 <ScalarProperty Name="Titel" ColumnName="Titel" />
                 <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
                 <ScalarProperty Name="Dokumentennr" ColumnName="Dokumentennr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mietes">
+            <EntityTypeMapping TypeName="immoModel.miete">
+              <MappingFragment StoreEntitySet="miete">
+                <ScalarProperty Name="sonstMietbestandteile" ColumnName="sonstMietbestandteile" />
+                <ScalarProperty Name="stellplatz" ColumnName="stellplatz" />
+                <ScalarProperty Name="garage" ColumnName="garage" />
+                <ScalarProperty Name="NkAbschlag" ColumnName="NkAbschlag" />
+                <ScalarProperty Name="gültigAb" ColumnName="gültigAb" />
+                <ScalarProperty Name="kaltmiete" ColumnName="kaltmiete" />
+                <ScalarProperty Name="mietID" ColumnName="mietID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

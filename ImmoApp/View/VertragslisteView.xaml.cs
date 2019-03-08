@@ -22,21 +22,28 @@ namespace ImmoApp.View
     /// </summary>
     public partial class VertragslisteView : UserControl
     {
+        VertragslisteViewModel vlvm = new VertragslisteViewModel();
         public VertragslisteView()
         {
             InitializeComponent();
-            VertragslisteViewModel vlvm = new VertragslisteViewModel();
+            
             this.DataContext = vlvm;
         }
 
         private void btnAuswahl_Click(object sender, RoutedEventArgs e)
         {
-            Bearbeiten(new VertragUpdateView(), "Vertrag bearbeiten");
+            vlvm.ChangeToVertragUpdateCommand.Execute(new VertragUpdateView());
+           
         }
 
         private void btnNeu_Click(object sender, RoutedEventArgs e)
         {
-            Neu(new VertragInsertView(), "Neuer Vertrag");
+           vlvm.ChangeToVertragInsertCommand.Execute(new VertragInsertView());
+        }
+
+        private void dgVerträge_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            vlvm.SelectedVertrag = (vwVerträge)dgVerträge.SelectedItem;
         }
     }
 }

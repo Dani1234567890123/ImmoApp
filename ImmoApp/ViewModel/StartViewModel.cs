@@ -165,10 +165,6 @@ namespace ImmoApp.ViewModel
 
 
         #endregion
-        #region Methods
-
-
-
-        #endregion
+      
     }
 }
