@@ -15,7 +15,7 @@ namespace ImmoApp.View
         {
             Window win = new Window();
             win = window;
-            MessageBoxResult result = MessageBox.Show("Sind Sie sicher? Alle Eingaben werden gelöscht", "Abbrechen", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            MessageBoxResult result = MessageBox.Show("Sind Sie sicher? Alle neuen Eingaben werden gelöscht", "Abbrechen", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
           
                 if (result == MessageBoxResult.No)
                     return;

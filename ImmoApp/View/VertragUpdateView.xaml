@@ -65,7 +65,7 @@
 			<Label Grid.Row="6" Grid.Column="0" Content="Kaution"/>
 			<Label x:Name="lblKaution" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding Kaution, StringFormat=F2, Mode=TwoWay}" Background="WhiteSmoke"/>
 			<Label Grid.Row="6" Grid.Column="2" Content="bezahlt"/>
-			<CheckBox x:Name="chkKaution" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Height="20" Width="20" Content="{Binding KautionBez}" />
+			<CheckBox x:Name="chkKaution" Grid.Row="6" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Height="20" Width="20" Content="{Binding KautionBez}"  IsChecked="{Binding KautionBez, Mode=TwoWay}" />
 
 			<Label Grid.Row="7" Grid.Column="0" Content="Kautionsratenhöhe"/>
 			<Label x:Name="lblRatenhöhe" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" Margin="4" Content="{Binding KautionsratenHöhe, Mode=TwoWay}" Background="WhiteSmoke"/>
@@ -107,7 +107,7 @@
 			<Label Grid.Row="3" Grid.Column="0" Content="Stellplatz" />
 			<TextBox x:Name="tbStellplatz" Grid.Row="3" Grid.Column="1" Text="{Binding Stellplatz, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 			<Label Grid.Row="3" Grid.Column="2" Content="sonstige Mietbestandteile"/>
-			<TextBox x:Name="tbSonstMiete" Grid.Row="3" Grid.Column="3" Text="{Binding SonstMietbestandteile, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+			<TextBox x:Name="tbSonstMiete" Grid.Row="3" Grid.Column="3" Text="{Binding SonstMiete, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
 
 
 			<Label Grid.Row="4" Grid.Column="2" Content="Bruttomiete"/>
@@ -162,6 +162,7 @@
 			<Button x:Name="btnDokAnzeigen" Grid.Row="4" Content="anzeigen" Click="btnDokAnzeigen_Click"/>
 			<Button x:Name="btnOfD" Grid.Row="4" Grid.Column="2" Content="durchsuchen" Click="btnOfD_Click"/>
 			<Label x:Name="lblFile" Margin="3,5,3,5" Grid.Column="3" Grid.Row="4" Content="{Binding File}" FontSize="12" HorizontalAlignment="Left"/>
+			<ComboBox x:Name="cmbDokKat" Grid.Column="4" Grid.Row="4" HorizontalAlignment="Right" ItemsSource="{Binding DokKatListe}"/>
 			<Button x:Name="btnDokNeu" Grid.Row="4" Grid.Column="5" Content="Dok speichern" Click="btnDokNeu_Click"/>
 
 			<Label Grid.Row="5" Grid.Column="0" FontSize="16" FontWeight="Bold" Content="Forderungen"/>
@@ -183,7 +184,7 @@
 			<Label Grid.Row="8" Grid.Column="0"  FontSize="16" FontWeight="Bold" Content="Erstattungen" VerticalAlignment="Bottom"/>
 			<CheckBox x:Name="chkErst" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Right" Margin="4" Height="20" Width="20" Checked="chkErst_Checked" />
 			<Label Grid.Row="8" Grid.Column="3" HorizontalAlignment="Left" Margin="4" Content="nur offene Erstattungen anzeigen"/>
-			<DataGrid x:Name="dgErstattungen" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" CanUserSortColumns="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedErstattung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgErstattungen_SelectionChanged"  ItemsSource="{Binding ErstattungenListe, UpdateSourceTrigger=PropertyChanged}">
+			<DataGrid x:Name="dgErstattungen" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="6" Margin="5"  FontSize="14"  IsReadOnly="True" CanUserSortColumns="True" VerticalAlignment="Stretch" CanUserAddRows="True" HorizontalAlignment="Stretch" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" SelectedItem="{Binding SelectedErstattung, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="dgErstattungen_SelectionChanged"  ItemsSource="{Binding ErstattungenListe, UpdateSourceTrigger=PropertyChanged}">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Nr" Binding="{Binding Path=vwPersonenErstattungen.ErstattungsNr}" Width="5*"/>
 				<DataGridTextColumn Header="Vorname" Binding="{Binding Path=Vorname}" Width="15*"/>
@@ -196,7 +197,7 @@
 			</DataGrid.Columns>
 			</DataGrid>
 			<Button x:Name="btnErstAnzeigen" Grid.Row="10" Content="anzeigen" Click="btnErstAnzeigen_Click"/>
-			<Button x:Name="btnErstNeu" Grid.Row="10" Grid.Column="1" Content="neue Forderung" Click="btnErstNeu_Click"/>
+			<Button x:Name="btnErstNeu" Grid.Row="10" Grid.Column="1" Content="neue Erstattung" Click="btnErstNeu_Click"/>
 
 		</Grid>
 

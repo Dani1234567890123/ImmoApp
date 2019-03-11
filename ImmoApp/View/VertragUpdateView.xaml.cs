@@ -76,12 +76,14 @@ namespace ImmoApp.View
 
         private void btnspeichern_Click(object sender, RoutedEventArgs e)
         {
-            Speichern((Window)this.Parent);
+            vuvm.SaveAndChangeToVertragListeCommand.Execute(new Object());
+            //Speichern((Window)this.Parent);
         }
 
         private void btnAbbruch_Click(object sender, RoutedEventArgs e)
         {
-            Abbrechen((Window)this.Parent);
+            vuvm.ChangeToVertragListeCommand.Execute(new Object());
+            //Abbrechen((Window)this.Parent);
         }
 
         private void dgNotizen_SelectionChanged(object sender, SelectionChangedEventArgs e)

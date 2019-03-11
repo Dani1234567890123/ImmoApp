@@ -15,6 +15,8 @@ namespace ImmoApp.ViewModel
     
     public class VertragslisteViewModel : ObservableObject, IPageViewModel
     {
+        public static Window win = new Window();
+        public static UserControl uc = new UserControl();
         public static int übergabeID;
         public static string übergabeObj;
         public static string übergabeMieteinheit;
@@ -96,9 +98,10 @@ namespace ImmoApp.ViewModel
 
         private void ChangeToVertragUpdateView(UserControl name)
         {
-                Window win = new Window();
-                UserControl uc = new UserControl();
-                uc = name;
+
+            win = new Window();
+            uc = new UserControl();
+            uc = name;
                 win.Content = uc;
 
                 win.Title = FensterTitelFestlegen(win, uc);
@@ -115,8 +118,8 @@ namespace ImmoApp.ViewModel
 
         private void ChangeToVertragInsertView(UserControl name)
         {
-            Window win = new Window();
-            UserControl uc = new UserControl();
+            win = new Window();
+            uc = new UserControl();
             uc = name;
             win.Content = uc;
 

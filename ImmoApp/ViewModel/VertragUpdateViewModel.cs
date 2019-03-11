@@ -101,16 +101,27 @@ namespace ImmoApp.ViewModel
             }
         }
         private Nullable<DateTime> _vertragsende;
+        //falls Vertragsende nach Vertragsende geändert wird, Vertag inaktiv setzen
         public Nullable<DateTime> Vertragsende
         {
             get { return _vertragsende; }
             set
             {
-                if (_vertragsende != value)
+                if (value < DateTime.Now)
+                {
+                    VertragAktiv = false;
+                    if (_vertragsende != value)
+                    {
+                        _vertragsende = value;
+                        this.OnPropertyChanged();
+                    }
+                }
+                else if (_vertragsende != value)
                 {
                     _vertragsende = value;
                     this.OnPropertyChanged();
                 }
+
             }
         }
         private decimal _kaution;
@@ -291,8 +302,11 @@ namespace ImmoApp.ViewModel
             {
                 if (_kaltmiete != value)
                 {
+                    //if (value == null)
                     _kaltmiete = Math.Round(value, 2);
                     this.OnPropertyChanged();
+                    BruttomieteBerechnen();
+
                 }
             }
         }
@@ -322,6 +336,8 @@ namespace ImmoApp.ViewModel
                 {
                     _nk = Math.Round(value, 2);
                     this.OnPropertyChanged();
+                    BruttomieteBerechnen();
+
                 }
             }
         }
@@ -336,6 +352,8 @@ namespace ImmoApp.ViewModel
                 {
                     _garage = Math.Round((decimal)value, 2);
                     this.OnPropertyChanged();
+                    BruttomieteBerechnen();
+
                 }
             }
         }
@@ -351,6 +369,8 @@ namespace ImmoApp.ViewModel
 
                     _stellplatz = Math.Round((decimal)value, 2);
                     this.OnPropertyChanged();
+                    BruttomieteBerechnen();
+
                 }
             }
         }
@@ -365,6 +385,8 @@ namespace ImmoApp.ViewModel
                 {
                     _sonstMiete = Math.Round((decimal)value, 2);
                     this.OnPropertyChanged();
+                    BruttomieteBerechnen();
+
                 }
             }
         }
@@ -433,8 +455,8 @@ namespace ImmoApp.ViewModel
 
         #endregion
         #region prop Doks
-        
-            private vwDokumente _selectedDok;
+
+        private vwDokumente _selectedDok;
 
         public vwDokumente SelectedDok
         {
@@ -504,6 +526,20 @@ namespace ImmoApp.ViewModel
                 }
             }
         }
+        private List<string> _dokKatListe = new List<string>();
+
+        public List<string> DokKatListe
+        {
+            get { return _dokKatListe; }
+            set
+            {
+                if (_dokKatListe != value)
+                {
+                    _dokKatListe = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
         #endregion
         #region prop Forderungen
         private vwVertragsforderung _selectedForderung;
@@ -531,6 +567,8 @@ namespace ImmoApp.ViewModel
                 {
                     _offeneForderungChecked = value;
                     this.OnPropertyChanged();
+                    //if value=true, VertFordListe = Abfrage where offen = true,
+                    //if value = false VertFord = abfrage where offen = false;
                 }
             }
         }
@@ -563,34 +601,7 @@ namespace ImmoApp.ViewModel
                 }
             }
         }
-        private forderung _vertFordNeu;
 
-        public forderung VertFordNeu
-        {
-            get { return _vertFordNeu; }
-            set
-            {
-                if (_vertFordNeu != value)
-                {
-                    _vertFordNeu = value;
-                    this.OnPropertyChanged();
-                }
-            }
-        }
-        private IEnumerable<forderung> _vertFordListeNeu;
-
-        public IEnumerable<forderung> VertFordListeNeu
-        {
-            get { return _vertFordListeNeu; }
-            set
-            {
-                if (_vertFordListeNeu != value)
-                {
-                    _vertFordListeNeu = value;
-                    this.OnPropertyChanged();
-                }
-            }
-        }
         #endregion
         #region prop Erstattungen
         private vwPersonenErstattungen _selectedErstattung;
@@ -618,6 +629,8 @@ namespace ImmoApp.ViewModel
                 {
                     _offeneErstattungChecked = value;
                     this.OnPropertyChanged();
+                    //if value=true, VertFordListe = Abfrage where offen = true,
+                    //if value = false VertFord = abfrage where offen = false;
                 }
             }
         }
@@ -649,34 +662,7 @@ namespace ImmoApp.ViewModel
                 }
             }
         }
-        private forderung _erstattungNeu;
 
-        public forderung ErstattungNeu
-        {
-            get { return _erstattungNeu; }
-            set
-            {
-                if (_erstattungNeu != value)
-                {
-                    _erstattungNeu = value;
-                    this.OnPropertyChanged();
-                }
-            }
-        }
-        private IEnumerable<forderung> _erstattungenListeNeu;
-
-        public IEnumerable<forderung> ErstattungenListeNeu
-        {
-            get { return _erstattungenListeNeu; }
-            set
-            {
-                if (_erstattungenListeNeu != value)
-                {
-                    _erstattungenListeNeu = value;
-                    this.OnPropertyChanged();
-                }
-            }
-        }
         #endregion
         //Konstruktor
         public VertragUpdateViewModel()
@@ -688,6 +674,10 @@ namespace ImmoApp.ViewModel
             VertDokListe = GetDoks(VertID, Mieter);
             VertFordListe = GetForderungen(VertID);
             ErstattungenListe = GetErstattungen(MieterID);
+            DokKatListe = GetDokKatListe();
+
+            _saveAndChangeToVertragListeCommand = new RelayCommand(param => SaveAndChangeToVertragListe(param));
+            _changeToVertragListeCommand = new RelayCommand(param => ChangeToVertragListeView(param));
         }
 
         #region Methoden
@@ -705,9 +695,14 @@ namespace ImmoApp.ViewModel
                     Stellplatz = (decimal)value.stellplatz;
                 if (value.sonstMietbestandteile.HasValue)
                     SonstMiete = (decimal)value.sonstMietbestandteile;
-                BruttoMiete = Kaltmiete + NK + Garage + Stellplatz + SonstMiete;
+                BruttomieteBerechnen();
                 var gkk = Stellplatz;
             }
+        }
+
+        private void BruttomieteBerechnen()
+        {
+            BruttoMiete = Kaltmiete + NK + Garage + Stellplatz + SonstMiete;
         }
 
         private void WerteAusÜbergabenAnProperties()
@@ -741,6 +736,23 @@ namespace ImmoApp.ViewModel
                 if (Kaution > 0 || Kautionsraten > 0)
                     KautionsratenHöhe = Math.Round(Kaution / Kautionsraten, 2);
             }
+        }
+        private List<string> GetDokKatListe()
+        {
+            using (immoEntities context = new immoEntities())
+            {
+                var query = context.dokumentenkategories.ToList().OrderBy(p => p.kategorie);
+                if (query != null)
+                {
+                    foreach (var kat in query)
+                    {
+                        DokKatListe.Add(kat.kategorie);
+                    }
+
+                    
+                }return DokKatListe;
+            }
+
         }
 
         private miete GetMiete(int einheitid)
@@ -845,6 +857,34 @@ namespace ImmoApp.ViewModel
                 return ersts;
             }
         }
+        private void PropertiesAufÄnderungenUndNullPrüfen()
+        {
+
+            //if Vertragsende geändert, bzw gefüllt, prüfen ob in Zukunft oder Vegangenheit, update ubnd status ggf anpassen
+            //if KautionBez geändert = update in DB
+
+            //if Miete PropsChanged => neuer DS, we/miete neuer DS=> aktiv = true, aktueller: aktiv = false;
+            //    Miete
+            //  MietID
+            //   Kaltmiete
+            //  GültigAb
+            //   NK
+            //  Garage
+            //  Stellplatz
+            //   SonstMiete
+            // BruttoMiete
+
+
+            //notNeu 
+            //  VertNotizListe Neu  = wenn VertNotizListeNeu Liste.Length > 1, foreach item, Notiz speichern, Zu Vertrag = vertID
+
+
+            //   VertDokNeu
+            //   VertDokListeNeu = wenn VertNeu Liste.Length > 1, foreach item, Dok speichern, Zu Vertrag = vertID
+
+
+        }
+
         #endregion
         #region Commands
         //ToDo: Commands implementieren und an die View binden
@@ -861,51 +901,61 @@ namespace ImmoApp.ViewModel
                 this._canExecute = value;
             }
         }
-        private ICommand _changeToVertragUpdateCommand;
-        public ICommand ChangeToVertragUpdateCommand
+        private ICommand _saveAndChangeToVertragListeCommand;
+        public ICommand SaveAndChangeToVertragListeCommand
         {
-            get { return _changeToVertragUpdateCommand; }
-            set { _changeToVertragUpdateCommand = value; }
+            get { return _saveAndChangeToVertragListeCommand; }
+            set { _saveAndChangeToVertragListeCommand = value; }
         }
 
-        private void ChangeToVertragUpdateView(UserControl name)
+        private void SaveAndChangeToVertragListe(object o)
         {
-            Window win = new Window();
-            UserControl uc = new UserControl();
-            uc = name;
-            win.Content = uc;
+            //Properties als Werte in DB-Abfrage einsetzen, DBUpdate => tbmietvertrag
+            //Neue Doks in tb. Dokumente und Tb dokument
+            //Neue Notizen in tb Notiz
+            // Neue Forderung in tb Forderung
+            //Neue Erstattung in TB Erstattung
 
-            win.Title = FensterTitelFestlegen(win, uc);
-            win.Show();
+            //neue Miete in tb miete, tb wohneinheit miete, alte Miete aktiv = false
+            MessageBoxResult result = MessageBox.Show("Sind alle Eingabe korrekt?", "Speichern", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+
+            if (result == MessageBoxResult.No)
+                return;
+            else
+                PropertiesAufÄnderungenUndNullPrüfen();
+            //Speichern if erfolgreich:
+            MessageBox.Show("Daten wurden in der Db gespeichert");
+            VertragslisteViewModel.win.Close();
+            // if Fehler:
+            //Message: Fehler beim Speichern
 
         }
 
-        private ICommand _changeToVertragInsertCommand;
-        public ICommand ChangeToVertragInsertCommand
+
+        private ICommand _changeToVertragListeCommand;
+        public ICommand ChangeToVertragListeCommand
         {
-            get { return _changeToVertragInsertCommand; }
-            set { _changeToVertragInsertCommand = value; }
+            get { return _changeToVertragListeCommand; }
+            set { _changeToVertragListeCommand = value; }
         }
 
-        private void ChangeToVertragInsertView(UserControl name)
+        private void ChangeToVertragListeView(object o)
         {
-            Window win = new Window();
-            UserControl uc = new UserControl();
-            uc = name;
-            win.Content = uc;
+            MessageBoxResult result = MessageBox.Show("Sind Sie sicher? Alle neuen Eingaben werden gelöscht", "Abbrechen", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
 
-            win.Title = FensterTitelFestlegen(win, uc);
-            win.Show();
+            if (result == MessageBoxResult.No)
+                return;
+            else
+            {
+                MessageBox.Show("geänderte Daten wurden gelöscht");
+                VertragslisteViewModel.win.Close();
+            }
+
+
         }
 
-        private string FensterTitelFestlegen(Window win, UserControl uc)
-        {
-            string title;
-            if (uc is VertragInsertView) { title = "Neuer Vertrag"; }
-            else if (uc is VertragUpdateView) { title = "Vertrag bearbeiten"; }
-            else title = "neues Fenster";
-            return title;
-        }
         #endregion
+
+
     }
 }
